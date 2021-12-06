@@ -30,7 +30,9 @@ $ntfy->send(
 
 ## Documentation
 
-*Add docs*
+- [Class methods](docs/methods.md)
+- [Exceptions](docs/exceptions.md)
+- [Code examples](docs/examples.md)
 
 ## Requirements
 
