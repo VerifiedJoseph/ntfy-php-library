@@ -1,0 +1,33 @@
+{
+    "name": "verifiedjoseph/ntfy-php-library",
+    "description": "PHP library for interacting with a Ntfy server",
+    "keywords": ["Ntfy"],
+    "homepage": "https://github.com/VerifiedJoseph/ntfy-php-library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "VerifiedJoseph",
+            "homepage": "https://github.com/VerifiedJoseph"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ntfy\\": "src/Ntfy"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    }
+}
