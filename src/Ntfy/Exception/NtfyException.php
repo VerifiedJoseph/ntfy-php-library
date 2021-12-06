@@ -1,6 +1,6 @@
 <?php
 
-namespace Ntfy;
+namespace Ntfy\Exception;
 
 /**
  * Exception thrown when the ntfy library experiences an error.
