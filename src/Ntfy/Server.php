@@ -2,7 +2,7 @@
 
 namespace Ntfy;
 
-use Ntfy\NtfyException;
+use Ntfy\Exception\NtfyException;
 
 /**
  * Class for setting and vaildating a server URI
