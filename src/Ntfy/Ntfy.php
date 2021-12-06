@@ -8,35 +8,35 @@ class Ntfy
 {
 	/**
 	 * Max message priority
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
 	public const PRIORITY_MAX = 5;
 
 	/**
 	 * High message priority
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
 	public const PRIORITY_HIGH = 4;
 
 	/**
 	 * Default message priority
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
 	public const PRIORITY_DEFAULT = 3;
 
 	/**
 	 * Low message priority
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
 	public const PRIORITY_LOW = 2;
 
 	/**
 	 * Min message priority
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
 	public const PRIORITY_MIN = 1;
