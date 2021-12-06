@@ -68,20 +68,21 @@ class Ntfy
 	 */
 	public function get(string $topic, mixed $since = 'all'): stdClass
 	{
+		$messages = array();
+
 		$query = array(
 			'poll' => 1,
 			'since' => $since
 		);
 
 		$response = $this->guzzle->get($topic . '/json', $query);
+		$contents = trim($response->getBody()->getContents());
 
-		$messages = array();
+		if (empty($contents) === false) {
+			$lines = explode(PHP_EOL, $contents);
 
-		if (empty($response->getBody()->getContents()) === false) {
-			$lines = (array) preg_split('/$\R?^/m', $response->getBody()->getContents());
-
-			foreach ($lines as $item) {
-				$messages[] = Json::decode((string) $item);
+			foreach($lines as $line) {
+				$messages[] = Json::decode($line);
 			}
 		}
 
