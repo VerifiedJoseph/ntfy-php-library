@@ -6,6 +6,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
 
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
+
 // Guzzle exceptions
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
@@ -93,7 +96,7 @@ final class Guzzle
 	 *
 	 * @throws NtfyException if HTTP request method is not supported
 	 * @throws NtfyException if a connection cannot be established
-	 * @throws NtfyException if API returned an error
+	 * @throws EndpointException if the server returned an error
 	 */
 	private function request(string $method, string $endpoint, array $options = array()): ResponseInterface
 	{
@@ -109,12 +112,12 @@ final class Guzzle
 
 		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
-				throw new NtfyException($err->getMessage(), 0);
+				throw new EndpointException($err->getMessage(), 0);
 			}
 
 			$response = $err->getResponse();
 
-			throw new NtfyException(
+			throw new EndpointException(
 				$response->getBody()->getContents(),
 				$response->getStatusCode()
 			);
