@@ -2,6 +2,8 @@
 
 namespace Ntfy;
 
+use stdClass;
+
 class Ntfy
 {
 	/** @var Guzzle $guzzle Guzzle class instance */
@@ -9,8 +11,8 @@ class Ntfy
 
 	/**
 	 * Create Guzzle class instance
-	 * 
-	 * @param Ntfy\Server $server Server class instance
+	 *
+	 * @param Server $server Server class instance
 	 */
 	function __construct(Server $server)
 	{
@@ -21,10 +23,10 @@ class Ntfy
 	 * Send a message
 	 *
 	 * @param string $topic Topic
-	 * @param string $title	Message title
 	 * @param string $message Message body
+	 * @param string $title	Message title
 	 * @param int $priority Message priority
-	 * @param int $tags Message tags
+	 * @param string $tags Message tags
 	 *
 	 * @return stdClass
 	 *
@@ -32,7 +34,7 @@ class Ntfy
 	 * @see https://ntfy.sh/docs/publish/#message-priority Message priority levels
 	 * @see https://ntfy.sh/docs/publish/#tags-emojis Message tags & emojis
 	 */
-	public function send(string $topic, $title = '', string $message, int $priority = 0, string $tags = '')
+	public function send(string $topic, string $message, $title = '', int $priority = 0, string $tags = ''): stdClass
 	{
 		$headers = array();
 		$headers['Priority'] = $priority;
@@ -53,18 +55,18 @@ class Ntfy
 
 	/**
 	 * Get sent messages for a topic
-	 * 
+	 *
 	 * To get sent messages for multiple topics, use a comma-separated list. e.g: `mytopic1,mytopic2`
-	 * 
+	 *
 	 * @param string $topic Topic
 	 * @param string $since Messages since a time
-	 * 
+	 *
 	 * @return stdClass
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/subscribe/api/#subscribing-to-multiple-topics Subscribing to multiple topics
 	 * @see https://ntfy.sh/docs/subscribe/api/#fetching-cached-messages Fetching cached messages
 	 */
-	public function get(string $topic, mixed $since = 'all')
+	public function get(string $topic, mixed $since = 'all'): stdClass
 	{
 		$query = array(
 			'poll' => 1,
@@ -72,14 +74,14 @@ class Ntfy
 		);
 
 		$response = $this->guzzle->get($topic . '/json', $query);
-		
+
 		$messages = array();
 
 		if (empty($response->getBody()->getContents()) === false) {
-			$lines = preg_split('/$\R?^/m', $response->getBody()->getContents());
+			$lines = (array) preg_split('/$\R?^/m', $response->getBody()->getContents());
 
 			foreach ($lines as $item) {
-				$messages[] = Json::decode($item);
+				$messages[] = Json::decode((string) $item);
 			}
 		}
 

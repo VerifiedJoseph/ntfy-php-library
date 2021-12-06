@@ -57,7 +57,7 @@ final class Guzzle
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param string $data
-	 * @param array $headers
+	 * @param array<string, mixed> $headers
 	 * @return ResponseInterface
 	 */
 	public function post(string $endpoint, string $data = '', array $headers = array()): ResponseInterface

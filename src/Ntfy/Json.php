@@ -5,6 +5,8 @@ namespace Ntfy;
 use stdClass;
 
 use JsonException;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\GotifyException;
 
 /**
  * Class for encoding and decoding JSON
@@ -17,7 +19,7 @@ final class Json
 	 * @param array<mixed> $data
 	 * @return string
 	 *
-	 * @throws NtlyException if array could not be encoded
+	 * @throws NtfyException if array could not be encoded
 	 */
 	static function encode(array $data): string
 	{
@@ -35,7 +37,7 @@ final class Json
 	 * @param string $json
 	 * @return stdClass|array<mixed>
 	 *
-	 * @throws NtlyException if JSON could not be decoded
+	 * @throws NtfyException if JSON could not be decoded
 	 */
 	public static function decode(string $json): stdClass|array
 	{
