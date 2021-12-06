@@ -6,7 +6,7 @@
     </include>
   </coverage>
   <testsuites>
-    <testsuite name="gotify-api-php">
+    <testsuite name="ntfy-php-library">
       <directory suffix=".php">./tests/</directory>
     </testsuite>
   </testsuites>
