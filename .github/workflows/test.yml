@@ -1,0 +1,52 @@
+name: Tests
+on:
+  pull_request:
+    paths:
+      - "**.php"
+      - ".github/workflows/test.yml"
+  push:
+    branches: main
+    paths:
+      - "**.php"
+      - ".github/workflows/test.yml"
+
+jobs:
+  test:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: .ci/docker-compose.yml
+      NTFY_URI: "http://127.0.0.1:8080"
+      HTTPBIN_URI: "http://127.0.0.1:8081"
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: mbstring
+        tools: phpunit
+    
+    - name: Setup problem matchers for PHP
+      run: echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+
+    - name: Setup problem matchers for PHPUnit
+      run: echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+    - name: "Validate composer.json and composer.lock"
+      run: "composer validate --strict"
+
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist
+
+    - name: Start ntfy & httpbin docker containers
+      run: docker-compose up -d
+
+    - name: Run phpunit
+      run: phpunit --configuration phpunit.xml
+
+    - name: Stop ntfy & httpbin docker docker containers
+      run: docker-compose down
