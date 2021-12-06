@@ -1,0 +1,51 @@
+name: Code quality
+
+on:
+  pull_request:
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+      - ".github/workflows/code-quality.yml"
+  push:
+    branches: main
+    paths:
+      - "**.php"
+      - "phpcs.xml"
+      - ".github/workflows/code-quality.yml"
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        tools: phpstan
+
+    - name: "Validate composer.json and composer.lock"
+      run: "composer validate --strict"
+
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist
+
+    - name: Run PHPStan
+      run: phpstan analyse -c phpstan.neon
+
+  phpcs:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        tools: cs2pr, phpcs
+
+    - name: Run phpcs
+      run: phpcs src tests --report=checkstyle | cs2pr
