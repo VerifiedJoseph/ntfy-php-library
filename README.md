@@ -1,0 +1,53 @@
+# ntfy-php-library (WIP)
+
+[![Latest Version](https://img.shields.io/github/release/VerifiedJoseph/ntfy-php-library.svg?style=flat-square)](https://github.com/VerifiedJoseph/ntfy-php-library/releases)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
+A PHP library for interacting with a [ntfy](https://github.com/binwiederhier/ntfy) server.
+
+## Install
+
+```
+composer require verifiedjoseph/ntfy-php-library
+```
+
+## Quick Start
+```PHP
+require __DIR__ . '/vendor/autoload.php';
+
+use Ntfy\Ntfy;
+use Ntfy\Server;
+
+$server = new Server('https://ntfy.sh/');
+$ntfy = new Ntfy($server);
+	
+$ntfy->send(
+	topic: 'myTopic',
+	message: 'Hello World'
+);
+
+```
+
+## Documentation
+
+*Add docs*
+
+## Requirements
+
+- PHP >= 8.0
+- Composer
+- PHP Extensions:
+  - [`JSON`](https://www.php.net/manual/en/book.json.php)
+  - [`cURL`](https://secure.php.net/manual/en/book.curl.php)
+
+## Dependencies
+
+[`guzzlehttp/guzzle`](https://github.com/guzzle/guzzle/)
+
+## Changelog
+
+All notable changes to this project are documented in the [CHANGELOG](CHANGELOG.md).
+
+## License
+
+MIT License. Please see [LICENSE](LICENSE) for more information.
