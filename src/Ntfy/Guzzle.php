@@ -53,7 +53,7 @@ final class Guzzle
 	}
 
 	/**
-	 * Make POST request a JOSN payload
+	 * Make POST request
 	 *
 	 * @param string $endpoint API endpoint
 	 * @param string $data
@@ -68,22 +68,6 @@ final class Guzzle
 		);
 
 		return $this->request('POST', $endpoint, $options);
-	}
-
-	/**
-	 * Make PUT request
-	 *
-	 * @param string $endpoint API endpoint
-	 * @param array<string, string> $data
-	 * @return ResponseInterface
-	 */
-	public function put(string $endpoint, array $data): ResponseInterface
-	{
-		$options = array(
-			RequestOptions::JSON => $data
-		);
-
-		return $this->request('PUT', $endpoint, $options);
 	}
 
 	/**
@@ -102,7 +86,7 @@ final class Guzzle
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
-				throw new NtfyException('Request method must be GET, POST or PUT');
+				throw new NtfyException('Request method must be GET or POST');
 			}
 
 			$response = $this->client->request($method, $endpoint, $options);
