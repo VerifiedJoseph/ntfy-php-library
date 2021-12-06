@@ -6,7 +6,7 @@ class NtfyTest extends TestCase
 {
 	private static Ntfy $ntfy;
 
-	private string $testTopic = 'phpUnitTest'; 
+	private string $testTopic = 'phpUnitTest';
 	private string $testTitle = 'Test message';
 	private string $testMessage = 'Hello World. This is a test message.';
 	private int $testPriority = 5;
