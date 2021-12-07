@@ -12,6 +12,38 @@ Examples:
 - [Send a message](../examples/send-message.php)
 - [Get sent messages](../examples/get-messages.php)
 
+### Constants
+
+Max message priority
+
+```PHP
+Ntfy::PRIORITY_MAX
+```
+
+High message priority
+
+```PHP
+Ntfy::PRIORITY_HIGH
+```
+
+Default message priority
+
+```PHP
+Ntfy::PRIORITY_DEFAULT
+```
+
+Low message priority
+
+```PHP
+Ntfy::PRIORITY_LOW
+```
+
+Min message priority
+
+```PHP
+Ntfy::PRIORITY_MIN
+```
+
 ### Methods
 
 Send a message
