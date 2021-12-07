@@ -8,7 +8,8 @@ Ntfy\Ntfy(Server $server)
 
 Class: [Ntfy](../src/Ntfy/Ntfy.php)
 
-Examples:
+### Examples
+
 - [Send a message](../examples/send-message.php)
 - [Get sent messages](../examples/get-messages.php)
 
@@ -65,9 +66,11 @@ Ntfy\Server(string $uri)
 
 Class: [Server](../src/Ntfy/Server.php)
 
-Examples:
+### Examples
+
 - [Send a message](../examples/send-message.php)
-- [Get sent messages](../examples/get-messages.php)
+
+### Methods
 
 Get a validated server URI
 
