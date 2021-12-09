@@ -69,7 +69,7 @@ class Ntfy
 	 * @see https://ntfy.sh/docs/publish/#message-priority Message priority levels
 	 * @see https://ntfy.sh/docs/publish/#tags-emojis Message tags & emojis
 	 */
-	public function send(string $topic, string $message, $title = '', int $priority = 0, string $tags = ''): stdClass
+	public function send(string $topic, string $message, $title = '', int $priority = 3, string $tags = ''): stdClass
 	{
 		$headers = array();
 		$headers['Priority'] = $priority;
