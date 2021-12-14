@@ -15,7 +15,7 @@ try {
 
 	// Create Ntfy class instance
 	$ntfy = new Ntfy\Ntfy($server);
-		
+
 	$sentMessage = $ntfy->send(
 		topic: 'myTopic',
 		message: 'Hello World'

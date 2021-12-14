@@ -15,7 +15,7 @@ try {
 
 	// Create Ntfy class instance
 	$ntfy = new Ntfy\Ntfy($server);
-		
+
 	$messages = $ntfy->get(
 		topic: 'myTopic',
 	);
