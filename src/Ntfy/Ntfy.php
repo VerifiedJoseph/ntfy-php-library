@@ -62,14 +62,16 @@ class Ntfy
 	 * @param string $title	Message title
 	 * @param int $priority Message priority
 	 * @param string $tags Message tags
+	 * @param string|int $delay Delay sending message for or until a time.
 	 *
 	 * @return stdClass
 	 *
 	 * @see https://ntfy.sh/docs/publish/ Sending messages
 	 * @see https://ntfy.sh/docs/publish/#message-priority Message priority levels
 	 * @see https://ntfy.sh/docs/publish/#tags-emojis Message tags & emojis
+	 * @see https://ntfy.sh/docs/publish/#scheduled-delivery Scheduled (delayed) delivery of messages
 	 */
-	public function send(string $topic, string $message, $title = '', int $priority = 3, string $tags = ''): stdClass
+	public function send(string $topic, string $message, $title = '', int $priority = 3, string $tags = '', string|int $delay = ''): stdClass
 	{
 		$headers = array();
 		$headers['Priority'] = $priority;
@@ -80,6 +82,10 @@ class Ntfy
 
 		if (empty($tags) === false) {
 			$headers['Tags'] = $tags;
+		}
+
+		if (empty($delay) === false) {
+			$headers['Delay'] = $delay;
 		}
 
 		$response = $this->guzzle->post($topic, $message, $headers);
