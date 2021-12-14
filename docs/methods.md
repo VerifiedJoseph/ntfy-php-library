@@ -50,7 +50,15 @@ Ntfy::PRIORITY_MIN
 Send a message
 
 ```PHP
-send(string $topic, string $message, $title = '', int $priority = 0, string $tags = ''): stdClass
+send(
+	string $topic,
+	string $message,
+	string $title = '',
+	int $priority = 3,
+	string $tags = '',
+	string|int $delay = '',
+	bool $cache = true
+): stdClass
 ```
 
  Get sent messages for a topic
