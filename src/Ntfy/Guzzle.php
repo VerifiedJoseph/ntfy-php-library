@@ -100,9 +100,17 @@ final class Guzzle
 			}
 
 			$response = $err->getResponse();
+			$contentType = $response->getHeaderLine('Content-Type');
+
+			if ($contentType === 'application/json') {
+				$json = (object) Json::decode($response->getBody());
+				$message = $json->error . ' (code: ' . $json->code . ')';
+
+				throw new EndpointException($message, $json->http);
+			}
 
 			throw new EndpointException(
-				$response->getBody()->getContents(),
+				$err->getMessage(),
 				$response->getStatusCode()
 			);
 		}
