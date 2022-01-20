@@ -1,0 +1,3 @@
+# ntfy server config file
+base-url: http://127.0.0.1:8080
+attachment-cache-dir: "/var/cache/ntfy/attachments"
