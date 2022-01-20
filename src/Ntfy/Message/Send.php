@@ -48,6 +48,9 @@ class Send extends Message
 	/** @var bool $cache Cache status for message */
 	private bool $cache = true;
 
+	/** @var bool $firebase Firebase status for message */
+	private bool $firebase = true;
+
 	/**
 	 * Set message topic
 	 *
@@ -183,6 +186,16 @@ class Send extends Message
 	}
 
 	/**
+	 * Disable firebase for this message
+	 * 
+	 * @see https://ntfy.sh/docs/publish/#disable-firebase
+	 */
+	public function disableFirebase(): void
+	{
+		$this->firebase = false;
+	}
+
+	/**
 	 * Send the message
 	 * 
 	 * @return stdClass
@@ -226,6 +239,10 @@ class Send extends Message
 
 		if ($this->cache === false) {
 			$headers['X-Cache'] = 'no';
+		}
+
+		if ($this->firebase === false) {
+			$headers['X-Firebase'] = 'no';
 		}
 
 		if ($this->attachFile !== '') {
