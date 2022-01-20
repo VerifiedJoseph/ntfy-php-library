@@ -165,12 +165,12 @@ class Send extends Message
 	/**
 	 * Set a file attachment using a URL
 	 * 
-	 * @param string $url Remote file URL
+	 * @param string $url Ffile URL
 	 * 
 	 * @see https://ntfy.sh/docs/publish/#attachments
 	 * @see https://ntfy.sh/docs/publish/#attach-local-file
 	 */
-	public function attachRemote(string $url): void
+	public function attachURL(string $url): void
 	{
 		$this->attachUrl = $url; 
 	}
