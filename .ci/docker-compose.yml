@@ -3,7 +3,7 @@ version: "3"
 services:
   ntfy:
     container_name: ci_ntfy
-    image: binwiederhier/ntfy:v1.6.1
+    image: binwiederhier/ntfy:v1.13.0
     ports:
       - "127.0.0.1:8080:80"
 
