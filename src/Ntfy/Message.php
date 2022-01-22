@@ -1,7 +1,9 @@
 <?php
 
-namespace Ntfy\Message;
+namespace Ntfy;
 
+use Ntfy\Server;
+use Ntfy\Guzzle;
 use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 
@@ -10,8 +12,46 @@ use stdClass;
 /**
  * Class for sending a message
  */
-class Send extends Message
+class Message
 {
+	/**
+	 * Max message priority
+	 *
+	 * @see https://ntfy.sh/docs/publish/#message-priority
+	 */
+	public const PRIORITY_MAX = 5;
+
+	/**
+	 * High message priority
+	 *
+	 * @see https://ntfy.sh/docs/publish/#message-priority
+	 */
+	public const PRIORITY_HIGH = 4;
+
+	/**
+	 * Default message priority
+	 *
+	 * @see https://ntfy.sh/docs/publish/#message-priority
+	 */
+	public const PRIORITY_DEFAULT = 3;
+
+	/**
+	 * Low message priority
+	 *
+	 * @see https://ntfy.sh/docs/publish/#message-priority
+	 */
+	public const PRIORITY_LOW = 2;
+
+	/**
+	 * Min message priority
+	 *
+	 * @see https://ntfy.sh/docs/publish/#message-priority
+	 */
+	public const PRIORITY_MIN = 1;
+
+	/** @var Guzzle $guzzle Guzzle class instance */
+	protected Guzzle $guzzle;
+
 	/** @var string $topic Message topic */
 	private string $topic = '';
 
@@ -50,6 +90,16 @@ class Send extends Message
 
 	/** @var bool $firebase Firebase status for message */
 	private bool $firebase = true;
+
+	/**
+	 * Create Guzzle class instance
+	 *
+	 * @param Server $server Server class instance
+	 */
+	function __construct(Server $server)
+	{
+		$this->guzzle = new Guzzle($server->get());
+	}
 
 	/**
 	 * Set message topic
