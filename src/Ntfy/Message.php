@@ -64,7 +64,7 @@ class Message
 	/** @var string $body Message body */
 	private string $body = '';
 
-	/** @var array $tags Message tags */
+	/** @var array<int,string|int> $tags Message tags */
 	private array $tags = [];
 
 	/** @var string|int $delay Timestamp or duration of the delay */
@@ -138,7 +138,7 @@ class Message
 	/**
 	 * Set message body
 	 *
-	 * @param string $title Message body
+	 * @param string $body Message body
 	 */
 	public function body(string $body): void
 	{
@@ -148,7 +148,7 @@ class Message
 	/**
 	 * Set message tags
 	 *
-	 * @param array $tags Array of message tags
+	 * @param array<int, string|int> $tags Array of message tags
 	 *
 	 * @see https://ntfy.sh/docs/publish/#tags-emojis
 	 */

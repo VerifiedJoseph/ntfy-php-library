@@ -79,7 +79,7 @@ final class Guzzle
 	 * @param array<string, mixed> $headers
 	 * @return ResponseInterface
 	 *
-	 * @throws GotifyException if the file cannot be opened
+	 * @throws NtfyException if the file cannot be opened
 	 */
 	public function putFile(string $endpoint, string $filepath, array $headers = array()): ResponseInterface
 	{
