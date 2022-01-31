@@ -5,8 +5,10 @@ class MessageTest extends TestCase
 	private string $topic = 'mytopic';
 	private string $title = 'Hello World';
 	private string $body = 'Hello World from PHPUnit';
-	private array $tags = ['hello', 'world'];
 	private int $priority = 4;
+
+	/** @var array<int, string> $tags */
+	private array $tags = ['hello', 'world'];
 
 	/**
 	 * Test sending a message
@@ -58,6 +60,5 @@ class MessageTest extends TestCase
 		$this->assertEquals($this->topic, $details->topic);
 		$this->assertEquals($this->title, $details->title);
 		$this->assertEquals($this->getImageName(), $details->attachment->name);
-
 	}
 }
