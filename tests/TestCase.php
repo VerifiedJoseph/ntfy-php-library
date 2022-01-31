@@ -45,4 +45,16 @@ abstract class TestCase extends BaseTestCase
 
 		return self::$httpBinUri;
 	}
+
+	/**
+	 * Retruns file attachment image path
+	 */
+	protected function getImagePath(): string
+	{
+		$path = __DIR__ . '/TestAssets/image.png';
+
+		$this->assertFileExists($path);
+
+		return $path;
+	}
 }
