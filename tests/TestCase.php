@@ -57,4 +57,12 @@ abstract class TestCase extends BaseTestCase
 
 		return $path;
 	}
+
+	/**
+	 * Retruns file attachment name
+	 */
+	protected function getImageName(): string
+	{
+		return 'image.png';
+	}
 }
