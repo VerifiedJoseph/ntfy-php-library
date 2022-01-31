@@ -105,7 +105,7 @@ class Message
 	 * Set message topic
 	 *
 	 * @param string $topic Message topic
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#publishing
 	 */
 	public function topic(string $topic): void
@@ -127,7 +127,7 @@ class Message
 	 * Set message priority
 	 *
 	 * @param string|int $priority Message priority
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
 	public function priority(string|int $priority): void
@@ -149,8 +149,8 @@ class Message
 	 * Set message tags
 	 *
 	 * @param array $tags Array of message tags
-	 * 
-	 * @see https://ntfy.sh/docs/publish/#tags-emojis 
+	 *
+	 * @see https://ntfy.sh/docs/publish/#tags-emojis
 	 */
 	public function tags(array $tags): void
 	{
@@ -159,9 +159,9 @@ class Message
 
 	/**
 	 * Set scheduled delivery for the message
-	 * 
+	 *
 	 * @param string|int $delay Timestamp or duration of the delay
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#scheduled-delivery
 	 */
 	public function schedule(string|int $delay): void
@@ -171,9 +171,9 @@ class Message
 
 	/**
 	 * Set URL to open when message notification is clicked
-	 * 
+	 *
 	 * @param string $url A comma separated list for message tags (e.g tag1,tag2)
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#click-action
 	 */
 	public function clickAction(string $url): void
@@ -183,9 +183,9 @@ class Message
 
 	/**
 	 * Set email address for sending a email notification
-	 * 
+	 *
 	 * @param string $email Email address
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#e-mail-notifications
 	 */
 	public function email(string $email): void
@@ -195,12 +195,12 @@ class Message
 
 	/**
 	 * Set a file attachment using a local file
-	 * 
+	 *
 	 * @param string $file File path
 	 * @param string $filename File name
-	 * 
+	 *
 	 * @throws NtfyException if file attachment is not found
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#attachments
 	 * @see https://ntfy.sh/docs/publish/#attach-local-file
 	 */
@@ -216,20 +216,20 @@ class Message
 
 	/**
 	 * Set a file attachment using a URL
-	 * 
+	 *
 	 * @param string $url Ffile URL
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#attachments
 	 * @see https://ntfy.sh/docs/publish/#attach-local-file
 	 */
 	public function attachURL(string $url): void
 	{
-		$this->attachUrl = $url; 
+		$this->attachUrl = $url;
 	}
 
 	/**
 	 * Disable caching for this message
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#message-caching
 	 */
 	public function disableCaching(): void
@@ -239,7 +239,7 @@ class Message
 
 	/**
 	 * Disable firebase for this message
-	 * 
+	 *
 	 * @see https://ntfy.sh/docs/publish/#disable-firebase
 	 */
 	public function disableFirebase(): void
@@ -249,10 +249,10 @@ class Message
 
 	/**
 	 * Send the message
-	 * 
+	 *
 	 * @throws NtfyException if a message topic is not given
 	 * @throws NtfyException if a message body is not given
-	 * 
+	 *
 	 * @return stdClass
 	 */
 	public function send(): stdClass
