@@ -199,6 +199,8 @@ class Message
 	 * @param string $file File path
 	 * @param string $filename File name
 	 * 
+	 * @throws NtfyException if file attachment is not found
+	 * 
 	 * @see https://ntfy.sh/docs/publish/#attachments
 	 * @see https://ntfy.sh/docs/publish/#attach-local-file
 	 */
@@ -247,6 +249,9 @@ class Message
 
 	/**
 	 * Send the message
+	 * 
+	 * @throws NtfyException if a message topic is not given
+	 * @throws NtfyException if a message body is not given
 	 * 
 	 * @return stdClass
 	 */
