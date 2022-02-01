@@ -32,7 +32,7 @@ $message->send();
 
 ## Documentation
 
-- [Class methods](docs/methods.md)
+- [Classes](docs/classes.md)
 - [Exceptions](docs/exceptions.md)
 - [Code examples](docs/examples.md)
 
