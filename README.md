@@ -3,7 +3,9 @@
 [![Latest Version](https://img.shields.io/github/release/VerifiedJoseph/ntfy-php-library.svg?style=flat-square)](https://github.com/VerifiedJoseph/ntfy-php-library/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-A PHP library for interacting with a [ntfy](https://github.com/binwiederhier/ntfy) server.
+PHP library for sending messages using a [ntfy](https://github.com/binwiederhier/ntfy) server.
+
+Supports ntfy server version 1.13.0.
 
 ## Install
 
@@ -15,22 +17,24 @@ composer require verifiedjoseph/ntfy-php-library
 ```PHP
 require __DIR__ . '/vendor/autoload.php';
 
-use Ntfy\Ntfy;
 use Ntfy\Server;
+use Ntfy\Message;
 
 $server = new Server('https://ntfy.sh/');
-$ntfy = new Ntfy($server);
-	
-$ntfy->send(
-	topic: 'myTopic',
-	message: 'Hello World'
-);
+$message = new Message($server);
+
+$message->topic('mytopic');
+$message->title('Hello World');
+$message->body('Hello World from ntfy.sh');
+$message->priority(Message::PRIORITY_HIGH);
+
+$message->send();
 
 ```
 
 ## Documentation
 
-- [Class methods](docs/methods.md)
+- [Classes](docs/classes.md)
 - [Exceptions](docs/exceptions.md)
 - [Code examples](docs/examples.md)
 

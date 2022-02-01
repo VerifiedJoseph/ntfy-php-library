@@ -2,6 +2,7 @@
 
 namespace Ntfy;
 
+use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
@@ -71,6 +72,30 @@ final class Guzzle
 	}
 
 	/**
+	 * Make PUT request with a file
+	 *
+	 * @param string $endpoint API endpoint
+	 * @param string $filepath file path
+	 * @param array<string, mixed> $headers
+	 * @return ResponseInterface
+	 *
+	 * @throws NtfyException if the file cannot be opened
+	 */
+	public function putFile(string $endpoint, string $filepath, array $headers = array()): ResponseInterface
+	{
+		try {
+			$options = array(
+				RequestOptions::HEADERS => $headers,
+				RequestOptions::BODY => Psr7\Utils::tryFopen($filepath, 'r')
+			);
+
+			return $this->request('PUT', $endpoint, $options);
+		} catch (\RuntimeException $err) {
+			throw new NtfyException($err->getMessage());
+		}
+	}
+
+	/**
 	 * Make HTTP request
 	 *
 	 * @param string $method HTTP request method
@@ -86,7 +111,7 @@ final class Guzzle
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
-				throw new NtfyException('Request method must be GET or POST');
+				throw new NtfyException('Request method must be GET, POST or PUT');
 			}
 
 			$response = $this->client->request($method, $endpoint, $options);
@@ -100,9 +125,17 @@ final class Guzzle
 			}
 
 			$response = $err->getResponse();
+			$contentType = $response->getHeaderLine('Content-Type');
+
+			if ($contentType === 'application/json') {
+				$json = (object) Json::decode($response->getBody());
+				$message = $json->error . ' (code: ' . $json->code . ')';
+
+				throw new EndpointException($message, $json->http);
+			}
 
 			throw new EndpointException(
-				$response->getBody()->getContents(),
+				$err->getMessage(),
 				$response->getStatusCode()
 			);
 		}
