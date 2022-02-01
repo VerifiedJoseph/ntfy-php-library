@@ -1,6 +1,6 @@
 # Documentation
 
-- [Classes](docs/classes.md)
+- [Classes](classes.md)
 - [Exceptions](exceptions.md)
 - [Code examples](examples.md)
 
