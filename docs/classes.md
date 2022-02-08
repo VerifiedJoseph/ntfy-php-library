@@ -127,6 +127,12 @@ Set a file attachment using a URL
 attachURL(string $url): void
 ```
 
+Set username and password for basic access authentication
+
+```PHP
+auth(string $username, string $password): void
+```
+
 Disable caching for this message
 
 ```PHP
