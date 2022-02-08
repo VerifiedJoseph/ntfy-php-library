@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [2.1.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v2.1.0) - 2022-02-08
+
+* Updated supported binwiederhier/ntfy version from 1.13.0 to 1.14.0.
+* Added support for basic access authentication. ([#25](https://github.com/VerifiedJoseph/ntfy-php-library/pull/25), [`587fb60`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/587fb60bdfcb497ff50d3fcf1ce420701cea2ecd))
+
 ## [2.0.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v2.0.0) - 2022-02-01
 
 Version 2 is **not** backwards compatible. See the updated [documentation](https://github.com/VerifiedJoseph/ntfy-php-library/tree/main/docs).
