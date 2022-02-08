@@ -49,8 +49,8 @@ class Message
 	 */
 	public const PRIORITY_MIN = 1;
 
-	/** @var Guzzle $guzzle Guzzle class instance */
-	protected Guzzle $guzzle;
+	/** @var string $serverUri Server URI */
+	private string $serverUri = '';
 
 	/** @var string $topic Message topic */
 	private string $topic = '';
@@ -85,6 +85,9 @@ class Message
 	/** @var string $attachURL Remote URL of file attachment */
 	private string $attachUrl = '';
 
+	/** @var array<string, string> $auth Basic access authentication username and password */
+	private array $auth = array();
+
 	/** @var bool $cache Cache status for message */
 	private bool $cache = true;
 
@@ -98,7 +101,7 @@ class Message
 	 */
 	function __construct(Server $server)
 	{
-		$this->guzzle = new Guzzle($server->get());
+		$this->serverUri = $server->get();
 	}
 
 	/**
@@ -228,6 +231,23 @@ class Message
 	}
 
 	/**
+	 * Set username and password for basic access authentication
+	 *
+	 * @param string $username Username
+	 * @param string $password Password
+	 *
+	 * @see https://ntfy.sh/docs/publish/#authentication
+	 * @see https://ntfy.sh/docs/config/#access-control
+	 */
+	public function auth(string $username, string $password): void
+	{
+		$this->auth = array(
+			'username' => $username,
+			'password' => $password
+		);
+	}
+
+	/**
 	 * Disable caching for this message
 	 *
 	 * @see https://ntfy.sh/docs/publish/#message-caching
@@ -257,6 +277,11 @@ class Message
 	 */
 	public function send(): stdClass
 	{
+		$guzzle = new Guzzle(
+			$this->serverUri,
+			$this->auth
+		);
+
 		if ($this->topic === '') {
 			throw new NtfyException('Message topic must be given');
 		}
@@ -305,14 +330,14 @@ class Message
 				$headers['X-Filename'] = $this->attachFilename;
 			}
 
-			$response = $this->guzzle->putFile(
+			$response = $guzzle->putFile(
 				$this->topic,
 				$this->attachFile,
 				$headers
 			);
 
 		} else {
-			$response = $this->guzzle->post(
+			$response = $guzzle->post(
 				$this->topic,
 				$this->body,
 				$headers

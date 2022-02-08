@@ -30,10 +30,11 @@ final class Guzzle
 	/**
 	 *
 	 * @param string $uri Server URI
+	 * @param array<string, string> $auth Authentication username and password
 	 */
-	function __construct(string $uri)
+	function __construct(string $uri, $auth = array())
 	{
-		$config = $this->getConfig($uri);
+		$config = $this->getConfig($uri, $auth);
 		$this->client = new Client($config);
 	}
 
@@ -147,9 +148,10 @@ final class Guzzle
 	 * Get GuzzleHttp client config
 	 *
 	 * @param string $uri Server URI
+	 * @param array<string, string> $auth Authentication username and password
 	 * @return array<string, mixed> Returns client config array
 	 */
-	private function getConfig(string $uri): array
+	private function getConfig(string $uri, array $auth): array
 	{
 		$config = array(
 			'base_uri' => $uri,
@@ -157,6 +159,31 @@ final class Guzzle
 			'timeout' => $this->timeout,
 			'allow_redirects' => false,
 		);
+
+		$config = array_merge(
+			$config,
+			$this->getAuthConfig($auth)
+		);
+
+		return $config;
+	}
+
+	/**
+	 * Get authentication config
+	 *
+	 * @param array<string, string> $auth Authentication username and password
+	 * @return array<string, array<int|string, string>>
+	 */
+	private function getAuthConfig(array $auth): array
+	{
+		$config = array();
+
+		if ($auth !== []) {
+			$config[RequestOptions::AUTH] = array(
+				$auth['username'],
+				$auth['password']
+			);
+		}
 
 		return $config;
 	}
