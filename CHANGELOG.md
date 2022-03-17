@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [2.1.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v2.1.1) - 2022-03-17
+
+* Updated supported ntfy version from 1.14.0 to 1.18.0. ([`75e3354`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/75e33544e2ecea4fe45628d5b10db9c762eaf44d))
+
 ## [2.1.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v2.1.0) - 2022-02-08
 
 * Updated supported binwiederhier/ntfy version from 1.13.0 to 1.14.0.
