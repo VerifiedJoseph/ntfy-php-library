@@ -76,9 +76,6 @@ class Message
 	/** @var string $email Email address for e-mail notifications */
 	private string $email = '';
 
-	/** @var string $attachFile Path of file attachment */
-	private string $attachFile = '';
-
 	/** @var string $attachFilename Name of file attachment */
 	private string $attachFilename = '';
 
@@ -194,27 +191,6 @@ class Message
 	public function email(string $email): void
 	{
 		$this->email = $email;
-	}
-
-	/**
-	 * Set a file attachment using a local file
-	 *
-	 * @param string $file File path
-	 * @param string $filename File name
-	 *
-	 * @throws NtfyException if file attachment is not found
-	 *
-	 * @see https://ntfy.sh/docs/publish/#attachments
-	 * @see https://ntfy.sh/docs/publish/#attach-local-file
-	 */
-	public function attach(string $file, string $filename = ''): void
-	{
-		if (file_exists($file) === false) {
-			throw new NtfyException('File attachment not found: ' . $file);
-		}
-
-		$this->attachFile = $file;
-		$this->attachFilename = $filename;
 	}
 
 	/**
