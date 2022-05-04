@@ -35,9 +35,11 @@ class GuzzleTest extends TestCase
 	 */
 	public function testPost(): void
 	{
-		$data = 'HelloWorld';
+		$data = ['hello' => 'World'];
+		$headerValue = 'hello world';
+
 		$headers = array(
-			'X-Httpbin-Test' => $data
+			'X-Httpbin-Test' => $headerValue
 		);
 
 		$response = self::$guzzle->post('post', $data, $headers);
@@ -48,19 +50,7 @@ class GuzzleTest extends TestCase
 		$this->assertObjectHasAttribute('headers', $body);
 		$this->assertObjectHasAttribute('X-Httpbin-Test', $body->headers);
 
-		$this->assertEquals($data, $body->data);
-		$this->assertEquals($data, $body->headers->{'X-Httpbin-Test'});
-	}
-
-	/**
-	 * Test making a PUT request with a file
-	 */
-	public function testPutFile(): void
-	{
-		$response = self::$guzzle->putFile('put', $this->getImagePath());
-		$body = (object) Json::decode($response->getBody());
-
-		$this->assertIsObject($body);
-		$this->assertObjectHasAttribute('data', $body);
+		$this->assertEquals($data, (array) $body->json);
+		$this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'});
 	}
 }

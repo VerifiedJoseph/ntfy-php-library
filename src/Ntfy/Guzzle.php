@@ -22,7 +22,7 @@ final class Guzzle
 	private Client $client;
 
 	/** @var array<int, string> $requestMethods Array of supported HTTP request methods */
-	private array $requestMethods = array('GET', 'POST', 'PUT');
+	private array $requestMethods = array('GET', 'POST');
 
 	/** @var int $timeout Request timeout in seconds */
 	private int $timeout = 10;
@@ -58,42 +58,18 @@ final class Guzzle
 	 * Make POST request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @param string $data
+	 * @param array<string, mixed> $data
 	 * @param array<string, mixed> $headers
 	 * @return ResponseInterface
 	 */
-	public function post(string $endpoint, string $data = '', array $headers = array()): ResponseInterface
+	public function post(string $endpoint, array $data = [], array $headers = array()): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::HEADERS => $headers,
-			RequestOptions::BODY => $data
+			RequestOptions::JSON => $data
 		);
 
 		return $this->request('POST', $endpoint, $options);
-	}
-
-	/**
-	 * Make PUT request with a file
-	 *
-	 * @param string $endpoint API endpoint
-	 * @param string $filepath file path
-	 * @param array<string, mixed> $headers
-	 * @return ResponseInterface
-	 *
-	 * @throws NtfyException if the file cannot be opened
-	 */
-	public function putFile(string $endpoint, string $filepath, array $headers = array()): ResponseInterface
-	{
-		try {
-			$options = array(
-				RequestOptions::HEADERS => $headers,
-				RequestOptions::BODY => Psr7\Utils::tryFopen($filepath, 'r')
-			);
-
-			return $this->request('PUT', $endpoint, $options);
-		} catch (\RuntimeException $err) {
-			throw new NtfyException($err->getMessage());
-		}
 	}
 
 	/**
@@ -112,7 +88,7 @@ final class Guzzle
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
-				throw new NtfyException('Request method must be GET, POST or PUT');
+				throw new NtfyException('Request method must be GET or POST');
 			}
 
 			$response = $this->client->request($method, $endpoint, $options);

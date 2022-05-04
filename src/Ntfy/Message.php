@@ -76,9 +76,6 @@ class Message
 	/** @var string $email Email address for e-mail notifications */
 	private string $email = '';
 
-	/** @var string $attachFile Path of file attachment */
-	private string $attachFile = '';
-
 	/** @var string $attachFilename Name of file attachment */
 	private string $attachFilename = '';
 
@@ -197,27 +194,6 @@ class Message
 	}
 
 	/**
-	 * Set a file attachment using a local file
-	 *
-	 * @param string $file File path
-	 * @param string $filename File name
-	 *
-	 * @throws NtfyException if file attachment is not found
-	 *
-	 * @see https://ntfy.sh/docs/publish/#attachments
-	 * @see https://ntfy.sh/docs/publish/#attach-local-file
-	 */
-	public function attach(string $file, string $filename = ''): void
-	{
-		if (file_exists($file) === false) {
-			throw new NtfyException('File attachment not found: ' . $file);
-		}
-
-		$this->attachFile = $file;
-		$this->attachFilename = $filename;
-	}
-
-	/**
 	 * Set a file attachment using a URL
 	 *
 	 * @param string $url Ffile URL
@@ -271,7 +247,6 @@ class Message
 	 * Send the message
 	 *
 	 * @throws NtfyException if a message topic is not given
-	 * @throws NtfyException if a message body is not given
 	 *
 	 * @return stdClass
 	 */
@@ -286,63 +261,58 @@ class Message
 			throw new NtfyException('Message topic must be given');
 		}
 
-		if ($this->body === '' && $this->attachFile === '') {
-			throw new NtfyException('Message body must be given');
-		}
-
-		$headers = array();
-		$headers['X-Priority'] = $this->priority;
+		$data = [];
+		$data['topic'] = $this->topic;
 
 		if ($this->title !== '') {
-			$headers['X-Title'] = $this->title;
+			$data['title'] = $this->title;
+		}
+
+		if ($this->body !== '') {
+			$data['message'] = $this->body;
 		}
 
 		if ($this->tags !== []) {
-			$headers['X-Tags'] = implode(',', $this->tags);
+			$data['tags'] = $this->tags;
 		}
 
-		if ($this->delay !== '') {
-			$headers['X-Delay'] = $this->delay;
+		if ($this->priority !== '') {
+			$data['priority'] = $this->priority;
 		}
+
+		/*if ($this->actions !== '') {
+			$data['actions'] = $this->actions;
+		}*/
 
 		if ($this->click !== '') {
-			$headers['X-Click'] = $this->click;
-		}
-
-		if ($this->email !== '') {
-			$headers['X-Email'] = $this->email;
+			$data['click'] = $this->click;
 		}
 
 		if ($this->attachUrl !== '') {
-			$headers['X-Attach'] = $this->attachUrl;
+			$data['attach'] = $this->attachUrl;
+		}
+
+		if ($this->attachFilename !== '') {
+			$data['filename'] = $this->attachFilename;
+		}
+
+		if ($this->delay !== '') {
+			$data['delay'] = $this->delay;
+		}
+
+		if ($this->email !== '') {
+			$data['email'] = $this->email;
 		}
 
 		if ($this->cache === false) {
-			$headers['X-Cache'] = 'no';
+			$data['cache'] = 'no';
 		}
 
 		if ($this->firebase === false) {
-			$headers['X-Firebase'] = 'no';
+			$data['firebase'] = 'no';
 		}
 
-		if ($this->attachFile !== '') {
-			if ($this->attachFilename !== '') {
-				$headers['X-Filename'] = $this->attachFilename;
-			}
-
-			$response = $guzzle->putFile(
-				$this->topic,
-				$this->attachFile,
-				$headers
-			);
-
-		} else {
-			$response = $guzzle->post(
-				$this->topic,
-				$this->body,
-				$headers
-			);
-		}
+		$response = $guzzle->post('', $data);
 
 		$message = Json::decode($response->getBody());
 
