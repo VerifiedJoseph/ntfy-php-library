@@ -6,7 +6,6 @@ use stdClass;
 
 use JsonException;
 use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\GotifyException;
 
 /**
  * Class for encoding and decoding JSON
