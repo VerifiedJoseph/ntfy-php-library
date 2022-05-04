@@ -53,16 +53,4 @@ class GuzzleTest extends TestCase
 		$this->assertEquals($data, (array) $body->json);
 		$this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'});
 	}
-
-	/**
-	 * Test making a PUT request with a file
-	 */
-	public function testPutFile(): void
-	{
-		$response = self::$guzzle->putFile('put', $this->getImagePath());
-		$body = (object) Json::decode($response->getBody());
-
-		$this->assertIsObject($body);
-		$this->assertObjectHasAttribute('data', $body);
-	}
 }
