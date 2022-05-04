@@ -115,12 +115,6 @@ Set email address for sending a email notification
 email(string $email): void
 ```
 
-Set a file attachment using a local file
-
-```PHP
-attach(string $file, string $filename = ''): void
-```
-
 Set a file attachment using a URL
 
 ```PHP
