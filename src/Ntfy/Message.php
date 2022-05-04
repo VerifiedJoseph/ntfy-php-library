@@ -266,7 +266,7 @@ class Message
 
 		if ($this->title !== '') {
 			$data['title'] = $this->title;
-		}		
+		}
 
 		if ($this->body !== '') {
 			$data['message'] = $this->body;
