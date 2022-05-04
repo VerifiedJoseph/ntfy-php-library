@@ -36,29 +36,4 @@ class MessageTest extends TestCase
 		$this->assertEquals($this->tags, $details->tags);
 		$this->assertEquals($this->priority, $details->priority);
 	}
-
-	/**
-	 * Test sending a message with a file attachment
-	 */
-	public function testSendWithFile(): void
-	{
-		$message = new Ntfy\Message(self::$server);
-		$message->topic($this->topic);
-		$message->title($this->title);
-		$message->attach(
-			$this->getImagePath(),
-			$this->getImageName()
-		);
-
-		$details = $message->send();
-
-		$this->assertIsObject($details);
-		$this->assertObjectHasAttribute('topic', $details);
-		$this->assertObjectHasAttribute('title', $details);
-		$this->assertObjectHasAttribute('attachment', $details);
-
-		$this->assertEquals($this->topic, $details->topic);
-		$this->assertEquals($this->title, $details->title);
-		$this->assertEquals($this->getImageName(), $details->attachment->name);
-	}
 }
