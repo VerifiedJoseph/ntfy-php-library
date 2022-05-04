@@ -262,7 +262,7 @@ class Message
 		}
 
 		$data = [];
-		$data['topic'] = $this->topic;	
+		$data['topic'] = $this->topic;
 
 		if ($this->title !== '') {
 			$data['title'] = $this->title;
