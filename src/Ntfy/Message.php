@@ -247,7 +247,6 @@ class Message
 	 * Send the message
 	 *
 	 * @throws NtfyException if a message topic is not given
-	 * @throws NtfyException if a message body is not given
 	 *
 	 * @return stdClass
 	 */
@@ -260,10 +259,6 @@ class Message
 
 		if ($this->topic === '') {
 			throw new NtfyException('Message topic must be given');
-		}
-
-		if ($this->body === '' && $this->attachFile === '') {
-			throw new NtfyException('Message body must be given');
 		}
 
 		$data = [];
@@ -309,7 +304,6 @@ class Message
 			$data['email'] = $this->email;
 		}
 
-
 		if ($this->cache === false) {
 			$data['cache'] = 'no';
 		}
@@ -322,7 +316,7 @@ class Message
 			$headers['X-Firebase'] = 'no';
 		}*/
 
-		$response = $guzzle->post('/', $data);
+		$response = $guzzle->post('', $data);
 
 		$message = Json::decode($response->getBody());
 
