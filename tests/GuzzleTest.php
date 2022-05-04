@@ -35,9 +35,11 @@ class GuzzleTest extends TestCase
 	 */
 	public function testPost(): void
 	{
-		$data = 'HelloWorld';
+		$data = ['hello' => 'World'];
+		$headerValue = 'hello world';
+
 		$headers = array(
-			'X-Httpbin-Test' => $data
+			'X-Httpbin-Test' => $headerValue
 		);
 
 		$response = self::$guzzle->post('post', $data, $headers);
@@ -48,8 +50,8 @@ class GuzzleTest extends TestCase
 		$this->assertObjectHasAttribute('headers', $body);
 		$this->assertObjectHasAttribute('X-Httpbin-Test', $body->headers);
 
-		$this->assertEquals($data, $body->data);
-		$this->assertEquals($data, $body->headers->{'X-Httpbin-Test'});
+		$this->assertEquals($data, (array) $body->json);
+		$this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'});
 	}
 
 	/**
