@@ -290,59 +290,63 @@ class Message
 			throw new NtfyException('Message body must be given');
 		}
 
-		$headers = array();
-		$headers['X-Priority'] = $this->priority;
+		$data = [];
+		$data['topic'] = $this->topic;	
 
 		if ($this->title !== '') {
-			$headers['X-Title'] = $this->title;
+			$data['title'] = $this->title;
+		}		
+
+		if ($this->body !== '') {
+			$data['message'] = $this->body;
 		}
 
 		if ($this->tags !== []) {
-			$headers['X-Tags'] = implode(',', $this->tags);
+			$data['tags'] = $this->tags;
 		}
 
-		if ($this->delay !== '') {
-			$headers['X-Delay'] = $this->delay;
+		if ($this->priority !== '') {
+			$data['priority'] = $this->priority;
 		}
+
+		/*if ($this->actions !== '') {
+			$data['actions'] = $this->actions;
+		}*/
 
 		if ($this->click !== '') {
-			$headers['X-Click'] = $this->click;
-		}
-
-		if ($this->email !== '') {
-			$headers['X-Email'] = $this->email;
+			$data['click'] = $this->click;
 		}
 
 		if ($this->attachUrl !== '') {
-			$headers['X-Attach'] = $this->attachUrl;
+			$data['attach'] = $this->attachUrl;
 		}
 
+		if ($this->attachFilename !== '') {
+			$data['filename'] = $this->attachFilename;
+		}
+
+		if ($this->delay !== '') {
+			$data['delay'] = $this->delay;
+		}
+
+		if ($this->email !== '') {
+			$data['email'] = $this->email;
+		}
+
+
 		if ($this->cache === false) {
+			$data['cache'] = 'no';
+		}
+
+		/*if ($this->cache === false) {
 			$headers['X-Cache'] = 'no';
 		}
 
 		if ($this->firebase === false) {
 			$headers['X-Firebase'] = 'no';
-		}
+		}*/
 
-		if ($this->attachFile !== '') {
-			if ($this->attachFilename !== '') {
-				$headers['X-Filename'] = $this->attachFilename;
-			}
-
-			$response = $guzzle->putFile(
-				$this->topic,
-				$this->attachFile,
-				$headers
-			);
-
-		} else {
-			$response = $guzzle->post(
-				$this->topic,
-				$this->body,
-				$headers
-			);
-		}
+		$response = $guzzle->post('/', $data);
 
 		$message = Json::decode($response->getBody());
 

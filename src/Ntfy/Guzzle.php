@@ -58,15 +58,15 @@ final class Guzzle
 	 * Make POST request
 	 *
 	 * @param string $endpoint API endpoint
-	 * @param string $data
+	 * @param array<string, mixed> $data
 	 * @param array<string, mixed> $headers
 	 * @return ResponseInterface
 	 */
-	public function post(string $endpoint, string $data = '', array $headers = array()): ResponseInterface
+	public function post(string $endpoint, array $data = [], array $headers = array()): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::HEADERS => $headers,
-			RequestOptions::BODY => $data
+			RequestOptions::JSON => $data
 		);
 
 		return $this->request('POST', $endpoint, $options);
