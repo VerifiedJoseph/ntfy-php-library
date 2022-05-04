@@ -308,13 +308,9 @@ class Message
 			$data['cache'] = 'no';
 		}
 
-		/*if ($this->cache === false) {
-			$headers['X-Cache'] = 'no';
-		}
-
 		if ($this->firebase === false) {
-			$headers['X-Firebase'] = 'no';
-		}*/
+			$data['firebase'] = 'no';
+		}
 
 		$response = $guzzle->post('', $data);
 
