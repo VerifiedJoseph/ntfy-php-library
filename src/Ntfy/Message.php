@@ -85,6 +85,9 @@ class Message
 	/** @var array<string, string> $auth Basic access authentication username and password */
 	private array $auth = array();
 
+	/** @var array<int, array<string, mixed>> $actions Action button configs */
+	private array $actions = array();
+
 	/** @var bool $cache Cache status for message */
 	private bool $cache = true;
 
@@ -231,6 +234,18 @@ class Message
 	}
 
 	/**
+	 * Set an action button
+	 *
+	 * @param Action $action Action class instance
+	 *
+	 * @see https://ntfy.sh/docs/publish/#action-buttons
+	 */
+	public function action(Action $action): void
+	{
+		$this->actions[] = $action->get();
+	}
+
+	/**
 	 * Disable caching for this message
 	 *
 	 * @see https://ntfy.sh/docs/publish/#message-caching
@@ -287,9 +302,9 @@ class Message
 			$data['priority'] = $this->priority;
 		}
 
-		/*if ($this->actions !== '') {
+		if ($this->actions !== []) {
 			$data['actions'] = $this->actions;
-		}*/
+		}
 
 		if ($this->click !== '') {
 			$data['click'] = $this->click;
