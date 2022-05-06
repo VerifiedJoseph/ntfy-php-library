@@ -6,7 +6,7 @@ use Ntfy\Action;
 
 /**
  * Class for creating a view button action
- * 
+ *
  * @see https://ntfy.sh/docs/publish/#open-websiteapp
  */
 class View extends Action
@@ -19,7 +19,7 @@ class View extends Action
 
 	/**
 	 * Set action URL
-	 * 
+	 *
 	 * @param string $url URL
 	 */
 	public function url(string $url): void
@@ -27,7 +27,7 @@ class View extends Action
 		$this->url = $url;
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
 	 */
 	protected function generate(): array

@@ -4,7 +4,7 @@ namespace Ntfy;
 
 /**
  * Base class for button actions
- * 
+ *
  * @see https://ntfy.sh/docs/publish/#action-buttons
  */
 abstract class Action
@@ -20,8 +20,8 @@ abstract class Action
 
 	/**
 	 * Get action as an array
-	 * 
-	 * @return array<string, mixed> 
+	 *
+	 * @return array<string, mixed>
 	 */
 	final public function get(): array
 	{
@@ -30,7 +30,7 @@ abstract class Action
 
 	/**
 	 * Set button label
-	 * 
+	 *
 	 * @param string $label Button label
 	 */
 	final public function label(string $label): void
@@ -48,7 +48,7 @@ abstract class Action
 
 	/**
 	 * Generate array with action button parameters
-	 * 
+	 *
 	 * @return array<string, mixed>
 	 */
 	protected function generate(): array

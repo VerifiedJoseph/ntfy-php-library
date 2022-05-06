@@ -6,7 +6,7 @@ use Ntfy\Action;
 
 /**
  * Class for creating a http button action
- * 
+ *
  * @see https://ntfy.sh/docs/publish/#open-websiteapp
  */
 class HTTP extends Action
@@ -28,7 +28,7 @@ class HTTP extends Action
 
 	/**
 	 * Set HTTP request URL
-	 * 
+	 *
 	 * @param string $url URL
 	 */
 	public function url(string $url): void
@@ -38,7 +38,7 @@ class HTTP extends Action
 
 	/**
 	 * Set HTTP request method
-	 * 
+	 *
 	 * @param string $method HTTP request method
 	 */
 	public function method(string $method): void
@@ -48,7 +48,7 @@ class HTTP extends Action
 
 	/**
 	 * Set an HTTP request header
-	 * 
+	 *
 	 * @param string $name Header name
 	 * @param string $value Header value
 	 */
@@ -59,7 +59,7 @@ class HTTP extends Action
 
 	/**
 	 * Set HTTP request body
-	 * 
+	 *
 	 * @param string $body Request body
 	 */
 	public function body(string $body): void
@@ -67,7 +67,7 @@ class HTTP extends Action
 		$this->body = $body;
 	}
 
-	/** 
+	/**
 	 * {@inheritDoc}
 	 */
 	protected function generate(): array

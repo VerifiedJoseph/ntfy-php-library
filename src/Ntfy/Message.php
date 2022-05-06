@@ -135,7 +135,7 @@ class Message
 	 * - `3` - Default
 	 * - `2` - Low
 	 * - `1` - Min
-	 * 
+	 *
 	 * @param int $priority Message priority
 	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
