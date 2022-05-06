@@ -18,11 +18,11 @@ class MessageTest extends TestCase
 	private array $tags = ['hello', 'world'];
 
 	/** @var array<string, string|bool> $action Message action */
-	private array $action =  [
-		"type" => "view",
-		"label" => "Open Website",
-		"url" => "https://example.com",
-		"clear" => true
+	private array $action = [
+		'type' => 'view',
+		'label' => 'Open Website',
+		'url' => 'https://example.com',
+		'clear' => true
 	];
 
 	/**
