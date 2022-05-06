@@ -82,7 +82,7 @@ title(string $title): void
 Set message priority
 
 ```PHP
-priority(string|int $priority): void
+priority(int $priority): void
 ```
 
 Set message body

@@ -126,11 +126,18 @@ class Message
 	/**
 	 * Set message priority
 	 *
-	 * @param string|int $priority Message priority
+	 * Priorities:
+	 * - `5` - Max
+	 * - `4` - High
+	 * - `3` - Default
+	 * - `2` - Low
+	 * - `1` - Min
+	 * 
+	 * @param int $priority Message priority
 	 *
 	 * @see https://ntfy.sh/docs/publish/#message-priority
 	 */
-	public function priority(string|int $priority): void
+	public function priority(int $priority): void
 	{
 		$this->priority = $priority;
 	}
