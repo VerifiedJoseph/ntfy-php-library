@@ -17,13 +17,17 @@ class MessageTest extends TestCase
 	/** @var array<int, string> $tags Message tags */
 	private array $tags = ['hello', 'world'];
 
-	/** @var array<string, string|bool> $action Message action */
-	private array $action = [
-		'type' => 'view',
-		'label' => 'Open Website',
-		'url' => 'https://example.com',
-		'clear' => true
-	];
+	/** @var string $actionType Action type */
+	private string $actionType = 'view';
+
+	/** @var string $actionLabel Action label */
+	private string $actionLabel = 'Open Website';
+
+	/** @var string $actionUrl Action URL */
+	private string $actionUrl = 'https://example.com';
+
+	/** @var bool $actionNoteClear Action clear status */
+	private bool $actionNoteClear = true;
 
 	/**
 	 * Test sending a message
@@ -31,8 +35,8 @@ class MessageTest extends TestCase
 	public function testSend(): void
 	{
 		$action = new Ntfy\Action\View();
-		$action->label($this->action['label']);
-		$action->url($this->action['url']);
+		$action->label($this->actionLabel);
+		$action->url($this->actionUrl);
 		$action->enableNoteClear();
 
 		$message = new Ntfy\Message(self::$server);
@@ -59,9 +63,9 @@ class MessageTest extends TestCase
 		$this->assertEquals($this->priority, $details->priority);
 
 		$this->assertCount(1, $details->actions);
-		$this->assertEquals($this->action['type'], $details->actions[0]->action);
-		$this->assertEquals($this->action['label'], $details->actions[0]->label);
-		$this->assertEquals($this->action['url'], $details->actions[0]->url);
-		$this->assertEquals($this->action['clear'], $details->actions[0]->clear);
+		$this->assertEquals($this->actionType, $details->actions[0]->action);
+		$this->assertEquals($this->actionLabel, $details->actions[0]->label);
+		$this->assertEquals($this->actionUrl, $details->actions[0]->url);
+		$this->assertEquals($this->actionNoteClear, $details->actions[0]->clear);
 	}
 }
