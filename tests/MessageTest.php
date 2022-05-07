@@ -70,8 +70,8 @@ class MessageTest extends TestCase
 	}
 
 	/**
-	 * Test sending a message without a topic. 
-	 * 
+	 * Test sending a message without a topic.
+	 *
 	 * An exception should be thrown by `Ntfy\Message->send()`
 	 */
 	public function testNoTopicException(): void
