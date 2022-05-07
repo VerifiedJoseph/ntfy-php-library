@@ -21,7 +21,7 @@ abstract class TestCase extends BaseTestCase
 	/**
 	 * Retruns ntfy server URI
 	 *
-	 * Return value of `self::$ntfyUri` or environment variable `NTFY_URI` if set.
+	 * Returns value of `self::$ntfyUri` or environment variable `NTFY_URI` if set.
 	 */
 	protected static function getNtfyUri(): string
 	{
@@ -35,7 +35,7 @@ abstract class TestCase extends BaseTestCase
 	/**
 	 * Retruns httpbin server URI
 	 *
-	 * Return value of `self::$gotifyUri` or  environment variable `HTTPBIN_URI` if set.
+	 * Returns value of `self::$gotifyUri` or environment variable `HTTPBIN_URI` if set.
 	 */
 	protected static function getHttpBinUri(): string
 	{
