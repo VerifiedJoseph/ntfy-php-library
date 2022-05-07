@@ -9,7 +9,7 @@ use Ntfy\Action;
  *
  * @see https://ntfy.sh/docs/publish/#open-websiteapp
  */
-class HTTP extends Action
+class Http extends Action
 {
 	/** {@inheritDoc} */
 	protected string $type = 'http';
