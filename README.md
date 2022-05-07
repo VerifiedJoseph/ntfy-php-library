@@ -5,7 +5,7 @@
 
 PHP library for sending messages using a [ntfy](https://github.com/binwiederhier/ntfy) server.
 
-Supports ntfy server version 1.18.0.
+Supports ntfy server version 1.21.2.
 
 ## Install
 
