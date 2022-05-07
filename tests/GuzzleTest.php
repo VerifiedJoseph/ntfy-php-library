@@ -53,4 +53,27 @@ class GuzzleTest extends TestCase
 		$this->assertEquals($data, (array) $body->json);
 		$this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'});
 	}
+
+	/**
+	 * Test making a GET request with Basic Auth
+	 */
+	public function testBasicAuth(): void
+	{
+		$auth = [
+			'username' => 'admin',
+			'password' => 'pasword1245'
+		];
+
+		$guzzle = new Guzzle(self::getHttpBinUri(), $auth);
+
+		$response = $guzzle->get('basic-auth/' . $auth['username'] . '/' . $auth['password']);
+		$body = (object) Json::decode($response->getBody());
+
+		$this->assertIsObject($body);
+		$this->assertObjectHasAttribute('authenticated', $body);
+		$this->assertObjectHasAttribute('user', $body);
+
+		$this->assertEquals(true, $body->authenticated);
+		$this->assertEquals($auth['username'], $body->user);
+	}
 }
