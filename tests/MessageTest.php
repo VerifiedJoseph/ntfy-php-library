@@ -68,4 +68,17 @@ class MessageTest extends TestCase
 		$this->assertEquals($this->actionUrl, $details->actions[0]->url);
 		$this->assertEquals($this->actionNoteClear, $details->actions[0]->clear);
 	}
+
+	/**
+	 * Test sending a message without a topic. 
+	 * 
+	 * An exception should be thrown by `Ntfy\Message->send()`
+	 */
+	public function testNoTopicException(): void
+	{
+		$this->expectException(Ntfy\Exception\NtfyException::class);
+
+		$message = new Ntfy\Message(self::$server);
+		$message->send();
+	}
 }
