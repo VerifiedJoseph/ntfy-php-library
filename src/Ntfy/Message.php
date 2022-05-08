@@ -170,11 +170,11 @@ class Message
 	/**
 	 * Set scheduled delivery for the message
 	 *
-	 * @param string|int $delay Timestamp or duration of the delay
+	 * @param string|int $delay Duration of the delay (e.g 1min, 1hour, 1day)
 	 *
 	 * @see https://ntfy.sh/docs/publish/#scheduled-delivery
 	 */
-	public function schedule(string|int $delay): void
+	public function schedule(string $delay): void
 	{
 		$this->delay = $delay;
 	}
@@ -182,7 +182,7 @@ class Message
 	/**
 	 * Set URL to open when message notification is clicked
 	 *
-	 * @param string $url A comma separated list for message tags (e.g tag1,tag2)
+	 * @param string $url URL
 	 *
 	 * @see https://ntfy.sh/docs/publish/#click-action
 	 */
