@@ -8,7 +8,7 @@ Ntfy\Server(string $uri)
 
 ### Examples
 
-- [Send a message](../examples/send-message.php)
+- [Send a message](../../examples/send-message.php)
 
 ### Methods
 

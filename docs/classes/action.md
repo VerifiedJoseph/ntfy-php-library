@@ -107,7 +107,7 @@ Ntfy\Action\View()
 
 ### Examples
 
-- [Send message with a view action button](../examples/send-message-with-view-action.php)
+- [Send message with a view action button](../../examples/send-message-with-view-action.php)
 
 ### Methods
 
