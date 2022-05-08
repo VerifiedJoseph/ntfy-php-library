@@ -29,12 +29,11 @@ $message->body('Hello World from ntfy.sh');
 $message->priority(Message::PRIORITY_HIGH);
 
 $message->send();
-
 ```
 
 ## Documentation
 
-- [Classes](docs/classes.md)
+- [Classes](docs/README.md)
 - [Exceptions](docs/exceptions.md)
 - [Code examples](docs/examples.md)
 
