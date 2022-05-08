@@ -67,8 +67,8 @@ class Message
 	/** @var array<int,string|int> $tags Message tags */
 	private array $tags = [];
 
-	/** @var string|int $delay Timestamp or duration of the delay */
-	private string|int $delay = '';
+	/** @var string $delay Timestamp or duration of the delay */
+	private string $delay = '';
 
 	/** @var string $click Click action URL */
 	private string $click = '';
@@ -170,7 +170,7 @@ class Message
 	/**
 	 * Set scheduled delivery for the message
 	 *
-	 * @param string|int $delay Duration of the delay (e.g 1min, 1hour, 1day)
+	 * @param string $delay Duration of the delay (e.g 1min, 1hour, 1day)
 	 *
 	 * @see https://ntfy.sh/docs/publish/#scheduled-delivery
 	 */
