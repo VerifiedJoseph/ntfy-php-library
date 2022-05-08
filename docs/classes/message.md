@@ -96,7 +96,7 @@ email(string $email): void
 Set a file attachment using a URL
 
 ```PHP
-attachURL(string $url): void
+attachURL(string $url, string $name = ''): void
 ```
 
 Set username and password for basic access authentication

@@ -206,14 +206,16 @@ class Message
 	/**
 	 * Set a file attachment using a URL
 	 *
-	 * @param string $url Ffile URL
+	 * @param string $url File URL
+	 * @param string $name Filename (optional, ntfy will fetch filename its self if not given)
 	 *
 	 * @see https://ntfy.sh/docs/publish/#attachments
 	 * @see https://ntfy.sh/docs/publish/#attach-local-file
 	 */
-	public function attachURL(string $url): void
+	public function attachURL(string $url, string $name = ''): void
 	{
 		$this->attachUrl = $url;
+		$this->attachFilename = $name;
 	}
 
 	/**
