@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## [3.0.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.0.0) - 2022-04-08
+
+* Reworked library to publish messages as JSON. ([#53](https://github.com/VerifiedJoseph/ntfy-php-library/pull/53). [`fcd7662`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/fcd76626135e1b3632a61c2e0cddbd6e69f9c0b4))
+* Added support for action buttons. ([#54](https://github.com/VerifiedJoseph/ntfy-php-library/pull/54). [`00f9072`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/00f90720e94fcbe697e8ed28e89bf8e177ec6822))
+* Updated supported `binwiederhier/ntfy` version from 1.18.0 to 1.22.0.
+* Updated dependency `guzzlehttp/guzzle` from 7.4.1 to 7.4.2 ([#38](https://github.com/VerifiedJoseph/ntfy-php-library/pull/38). [`8c7d2c6`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/8c7d2c6a2cc771f8b148472e08b830b38a8c4f3b))
+
 ## [2.1.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v2.1.1) - 2022-03-17
 
 * Updated supported ntfy version from 1.14.0 to 1.18.0. ([`75e3354`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/75e33544e2ecea4fe45628d5b10db9c762eaf44d))
