@@ -79,7 +79,7 @@ class Message
 	/** @var string $attachFilename Name of file attachment */
 	private string $attachFilename = '';
 
-	/** @var string $attachURL Remote URL of file attachment */
+	/** @var string $attachUrl Remote URL of file attachment */
 	private string $attachUrl = '';
 
 	/** @var array<string, string> $auth Basic access authentication username and password */
