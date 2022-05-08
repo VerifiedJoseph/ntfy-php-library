@@ -3,7 +3,7 @@ version: "3"
 services:
   ntfy:
     container_name: ci_ntfy
-    image: binwiederhier/ntfy:v1.21.2
+    image: binwiederhier/ntfy:v1.22.0
     command: serve
     volumes:
      - './ntfy-server.yml:/etc/ntfy/server.yml'
