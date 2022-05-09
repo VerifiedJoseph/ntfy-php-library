@@ -17,6 +17,12 @@ class MessageTest extends TestCase
 	/** @var array<int, string> $tags Message tags */
 	private array $tags = ['hello', 'world'];
 
+	/** @var string $attachmentUrl File attachment URL */
+	private string $attachmentUrl = 'https://example.com/index.html';
+
+	/** @var string $attachmentName File attachment name */
+	private string $attachmenName = 'index.html';
+
 	/** @var string $actionType Action type */
 	private string $actionType = 'view';
 
@@ -46,6 +52,10 @@ class MessageTest extends TestCase
 		$message->tags($this->tags);
 		$message->priority($this->priority);
 		$message->action($action);
+		$message->attachURL(
+			$this->attachmentUrl,
+			$this->attachmenName
+		);
 
 		$details = $message->send();
 
