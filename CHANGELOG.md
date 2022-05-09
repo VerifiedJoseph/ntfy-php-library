@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [3.1.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.1.0) - 2022-04-09
+
+* Added `name` parameter to `Message` class method `attachURL()`. ([`7b4f641`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/7b4f641f4b6850a137f367cff74793b1b234aad9))
+* Updated `Message` class method `schedule()` to require delay parameter value be a string. ([`6e05139`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/6e05139dee90534c574ecd90ec879c5daeb3113c))
+
 ## [3.0.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.0.0) - 2022-04-08
 
 * Reworked library to publish messages as JSON. ([#53](https://github.com/VerifiedJoseph/ntfy-php-library/pull/53). [`fcd7662`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/fcd76626135e1b3632a61c2e0cddbd6e69f9c0b4))
