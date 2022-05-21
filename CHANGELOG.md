@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [3.1.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.1.1) - 2022-05-21
+
+* Updated supported `binwiederhier/ntfy` version from 1.22.0 to 1.23.0 ([`33029cf`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/33029cff024d4ef5dd6d02a1b4a531f1ca811baa))
+
 ## [3.1.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.1.0) - 2022-04-09
 
 * Added `name` parameter to `Message` class method `attachURL()`. ([`7b4f641`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/7b4f641f4b6850a137f367cff74793b1b234aad9))
