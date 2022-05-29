@@ -4,7 +4,7 @@ When the library encounters an error it will always throw an exception. Your cod
 
 ## NtfyException
 ```PHP
-Ntfy\Exception\GotifyException
+Ntfy\Exception\NtfyException
 ```
 
 Thrown when the ntfy library experiences an error.
