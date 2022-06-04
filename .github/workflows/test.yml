@@ -4,11 +4,15 @@ on:
     paths:
       - "**.php"
       - ".github/workflows/test.yml"
+      - ".ci/docker-compose.yml"
+      - ".ci/ntfy-server.yml"
   push:
     branches: main
     paths:
       - "**.php"
       - ".github/workflows/test.yml"
+      - ".ci/docker-compose.yml"
+      - ".ci/ntfy-server.yml"
 
 jobs:
   test:
