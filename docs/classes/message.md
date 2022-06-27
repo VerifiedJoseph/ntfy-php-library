@@ -105,6 +105,12 @@ Set username and password for basic access authentication
 auth(string $username, string $password): void
 ```
 
+Set an action button
+
+```PHP
+action(Action $action): void
+```
+
 Disable caching for this message
 
 ```PHP
