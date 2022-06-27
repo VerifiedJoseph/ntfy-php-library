@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Ntfy\\": "src/Ntfy"
+            "Ntfy\\": "src/"
         }
     },
     "autoload-dev": {
