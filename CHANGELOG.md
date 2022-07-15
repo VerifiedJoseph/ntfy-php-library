@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [3.1.8](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.1.8) - 2022-07-15
+
+* Updated supported `binwiederhier/ntfy` version from 1.26.0 to 1.27.2 ([#81](https://github.com/VerifiedJoseph/ntfy-php-library/pull/81), [`95e7486`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/95e7486cb7b6806b0360fda9cae113a14b17b307))
+
 ## [3.1.7](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.1.7) - 2022-06-22
 
 * Updated dependency `guzzlehttp/guzzle` from 7.4.4 to 7.4.5. ([#76](https://github.com/VerifiedJoseph/ntfy-php-library/pull/76), [`e01f701`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/e01f7013f507a72c34395c8b132e06d0b828b23d))
