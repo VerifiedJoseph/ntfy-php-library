@@ -16,7 +16,7 @@ final class Server
 	 *
 	 * @param string $uri Server URI
 	 */
-	function __construct(string $uri)
+	public function __construct(string $uri)
 	{
 		$this->uri = $this->validate($uri);
 	}

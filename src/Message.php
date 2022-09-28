@@ -96,7 +96,7 @@ class Message
 	 *
 	 * @param Server $server Server class instance
 	 */
-	function __construct(Server $server)
+	public function __construct(Server $server)
 	{
 		$this->server = $server;
 	}
