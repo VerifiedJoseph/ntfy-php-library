@@ -18,7 +18,7 @@ final class Server
 	 */
 	function __construct(string $uri)
 	{
-		$this->uri = $this->vaildate($uri);
+		$this->uri = $this->validate($uri);
 	}
 
 	/**
@@ -32,18 +32,18 @@ final class Server
 	}
 
 	/**
-	 * Vaildate server URI
+	 * Validate server URI
 	 *
 	 * Checks if server URI starts with `https://` or `http://`.
 	 *
-	 * Checks if server URI ends with a forward slash and adds it if misssing.
+	 * Checks if server URI ends with a forward slash and adds it if missing.
 	 *
 	 * @param string $uri Server URI
-	 * @return string $uri Returns vaildated server URI
+	 * @return string $uri Returns validated server URI
 	 *
 	 * @throws NtfyException if Server URL doesn't start with `https://` or `http://`.
 	 */
-	private function vaildate(string $uri): string
+	private function validate(string $uri): string
 	{
 		if(preg_match('/^https?:\/\//', $uri) === 0) {
 			throw new NtfyException('Server URI must start with https:// or http://');

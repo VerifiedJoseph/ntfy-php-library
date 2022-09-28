@@ -32,7 +32,7 @@ final class Guzzle
 	 * @param string $uri Server URI
 	 * @param array<string, string> $auth Authentication username and password
 	 */
-	function __construct(string $uri, $auth = array())
+	public function __construct(string $uri, array $auth = [])
 	{
 		$config = $this->getConfig($uri, $auth);
 		$this->client = new Client($config);
@@ -45,7 +45,7 @@ final class Guzzle
 	 * @param array<string, mixed> $query HTTP Query data
 	 * @return ResponseInterface
 	 */
-	public function get(string $endpoint, array $query = array()): ResponseInterface
+	public function get(string $endpoint, array $query = []): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::QUERY => $query
@@ -62,7 +62,7 @@ final class Guzzle
 	 * @param array<string, mixed> $headers
 	 * @return ResponseInterface
 	 */
-	public function post(string $endpoint, array $data = [], array $headers = array()): ResponseInterface
+	public function post(string $endpoint, array $data = [], array $headers = []): ResponseInterface
 	{
 		$options = array(
 			RequestOptions::HEADERS => $headers,
@@ -84,7 +84,7 @@ final class Guzzle
 	 * @throws NtfyException if a connection cannot be established
 	 * @throws EndpointException if the server returned an error
 	 */
-	private function request(string $method, string $endpoint, array $options = array()): ResponseInterface
+	private function request(string $method, string $endpoint, array $options = []): ResponseInterface
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
@@ -152,7 +152,7 @@ final class Guzzle
 	 */
 	private function getAuthConfig(array $auth): array
 	{
-		$config = array();
+		$config = [];
 
 		if ($auth !== []) {
 			$config[RequestOptions::AUTH] = array(

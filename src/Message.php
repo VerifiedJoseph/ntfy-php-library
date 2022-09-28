@@ -2,9 +2,6 @@
 
 namespace Ntfy;
 
-use Ntfy\Server;
-use Ntfy\Guzzle;
-use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 
 use stdClass;
@@ -49,8 +46,8 @@ class Message
 	 */
 	public const PRIORITY_MIN = 1;
 
-	/** @var string $serverUri Server URI */
-	private string $serverUri = '';
+	/** @var Server $server Server */
+	private Server $server;
 
 	/** @var string $topic Message topic */
 	private string $topic = '';
@@ -83,10 +80,10 @@ class Message
 	private string $attachUrl = '';
 
 	/** @var array<string, string> $auth Basic access authentication username and password */
-	private array $auth = array();
+	private array $auth = [];
 
 	/** @var array<int, array<string, mixed>> $actions Action button configs */
-	private array $actions = array();
+	private array $actions = [];
 
 	/** @var bool $cache Cache status for message */
 	private bool $cache = true;
@@ -101,7 +98,7 @@ class Message
 	 */
 	function __construct(Server $server)
 	{
-		$this->serverUri = $server->get();
+		$this->server = $server;
 	}
 
 	/**
@@ -267,20 +264,8 @@ class Message
 		$this->firebase = false;
 	}
 
-	/**
-	 * Send the message
-	 *
-	 * @throws NtfyException if a message topic is not given
-	 *
-	 * @return stdClass
-	 */
-	public function send(): stdClass
+	public function getData(): array
 	{
-		$guzzle = new Guzzle(
-			$this->serverUri,
-			$this->auth
-		);
-
 		if ($this->topic === '') {
 			throw new NtfyException('Message topic must be given');
 		}
@@ -336,10 +321,18 @@ class Message
 			$data['firebase'] = 'no';
 		}
 
-		$response = $guzzle->post('', $data);
+		return $data;
+	}
 
-		$message = Json::decode($response->getBody());
-
-		return (object) $message;
+	/**
+	 * Send the message
+	 *
+	 * @throws NtfyException if a message topic is not given
+	 *
+	 * @return stdClass
+	 */
+	public function send(): stdClass
+	{
+		return (new Dispatch($this->server, $this->auth))->send($this);
 	}
 }

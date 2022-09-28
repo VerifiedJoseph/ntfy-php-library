@@ -19,6 +19,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Ntfy\Server;
 use Ntfy\Message;
+use Ntfy\Dispatch;
 
 $server = new Server('https://ntfy.sh/');
 $message = new Message($server);
@@ -28,7 +29,8 @@ $message->title('Hello World');
 $message->body('Hello World from ntfy.sh');
 $message->priority(Message::PRIORITY_HIGH);
 
-$message->send();
+$dispatch = new Dispatch($server)
+$dispatch->send($message);
 ```
 
 ## Documentation
