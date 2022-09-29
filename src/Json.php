@@ -24,7 +24,6 @@ final class Json
 	{
 		try {
 			return json_encode($data, flags: JSON_THROW_ON_ERROR);
-
 		} catch (JsonException $err) {
 			throw new NtfyException('JSON Error: ' . $err->getMessage());
 		}
