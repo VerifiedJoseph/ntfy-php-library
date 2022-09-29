@@ -33,8 +33,8 @@ class Broadcast extends Action
 	/**
 	 * Set an android intent extra
 	 *
-	 * @param string $parameter Paramter name
-	 * @param string $value Paramter value
+	 * @param string $parameter Parameter name
+	 * @param string $value Parameter value
 	 */
 	public function extra($parameter, $value): void
 	{
