@@ -61,7 +61,7 @@ class GuzzleTest extends TestCase
 	public function testBasicAuth(): void
 	{
 		$auth = new Auth('admin', 'pasword1245');
-	    $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
+		$guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
 		$response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
 		$body = (object) Json::decode($response->getBody());
