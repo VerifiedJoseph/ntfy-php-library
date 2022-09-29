@@ -1,5 +1,6 @@
 <?php
 
+use Ntfy\Auth;
 use Ntfy\Guzzle;
 use Ntfy\Json;
 
@@ -9,7 +10,7 @@ class GuzzleTest extends TestCase
 
 	public static function setUpBeforeClass(): void
 	{
-		self::$guzzle = new Guzzle(self::getHttpBinUri());
+		self::$guzzle = new Guzzle(self::getHttpBinUri(), null);
 	}
 
 	/**
@@ -59,14 +60,10 @@ class GuzzleTest extends TestCase
 	 */
 	public function testBasicAuth(): void
 	{
-		$auth = [
-			'username' => 'admin',
-			'password' => 'pasword1245'
-		];
+		$auth = new Auth('admin', 'pasword1245');
+	    $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
-		$guzzle = new Guzzle(self::getHttpBinUri(), $auth);
-
-		$response = $guzzle->get('basic-auth/' . $auth['username'] . '/' . $auth['password']);
+		$response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
 		$body = (object) Json::decode($response->getBody());
 
 		$this->assertIsObject($body);
@@ -74,6 +71,6 @@ class GuzzleTest extends TestCase
 		$this->assertObjectHasAttribute('user', $body);
 
 		$this->assertEquals(true, $body->authenticated);
-		$this->assertEquals($auth['username'], $body->user);
+		$this->assertEquals($auth->getUsername(), $body->user);
 	}
 }

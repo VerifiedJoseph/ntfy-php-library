@@ -15,15 +15,13 @@ class Auth
 	}
 
 
-	/**
-	 * @return array<string, string>
-	 */
-	public function get(): array
+	public function getUsername(): string
 	{
-		return [
-			'username' => $this->username,
-			'password' => $this->password,
-		];
+		return $this->username;
 	}
 
+	public function getPassword(): string
+	{
+		return $this->password;
+	}
 }

@@ -30,9 +30,9 @@ final class Guzzle
 	/**
 	 *
 	 * @param string $uri Server URI
-	 * @param array<string, string> $auth Authentication username and password
+	 * @param ?Auth $auth Authentication username and password
 	 */
-	public function __construct(string $uri, array $auth = [])
+	public function __construct(string $uri, ?Auth $auth)
 	{
 		$config = $this->getConfig($uri, $auth);
 		$this->client = new Client($config);
@@ -124,10 +124,10 @@ final class Guzzle
 	 * Get GuzzleHttp client config
 	 *
 	 * @param string $uri Server URI
-	 * @param array<string, string> $auth Authentication username and password
+	 * @param ?Auth $auth Authentication username and password
 	 * @return array<string, mixed> Returns client config array
 	 */
-	private function getConfig(string $uri, array $auth): array
+	private function getConfig(string $uri, ?Auth $auth): array
 	{
 		$config = [
 			'base_uri' => $uri,
@@ -147,17 +147,17 @@ final class Guzzle
 	/**
 	 * Get authentication config
 	 *
-	 * @param array<string, string> $auth Authentication username and password
+	 * @param ?Auth $auth Authentication username and password
 	 * @return array<string, array<int|string, string>>
 	 */
-	private function getAuthConfig(array $auth): array
+	private function getAuthConfig(?Auth $auth): array
 	{
 		$config = [];
 
-		if (!empty($auth)) {
+		if ($auth !== null) {
 			$config[RequestOptions::AUTH] = [
-				$auth['username'],
-				$auth['password'],
+				$auth->getUsername(),
+				$auth->getPassword(),
 			];
 		}
 

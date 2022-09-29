@@ -26,14 +26,10 @@ class Dispatcher
 	 */
 	public function send(Message $message): stdClass
 	{
-		$auth = [];
-		if ($this->auth !== null) {
-			$auth = $this->auth->get();
-		}
 
 		$guzzle = new Guzzle(
 			$this->server->get(),
-			$auth
+			$this->auth
 		);
 
 		$response = $guzzle->post('', $message->getData());
