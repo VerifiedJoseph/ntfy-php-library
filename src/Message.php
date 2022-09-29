@@ -264,6 +264,12 @@ class Message
 		$this->firebase = false;
 	}
 
+	/**
+	 * Get the data to be sent as JSON to the server.
+	 *
+	 * @return array<string, string>
+	 * @throws NtfyException
+	 */
 	public function getData(): array
 	{
 		if ($this->topic === '') {
@@ -333,6 +339,6 @@ class Message
 	 */
 	public function send(): stdClass
 	{
-		return (new Dispatch($this->server, $this->auth))->send($this);
+		return (new Dispatcher($this->server, $this->auth))->send($this);
 	}
 }

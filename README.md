@@ -14,12 +14,13 @@ composer require verifiedjoseph/ntfy-php-library
 ```
 
 ## Quick Start
+
 ```PHP
 require __DIR__ . '/vendor/autoload.php';
 
 use Ntfy\Server;
 use Ntfy\Message;
-use Ntfy\Dispatch;
+use Ntfy\Dispatcher;
 
 $server = new Server('https://ntfy.sh/');
 $message = new Message($server);
@@ -29,7 +30,7 @@ $message->title('Hello World');
 $message->body('Hello World from ntfy.sh');
 $message->priority(Message::PRIORITY_HIGH);
 
-$dispatch = new Dispatch($server)
+$dispatch = new Dispatcher($server)
 $dispatch->send($message);
 ```
 

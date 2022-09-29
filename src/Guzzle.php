@@ -129,12 +129,12 @@ final class Guzzle
 	 */
 	private function getConfig(string $uri, array $auth): array
 	{
-		$config = array(
+		$config = [
 			'base_uri' => $uri,
 			'Accept' => 'application/json',
 			'timeout' => $this->timeout,
 			'allow_redirects' => false,
-		);
+		];
 
 		$config = array_merge(
 			$config,
@@ -154,11 +154,11 @@ final class Guzzle
 	{
 		$config = [];
 
-		if ($auth !== []) {
-			$config[RequestOptions::AUTH] = array(
+		if (!empty($auth)) {
+			$config[RequestOptions::AUTH] = [
 				$auth['username'],
-				$auth['password']
-			);
+				$auth['password'],
+			];
 		}
 
 		return $config;
