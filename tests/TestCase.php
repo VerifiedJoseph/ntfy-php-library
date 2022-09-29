@@ -19,7 +19,7 @@ abstract class TestCase extends BaseTestCase
 	}
 
 	/**
-	 * Retruns ntfy server URI
+	 * Returns ntfy server URI
 	 *
 	 * Returns value of `self::$ntfyUri` or environment variable `NTFY_URI` if set.
 	 */
@@ -33,7 +33,7 @@ abstract class TestCase extends BaseTestCase
 	}
 
 	/**
-	 * Retruns httpbin server URI
+	 * Returns httpbin server URI
 	 *
 	 * Returns value of `self::$gotifyUri` or environment variable `HTTPBIN_URI` if set.
 	 */
