@@ -21,7 +21,7 @@ class MessageTest extends TestCase
 	private string $attachmentUrl = 'https://example.com/index.html';
 
 	/** @var string $attachmentName File attachment name */
-	private string $attachmenName = 'index.html';
+	private string $attachmentName = 'index.html';
 
 	/** @var string $actionType Action type */
 	private string $actionType = 'view';
@@ -54,7 +54,7 @@ class MessageTest extends TestCase
 		$message->action($action);
 		$message->attachURL(
 			$this->attachmentUrl,
-			$this->attachmenName
+			$this->attachmentName
 		);
 
 		$details = $message->send();
