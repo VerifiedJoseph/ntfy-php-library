@@ -343,6 +343,10 @@ class Message
 			$data['email'] = $this->email;
 		}
 
+		if ($this->icon !== '') {
+			$data['icon'] = $this->icon;
+		}
+
 		if ($this->cache === false) {
 			$data['cache'] = 'no';
 		}
