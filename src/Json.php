@@ -40,7 +40,7 @@ final class Json
 	public static function decode(string $json): stdClass
 	{
 		try {
-            return json_decode($json, flags: JSON_THROW_ON_ERROR);
+			return json_decode($json, flags: JSON_THROW_ON_ERROR);
 		} catch (JsonException $err) {
 			throw new NtfyException('JSON Error: ' . $err->getMessage());
 		}
