@@ -76,6 +76,9 @@ class Message
 	/** @var string $email Email address for e-mail notifications */
 	private string $email = '';
 
+	/** @var string $icon URL of the message notification icon */
+	private string $icon = '';
+
 	/** @var string $attachFilename Name of file attachment */
 	private string $attachFilename = '';
 
@@ -201,6 +204,18 @@ class Message
 	public function email(string $email): void
 	{
 		$this->email = $email;
+	}
+
+	/**
+	 * Set URL for message notification icon
+	 *
+	 * @param string $url icon URL
+	 *
+	 * @see https://ntfy.sh/docs/publish/#icons
+	 */
+	public function icon(string $url): void
+	{
+		$this->icon = $url;
 	}
 
 	/**
