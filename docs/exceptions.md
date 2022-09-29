@@ -9,7 +9,7 @@ Ntfy\Exception\NtfyException
 
 Thrown when the ntfy library experiences an error.
 
-Exmaple: [`Ntfy\Server`](../src/Server.php) will throw `NtfyException` if the given server URI is invalid.
+Example: [`Ntfy\Server`](../src/Server.php) will throw `NtfyException` if the given server URI is invalid.
 
 ## EndpointException 
 ```PHP
