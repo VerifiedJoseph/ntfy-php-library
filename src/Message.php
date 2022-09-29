@@ -267,7 +267,7 @@ class Message
 	/**
 	 * Get the data to be sent as JSON to the server.
 	 *
-	 * @return array<string, string>
+	 * @return array<string, mixed>
 	 * @throws NtfyException
 	 */
 	public function getData(): array
