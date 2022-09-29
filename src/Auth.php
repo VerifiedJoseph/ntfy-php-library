@@ -18,7 +18,7 @@ class Auth
 	/**
 	 * @return array<string, string>
 	 */
-	public function getPayload(): array
+	public function get(): array
 	{
 		return [
 			'username' => $this->username,

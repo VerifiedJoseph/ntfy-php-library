@@ -28,7 +28,7 @@ class Dispatcher
 	{
 		$auth = [];
 		if ($this->auth !== null) {
-			$auth = $this->auth->getPayload();
+			$auth = $this->auth->get();
 		}
 
 		$guzzle = new Guzzle(
