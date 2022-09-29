@@ -79,8 +79,8 @@ class Message
 	/** @var string $attachUrl Remote URL of file attachment */
 	private string $attachUrl = '';
 
-	/** @var array<string, string> $auth Basic access authentication username and password */
-	private array $auth = [];
+	/** @var ?Auth $auth Basic access authentication username and password */
+	private ?Auth $auth = null;
 
 	/** @var array<int, array<string, mixed>> $actions Action button configs */
 	private array $actions = [];
@@ -226,10 +226,7 @@ class Message
 	 */
 	public function auth(string $username, string $password): void
 	{
-		$this->auth = array(
-			'username' => $username,
-			'password' => $password
-		);
+		$this->auth = new Auth($username, $password);
 	}
 
 	/**

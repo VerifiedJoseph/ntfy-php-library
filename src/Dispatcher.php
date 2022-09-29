@@ -9,16 +9,9 @@ class Dispatcher
 {
 	private Server $server;
 
-	/**
-	 * @var array<string, string>
-	 */
-	private array $auth;
+	private ?Auth $auth;
 
-	/**
-	 * @param Server $server
-	 * @param array<string, string> $auth
-	 */
-	public function __construct(Server $server, array $auth = [])
+	public function __construct(Server $server, ?Auth $auth)
 	{
 		$this->server = $server;
 		$this->auth = $auth;
@@ -33,9 +26,14 @@ class Dispatcher
 	 */
 	public function send(Message $message): stdClass
 	{
+		$auth = [];
+		if ($this->auth !== null) {
+			$auth = $this->auth->getPayload();
+		}
+
 		$guzzle = new Guzzle(
 			$this->server->get(),
-			$this->auth
+			$auth
 		);
 
 		$response = $guzzle->post('', $message->getData());
