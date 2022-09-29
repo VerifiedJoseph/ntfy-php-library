@@ -11,6 +11,10 @@ class Dispatcher
 
 	private ?Auth $auth;
 
+	/**
+	 * @param Server $server Server URI
+	 * @param ?Auth $auth Authentication username and password
+	 */
 	public function __construct(Server $server, ?Auth $auth)
 	{
 		$this->server = $server;

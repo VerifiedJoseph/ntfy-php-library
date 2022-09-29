@@ -265,7 +265,7 @@ class Message
 	 * Get the data to be sent as JSON to the server.
 	 *
 	 * @return array<string, mixed>
-	 * @throws NtfyException
+	 * @throws NtfyException if the message topic is not given
 	 */
 	public function getData(): array
 	{
@@ -329,8 +329,6 @@ class Message
 
 	/**
 	 * Send the message
-	 *
-	 * @throws NtfyException if a message topic is not given
 	 *
 	 * @return stdClass
 	 */
