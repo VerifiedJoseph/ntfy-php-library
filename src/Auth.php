@@ -14,7 +14,6 @@ class Auth
 		$this->password = $password;
 	}
 
-
 	public function getUsername(): string
 	{
 		return $this->username;
