@@ -46,5 +46,8 @@ jobs:
         php-version: '8.0'
         tools: cs2pr
 
+    - name: Install dependencies with composer
+      run: composer install --prefer-dist
+
     - name: Run phpcs
       run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
