@@ -1,7 +1,5 @@
 <?php
 
-use Ntfy\Action;
-
 class ActionTest extends TestCase
 {
 	/**
