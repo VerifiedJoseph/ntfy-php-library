@@ -15,13 +15,13 @@ use Ntfy\Exception\EndpointException;
 try {
 	// Set server
 	$server = new Server('https://ntfy.sh/');
-	
+
 	// Create a new view action
 	$action = new Ntfy\Action\View();
 	$action->label('Open website');
 	$action->url('https://example.com/');
 
-	// Create a new message 
+	// Create a new message
 	$message = new Message($server);
 	$message->topic('mytopic');
 	$message->title('Hello World');
