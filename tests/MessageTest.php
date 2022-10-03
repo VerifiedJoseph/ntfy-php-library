@@ -18,7 +18,7 @@ class MessageTest extends TestCase
 	private array $tags = ['hello', 'world'];
 
 	/** @var string $priority Message icon */
-	private string $icon = 'https://ntfy.sh/static/img/ntfy.png'; 
+	private string $icon = 'https://ntfy.sh/static/img/ntfy.png';
 
 	/** @var string $attachmentUrl File attachment URL */
 	private string $attachmentUrl = 'https://example.com/index.html';
