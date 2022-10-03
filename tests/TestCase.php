@@ -1,5 +1,8 @@
 <?php
 
+use stdClass;
+use Ntfy\Json;
+
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
@@ -43,5 +46,14 @@ abstract class TestCase extends BaseTestCase
 		}
 
 		return self::$httpBinUri;
+	}
+
+	/**
+	 * Returns example message values loaded from message.json
+	 */
+	protected static function getExampleMessage(): stdClass
+	{
+		$data = file_get_contents('TestAssets/message.json');
+		return Json::decode($data);
 	}
 }
