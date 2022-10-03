@@ -15,8 +15,8 @@ use Ntfy\Exception\EndpointException;
 try {
 	// Set server
 	$server = new Server('https://ntfy.sh/');
-	
-	// Create a new message 
+
+	// Create a new message
 	$message = new Message($server);
 	$message->topic('mytopic');
 	$message->title('Hello World');

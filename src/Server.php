@@ -5,7 +5,7 @@ namespace Ntfy;
 use Ntfy\Exception\NtfyException;
 
 /**
- * Class for setting and vaildating a server URI
+ * Class for setting and validating a server URI
  */
 final class Server
 {

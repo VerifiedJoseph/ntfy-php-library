@@ -93,6 +93,12 @@ Set email address for sending a email notification
 email(string $email): void
 ```
 
+Set URL for message notification icon
+
+```PHP
+icon(string $url): void
+```
+
 Set a file attachment using a URL
 
 ```PHP

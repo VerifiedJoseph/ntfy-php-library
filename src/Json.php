@@ -24,7 +24,6 @@ final class Json
 	{
 		try {
 			return json_encode($data, flags: JSON_THROW_ON_ERROR);
-
 		} catch (JsonException $err) {
 			throw new NtfyException('JSON Error: ' . $err->getMessage());
 		}
@@ -34,21 +33,14 @@ final class Json
 	 * Decode JSON
 	 *
 	 * @param string $json
-	 * @return stdClass|array<mixed>
+	 * @return stdClass
 	 *
 	 * @throws NtfyException if JSON could not be decoded
 	 */
-	public static function decode(string $json): stdClass|array
+	public static function decode(string $json): stdClass
 	{
 		try {
-			$decoded = json_decode($json, flags: JSON_THROW_ON_ERROR);
-
-			if (is_array($decoded)) {
-				return (array) $decoded;
-
-			} else {
-				return (object) $decoded;
-			}
+			return json_decode($json, flags: JSON_THROW_ON_ERROR);
 		} catch (JsonException $err) {
 			throw new NtfyException('JSON Error: ' . $err->getMessage());
 		}
