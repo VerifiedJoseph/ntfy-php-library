@@ -17,6 +17,9 @@ class MessageTest extends TestCase
 	/** @var array<int, string> $tags Message tags */
 	private array $tags = ['hello', 'world'];
 
+	/** @var string $priority Message icon */
+	private string $icon = 'https://ntfy.sh/static/img/ntfy.png';
+
 	/** @var string $attachmentUrl File attachment URL */
 	private string $attachmentUrl = 'https://example.com/index.html';
 
@@ -50,6 +53,7 @@ class MessageTest extends TestCase
 		$message->title($this->title);
 		$message->body($this->body);
 		$message->tags($this->tags);
+		$message->icon($this->icon);
 		$message->priority($this->priority);
 		$message->action($action);
 		$message->attachURL(
@@ -63,6 +67,7 @@ class MessageTest extends TestCase
 		$this->assertObjectHasAttribute('topic', $details);
 		$this->assertObjectHasAttribute('title', $details);
 		$this->assertObjectHasAttribute('message', $details);
+		$this->assertObjectHasAttribute('icon', $details);
 		$this->assertObjectHasAttribute('priority', $details);
 		$this->assertObjectHasAttribute('actions', $details);
 
@@ -70,6 +75,7 @@ class MessageTest extends TestCase
 		$this->assertEquals($this->title, $details->title);
 		$this->assertEquals($this->body, $details->message);
 		$this->assertEquals($this->tags, $details->tags);
+		$this->assertEquals($this->icon, $details->icon);
 		$this->assertEquals($this->priority, $details->priority);
 
 		$this->assertCount(1, $details->actions);
