@@ -15,7 +15,7 @@ class Client
 	 * @param Server $server Server URI
 	 * @param ?Auth $auth Authentication username and password
 	 */
-	public function __construct(Server $server, ?Auth $auth)
+	public function __construct(Server $server, ?Auth $auth = null)
 	{
 		$this->server = $server;
 		$this->auth = $auth;
