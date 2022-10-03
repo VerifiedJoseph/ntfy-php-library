@@ -5,7 +5,7 @@ namespace Ntfy;
 use stdClass;
 use Ntfy\Exception\NtfyException;
 
-class Dispatcher
+class Client
 {
 	private Server $server;
 
@@ -30,7 +30,6 @@ class Dispatcher
 	 */
 	public function send(Message $message): stdClass
 	{
-
 		$guzzle = new Guzzle(
 			$this->server->get(),
 			$this->auth

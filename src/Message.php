@@ -334,6 +334,6 @@ class Message
 	 */
 	public function send(): stdClass
 	{
-		return (new Dispatcher($this->server, $this->auth))->send($this);
+		return (new Client($this->server, $this->auth))->send($this);
 	}
 }
