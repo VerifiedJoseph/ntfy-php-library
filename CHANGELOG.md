@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [3.2.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.2.0) - 2022-10-03
+
+* Added support for message notification icons. ([#101](https://github.com/VerifiedJoseph/ntfy-php-library/pull/101), [`9bf4ae5`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/9bf4ae54de22e100b035bcd3d4b4a04bff0dd321))
+
 ## [3.1.10](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.1.10) - 2022-09-27
 
 * Updated supported `binwiederhier/ntfy` version from 1.27.2 to 1.28.0 ([#95](https://github.com/VerifiedJoseph/ntfy-php-library/pull/95), [`585033b`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/585033bb4c0b600227258c19b05101710028a380))
