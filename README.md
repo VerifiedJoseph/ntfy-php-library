@@ -30,8 +30,8 @@ $message->title('Hello World');
 $message->body('Hello World from ntfy.sh');
 $message->priority(Message::PRIORITY_HIGH);
 
-$dispatch = new Client($server)
-$dispatch->send($message);
+$client = new Client($server)
+$client->send($message);
 ```
 
 ## Documentation
