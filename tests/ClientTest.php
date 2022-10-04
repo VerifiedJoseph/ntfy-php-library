@@ -22,7 +22,9 @@ class ClientTest extends TestCase
 		$message = new Message(self::$server);
 		$message->topic($messageExample->topic);
 		$message->title($messageExample->title);
+		$message->priority($messageExample->priority);
 		$message->body($messageExample->body);
+		$message->tags($messageExample->tags);
 		$message->action($action);
 
 		$client = new Client(self::$server);
@@ -34,7 +36,9 @@ class ClientTest extends TestCase
 
 		$this->assertEquals($messageExample->topic, $response->topic);
 		$this->assertEquals($messageExample->title, $response->title);
+		$this->assertEquals($messageExample->priority, $response->priority);
 		$this->assertEquals($messageExample->body, $response->message);
+		$this->assertEquals($messageExample->tags, $response->tags);
 
 		$this->assertCount(1, $response->actions);
 		$this->assertEquals($actionExample->type, $response->actions[0]->action);
