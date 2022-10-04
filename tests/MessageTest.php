@@ -1,5 +1,7 @@
 <?php
 
+use Ntfy\Json;
+
 class MessageTest extends TestCase
 {
 	/**
@@ -7,7 +9,7 @@ class MessageTest extends TestCase
 	 */
 	public function testSend(): void
 	{
-		$messageExample = self::getMessageExample();
+		$messageExample = Json::decode(self::loadFixture('message.json'));
 
 		$message = new Ntfy\Message(self::$server);
 		$message->topic($messageExample->topic);

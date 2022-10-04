@@ -48,20 +48,17 @@ abstract class TestCase extends BaseTestCase
 	}
 
 	/**
-	 * Returns example message values loaded from message.json
+	 * Load fixture
 	 */
-	protected static function getMessageExample(): stdClass
+	protected static function loadFixture(string $name): string
 	{
-		$data = (string) file_get_contents(__DIR__ . '/TestAssets/message.json');
-		return Json::decode($data);
-	}
+		$fixturePath = __DIR__ . '/Fixtures/' . $name;
+		$contents = file_get_contents($fixturePath);
 
-	/**
-	 * Returns example action values loaded from action.json
-	 */
-	protected static function getActionExample(): stdClass
-	{
-		$data = (string) file_get_contents(__DIR__ . '/TestAssets/action.json');
-		return Json::decode($data);
+		if ($contents === false) {
+			throw new RuntimeException(sprintf('Unable to load fixture: %s', $fixturePath));
+		}
+
+		return $contents;
 	}
 }

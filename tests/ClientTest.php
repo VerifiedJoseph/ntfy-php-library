@@ -3,6 +3,7 @@
 use Ntfy\Client;
 use Ntfy\Action;
 use Ntfy\Message;
+use Ntfy\Json;
 
 class ClientTest extends TestCase
 {
@@ -11,8 +12,8 @@ class ClientTest extends TestCase
 	 */
 	public function testSend(): void
 	{
-		$messageExample = self::getMessageExample();
-		$actionExample = self::getActionExample();
+		$messageExample = Json::decode(self::loadFixture('message.json'));
+		$actionExample = Json::decode(self::loadFixture('action.json'));
 
 		$action = new Action\View();
 		$action->label($actionExample->label);
