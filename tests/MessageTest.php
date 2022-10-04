@@ -43,58 +43,37 @@ class MessageTest extends TestCase
 	 */
 	public function testSend(): void
 	{
-		$action = new Ntfy\Action\View();
-		$action->label($this->actionLabel);
-		$action->url($this->actionUrl);
-		$action->enableNoteClear();
+		$messageExample = self::getMessageExample();
 
 		$message = new Ntfy\Message(self::$server);
-		$message->topic($this->topic);
-		$message->title($this->title);
-		$message->body($this->body);
-		$message->tags($this->tags);
-		$message->icon($this->icon);
-		$message->priority($this->priority);
-		$message->action($action);
-		$message->attachURL(
-			$this->attachmentUrl,
-			$this->attachmentName
-		);
+		$message->topic($messageExample->topic);
+		$message->title($messageExample->title);
+		$message->priority($messageExample->priority);
+		$message->body($messageExample->body);
 
-		$details = $message->send();
+		$response = $message->send();
 
-		$this->assertIsObject($details);
-		$this->assertObjectHasAttribute('topic', $details);
-		$this->assertObjectHasAttribute('title', $details);
-		$this->assertObjectHasAttribute('message', $details);
-		$this->assertObjectHasAttribute('icon', $details);
-		$this->assertObjectHasAttribute('priority', $details);
-		$this->assertObjectHasAttribute('actions', $details);
+		$this->assertObjectHasAttribute('topic', $response);
+		$this->assertObjectHasAttribute('title', $response);
+		$this->assertObjectHasAttribute('message', $response);
+		$this->assertObjectHasAttribute('priority', $response);
 
-		$this->assertEquals($this->topic, $details->topic);
-		$this->assertEquals($this->title, $details->title);
-		$this->assertEquals($this->body, $details->message);
-		$this->assertEquals($this->tags, $details->tags);
-		$this->assertEquals($this->icon, $details->icon);
-		$this->assertEquals($this->priority, $details->priority);
-
-		$this->assertCount(1, $details->actions);
-		$this->assertEquals($this->actionType, $details->actions[0]->action);
-		$this->assertEquals($this->actionLabel, $details->actions[0]->label);
-		$this->assertEquals($this->actionUrl, $details->actions[0]->url);
-		$this->assertEquals($this->actionNoteClear, $details->actions[0]->clear);
+		$this->assertEquals($messageExample->topic, $response->topic);
+		$this->assertEquals($messageExample->title, $response->title);
+		$this->assertEquals($messageExample->priority, $response->priority);
+		$this->assertEquals($messageExample->body, $response->message);
 	}
 
 	/**
-	 * Test sending a message without a topic.
+	 * Test creating a message without a topic.
 	 *
-	 * An exception should be thrown by `Ntfy\Message->send()`
+	 * An exception should be thrown by `Ntfy\Message->getData()`
 	 */
 	public function testNoTopicException(): void
 	{
 		$this->expectException(Ntfy\Exception\NtfyException::class);
 
 		$message = new Ntfy\Message(self::$server);
-		$message->send();
+		$message->getData();
 	}
 }
