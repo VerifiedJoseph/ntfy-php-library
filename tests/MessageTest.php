@@ -95,7 +95,7 @@ class MessageTest extends TestCase
 	{
 		$this->expectException(Ntfy\Exception\NtfyException::class);
 
-		$message = new Ntfy\Message(self::$server);
+		$message = new Ntfy\Message();
 		$message->getData();
 	}
 }

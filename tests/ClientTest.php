@@ -20,7 +20,7 @@ class ClientTest extends TestCase
 		$action->url($actionExample->url);
 		$action->enableNoteClear();
 
-		$message = new Message(self::$server);
+		$message = new Message();
 		$message->topic($messageExample->topic);
 		$message->title($messageExample->title);
 		$message->priority($messageExample->priority);
