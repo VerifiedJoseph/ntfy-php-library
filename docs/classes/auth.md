@@ -8,7 +8,7 @@ Ntfy\Auth(string $username, string $password)
 
 ### Examples
 
-- [Send a message to a server protected with basic access authentication](../examples/send-message-with-view-action.php)
+- [Send a message to a server protected with basic access authentication](../../examples/send-message-with-view-action.php)
 
 ### Methods
 
