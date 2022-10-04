@@ -44,12 +44,12 @@ class MessageTest extends TestCase
 		$message->disableFirebase();
 
 		$data = $message->getData();
-		
+
 		$this->assertIsArray($data);
 		$this->assertArrayHasKey('topic', $data);
 		$this->assertArrayHasKey('title', $data);
 		$this->assertArrayHasKey('priority', $data);
-		$this->assertArrayHasKey('message', $data); 
+		$this->assertArrayHasKey('message', $data);
 		$this->assertArrayHasKey('tags', $data);
 		$this->assertArrayHasKey('delay', $data);
 		$this->assertArrayHasKey('click', $data);
@@ -65,7 +65,7 @@ class MessageTest extends TestCase
 		$this->assertEquals(self::$messageExample->title, $data['title']);
 		$this->assertEquals(self::$messageExample->priority, $data['priority']);
 		$this->assertEquals(self::$messageExample->body, $data['message']);
-		
+
 		$this->assertIsArray($data['tags']);
 		$this->assertEquals(self::$messageExample->tags, $data['tags']);
 
