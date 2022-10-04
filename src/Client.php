@@ -39,6 +39,6 @@ class Client
 
 		$message = Json::decode($response->getBody());
 
-		return (object)$message;
+		return $message;
 	}
 }
