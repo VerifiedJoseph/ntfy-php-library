@@ -25,7 +25,7 @@ class MessageTest extends TestCase
 		$action->url(self::$actionExample->url);
 		$action->enableNoteClear();
 
-		$message = new Message(self::$server);
+		$message = new Message();
 		$message->topic(self::$messageExample->topic);
 		$message->title(self::$messageExample->title);
 		$message->priority(self::$messageExample->priority);
@@ -84,30 +84,6 @@ class MessageTest extends TestCase
 		$this->assertEquals(self::$actionExample->label, $data['actions'][0]['label']);
 		$this->assertEquals(self::$actionExample->url, $data['actions'][0]['url']);
 		$this->assertEquals(self::$actionExample->clear, $data['actions'][0]['clear']);
-	}
-
-	/**
-	 * Test sending a message
-	 */
-	public function testSend(): void
-	{
-		$message = new Message(self::$server);
-		$message->topic(self::$messageExample->topic);
-		$message->title(self::$messageExample->title);
-		$message->priority(self::$messageExample->priority);
-		$message->body(self::$messageExample->body);
-
-		$response = $message->send();
-
-		$this->assertObjectHasAttribute('topic', $response);
-		$this->assertObjectHasAttribute('title', $response);
-		$this->assertObjectHasAttribute('message', $response);
-		$this->assertObjectHasAttribute('priority', $response);
-
-		$this->assertEquals(self::$messageExample->topic, $response->topic);
-		$this->assertEquals(self::$messageExample->title, $response->title);
-		$this->assertEquals(self::$messageExample->priority, $response->priority);
-		$this->assertEquals(self::$messageExample->body, $response->message);
 	}
 
 	/**

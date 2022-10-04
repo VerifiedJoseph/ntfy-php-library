@@ -3,7 +3,7 @@
 Class for sending a message
 
 ```PHP
-Ntfy\Message(Server $server)
+Ntfy\Message()
 ```
 
 ### Examples
@@ -105,12 +105,6 @@ Set a file attachment using a URL
 attachURL(string $url, string $name = ''): void
 ```
 
-Set username and password for basic access authentication
-
-```PHP
-auth(string $username, string $password): void
-```
-
 Set an action button
 
 ```PHP
@@ -129,8 +123,8 @@ Disable firebase for this message
 disableFirebase(): void
 ```
 
-Send the message
+Get the data to be sent as JSON to the server.
 
 ```PHP
-send(): stdClass
+getData(): array
 ```

@@ -4,8 +4,6 @@ namespace Ntfy;
 
 use Ntfy\Exception\NtfyException;
 
-use stdClass;
-
 /**
  * Class for sending a message
  */
@@ -46,9 +44,6 @@ class Message
 	 */
 	public const PRIORITY_MIN = 1;
 
-	/** @var Server $server Server */
-	private Server $server;
-
 	/** @var string $topic Message topic */
 	private string $topic = '';
 
@@ -82,9 +77,6 @@ class Message
 	/** @var string $attachUrl Remote URL of file attachment */
 	private string $attachUrl = '';
 
-	/** @var ?Auth $auth Basic access authentication username and password */
-	private ?Auth $auth = null;
-
 	/** @var array<int, array<string, mixed>> $actions Action button configs */
 	private array $actions = [];
 
@@ -93,16 +85,6 @@ class Message
 
 	/** @var bool $firebase Firebase status for message */
 	private bool $firebase = true;
-
-	/**
-	 * Create Guzzle class instance
-	 *
-	 * @param Server $server Server class instance
-	 */
-	public function __construct(Server $server)
-	{
-		$this->server = $server;
-	}
 
 	/**
 	 * Set message topic
@@ -231,20 +213,6 @@ class Message
 	}
 
 	/**
-	 * Set username and password for basic access authentication
-	 *
-	 * @param string $username Username
-	 * @param string $password Password
-	 *
-	 * @see https://ntfy.sh/docs/publish/#authentication
-	 * @see https://ntfy.sh/docs/config/#access-control
-	 */
-	public function auth(string $username, string $password): void
-	{
-		$this->auth = new Auth($username, $password);
-	}
-
-	/**
 	 * Set an action button
 	 *
 	 * @param Action $action Action class instance
@@ -344,15 +312,5 @@ class Message
 		}
 
 		return $data;
-	}
-
-	/**
-	 * Send the message
-	 *
-	 * @return stdClass
-	 */
-	public function send(): stdClass
-	{
-		return (new Client($this->server, $this->auth))->send($this);
 	}
 }

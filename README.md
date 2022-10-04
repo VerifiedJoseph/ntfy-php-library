@@ -23,14 +23,14 @@ use Ntfy\Message;
 use Ntfy\Client;
 
 $server = new Server('https://ntfy.sh/');
-$message = new Message($server);
 
+$message = new Message();
 $message->topic('mytopic');
 $message->title('Hello World');
 $message->body('Hello World from ntfy.sh');
 $message->priority(Message::PRIORITY_HIGH);
 
-$client = new Client($server)
+$client = new Client($server);
 $client->send($message);
 ```
 
