@@ -1,6 +1,7 @@
 # Documentation
 
 - Classes
+	- [Client](classes/client.md)
 	- [Server](classes/server.md)
 	- [Message](classes/message.md)
 	- [Action](classes/action.md)
