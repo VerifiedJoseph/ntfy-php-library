@@ -1,7 +1,5 @@
 <?php
 
-use Ntfy\Json;
-
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
 /**
