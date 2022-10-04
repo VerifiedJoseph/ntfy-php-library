@@ -17,7 +17,7 @@ class ClientTest extends TestCase
 		$action = new Action\View();
 		$action->label($actionExample->label);
 		$action->url($actionExample->url);
-		$action->enableNoteClear($actionExample->clear);
+		$action->enableNoteClear();
 
 		$message = new Message(self::$server);
 		$message->topic($messageExample->topic);
