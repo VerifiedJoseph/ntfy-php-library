@@ -2,7 +2,6 @@
 
 namespace Ntfy;
 
-use GuzzleHttp\Psr7;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
