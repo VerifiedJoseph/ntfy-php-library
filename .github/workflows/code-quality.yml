@@ -52,7 +52,7 @@ jobs:
     - name: Run phpcs
       run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
 
-  php-cs-fix:
+  php-cs-fixer:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
