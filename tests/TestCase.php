@@ -52,7 +52,7 @@ abstract class TestCase extends BaseTestCase
 	 */
 	protected static function getMessageExample(): stdClass
 	{
-		$data = (string) file_get_contents('test/TestAssets/message.json');
+		$data = (string) file_get_contents(__DIR__ . '/TestAssets/message.json');
 		return Json::decode($data);
 	}
 
@@ -61,7 +61,7 @@ abstract class TestCase extends BaseTestCase
 	 */
 	protected static function getActionExample(): stdClass
 	{
-		$data = (string) file_get_contents('test/TestAssets/action.json');
+		$data = (string) file_get_contents(__DIR__ . 'TestAssets/action.json');
 		return Json::decode($data);
 	}
 }
