@@ -51,9 +51,18 @@ abstract class TestCase extends BaseTestCase
 	/**
 	 * Returns example message values loaded from message.json
 	 */
-	protected static function getExampleMessage(): stdClass
+	protected static function getMessageExample(): stdClass
 	{
 		$data = file_get_contents('TestAssets/message.json');
+		return Json::decode($data);
+	}
+
+	/**
+	 * Returns example action values loaded from action.json
+	 */
+	protected static function getActionExample(): stdClass
+	{
+		$data = file_get_contents('TestAssets/action.json');
 		return Json::decode($data);
 	}
 }
