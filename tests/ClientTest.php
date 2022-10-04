@@ -33,6 +33,8 @@ class ClientTest extends TestCase
 		$this->assertObjectHasAttribute('topic', $response);
 		$this->assertObjectHasAttribute('title', $response);
 		$this->assertObjectHasAttribute('message', $response);
+		$this->assertObjectHasAttribute('priority', $response);
+		$this->assertObjectHasAttribute('tags', $response);
 
 		$this->assertEquals($messageExample->topic, $response->topic);
 		$this->assertEquals($messageExample->title, $response->title);
