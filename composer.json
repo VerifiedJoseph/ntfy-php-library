@@ -34,5 +34,10 @@
     },
     "scripts": {
         "lint": "phpstan && phpcs ."
+    },
+    "config": {
+        "platform": {
+            "php": "8.0.13"
+        }
     }
 }
