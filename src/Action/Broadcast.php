@@ -11,51 +11,51 @@ use Ntfy\Action;
  */
 class Broadcast extends Action
 {
-    /** {@inheritDoc} */
-    protected string $type = 'broadcast';
+	/** {@inheritDoc} */
+	protected string $type = 'broadcast';
 
-    /** @var string $intent Android intent name */
-    protected string $intent = '';
+	/** @var string $intent Android intent name */
+	protected string $intent = '';
 
-    /** @var array<string, string> $extras Android intent extra */
-    protected array $extras = [];
+	/** @var array<string, string> $extras Android intent extra */
+	protected array $extras = [];
 
-    /**
-     * Set android intent name
-     *
-     * @param string $intent intent Android intent name
-     */
-    public function intent(string $intent): void
-    {
-        $this->intent = $intent;
-    }
+	/**
+	 * Set android intent name
+	 *
+	 * @param string $intent intent Android intent name
+	 */
+	public function intent(string $intent): void
+	{
+		$this->intent = $intent;
+	}
 
-    /**
-     * Set an android intent extra
-     *
-     * @param string $parameter Parameter name
-     * @param string $value Parameter value
-     */
-    public function extra($parameter, $value): void
-    {
-        $this->extras[$parameter] = $value;
-    }
+	/**
+	 * Set an android intent extra
+	 *
+	 * @param string $parameter Parameter name
+	 * @param string $value Parameter value
+	 */
+	public function extra($parameter, $value): void
+	{
+		$this->extras[$parameter] = $value;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function generate(): array
-    {
-        $action = parent::generate();
+	/**
+	 * {@inheritDoc}
+	 */
+	protected function generate(): array
+	{
+		$action = parent::generate();
 
-        if ($this->intent !== '') {
-            $action['intent'] = $this->intent;
-        }
+		if ($this->intent !== '') {
+			$action['intent'] = $this->intent;
+		}
 
-        if ($this->extras !== []) {
-            $action['extras'] = $this->extras;
-        }
+		if ($this->extras !== []) {
+			$action['extras'] = $this->extras;
+		}
 
-        return $action;
-    }
+		return $action;
+	}
 }

@@ -40,6 +40,8 @@
   <rule ref="Generic.PHP.LowerCaseConstant"/>
   <!-- Use a single string instead of concating -->
   <rule ref="Generic.Strings.UnnecessaryStringConcat"/>
+  <!-- Use tabs for indentation -->
+  <rule ref="Generic.WhiteSpace.DisallowSpaceIndent"/>
   <!-- Parameters with default values must appear last in functions -->
   <rule ref="PEAR.Functions.ValidDefaultValue"/>
   <!-- Use PascalCase for class names -->

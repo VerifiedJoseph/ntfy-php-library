@@ -2,10 +2,7 @@
 /vendor/
 
 # phpunit
-/.phpunit.result.cache
-
-# php-cs-fixer
-/.php-cs-fixer.cache
+.phpunit.result.cache
 
 # Windows thumbnail cache files
 Thumbs.db
