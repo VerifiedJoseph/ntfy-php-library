@@ -11,30 +11,30 @@ use Ntfy\Action;
  */
 class View extends Action
 {
-    /** {@inheritDoc} */
-    protected string $type = 'view';
+	/** {@inheritDoc} */
+	protected string $type = 'view';
 
-    /** @var string $url URL */
-    protected string $url = '';
+	/** @var string $url URL */
+	protected string $url = '';
 
-    /**
-     * Set action URL
-     *
-     * @param string $url URL
-     */
-    public function url(string $url): void
-    {
-        $this->url = $url;
-    }
+	/**
+	 * Set action URL
+	 *
+	 * @param string $url URL
+	 */
+	public function url(string $url): void
+	{
+		$this->url = $url;
+	}
 
-    /**
-     * {@inheritDoc}
-     */
-    protected function generate(): array
-    {
-        $action = parent::generate();
-        $action['url'] = $this->url;
+	/**
+	 * {@inheritDoc}
+	 */
+	protected function generate(): array
+	{
+		$action = parent::generate();
+		$action['url'] = $this->url;
 
-        return $action;
-    }
+		return $action;
+	}
 }
