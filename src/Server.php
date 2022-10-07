@@ -9,50 +9,50 @@ use Ntfy\Exception\NtfyException;
  */
 final class Server
 {
-    /** @var string $uri Server URI */
-    private string $uri = '';
+	/** @var string $uri Server URI */
+	private string $uri = '';
 
-    /**
-     *
-     * @param string $uri Server URI
-     */
-    public function __construct(string $uri)
-    {
-        $this->uri = $this->validate($uri);
-    }
+	/**
+	 *
+	 * @param string $uri Server URI
+	 */
+	function __construct(string $uri)
+	{
+		$this->uri = $this->validate($uri);
+	}
 
-    /**
-     * Get server
-     *
-     * @return string Returns server URI
-     */
-    public function get(): string
-    {
-        return $this->uri;
-    }
+	/**
+	 * Get server
+	 *
+	 * @return string Returns server URI
+	 */
+	public function get(): string
+	{
+		return $this->uri;
+	}
 
-    /**
-     * Validate server URI
-     *
-     * Checks if server URI starts with `https://` or `http://`.
-     *
-     * Checks if server URI ends with a forward slash and adds it if missing.
-     *
-     * @param string $uri Server URI
-     * @return string $uri Returns validated server URI
-     *
-     * @throws NtfyException if Server URL doesn't start with `https://` or `http://`.
-     */
-    private function validate(string $uri): string
-    {
-        if (preg_match('/^https?:\/\//', $uri) === 0) {
-            throw new NtfyException('Server URI must start with https:// or http://');
-        }
+	/**
+	 * Validate server URI
+	 *
+	 * Checks if server URI starts with `https://` or `http://`.
+	 *
+	 * Checks if server URI ends with a forward slash and adds it if missing.
+	 *
+	 * @param string $uri Server URI
+	 * @return string $uri Returns validated server URI
+	 *
+	 * @throws NtfyException if Server URL doesn't start with `https://` or `http://`.
+	 */
+	private function validate(string $uri): string
+	{
+		if(preg_match('/^https?:\/\//', $uri) === 0) {
+			throw new NtfyException('Server URI must start with https:// or http://');
+		}
 
-        if (substr($uri, -1) !== '/') {
-            $uri .= '/';
-        }
+		if(substr($uri, -1) !== '/') {
+			$uri .= '/';
+		}
 
-        return $uri;
-    }
+		return $uri;
+	}
 }
