@@ -7,7 +7,7 @@ on:
       - ".ci/docker-compose.yml"
       - ".ci/ntfy-server.yml"
   push:
-    branches: main
+    branches: [main]
     paths:
       - "**.php"
       - ".github/workflows/test.yml"
@@ -47,6 +47,9 @@ jobs:
 
     - name: Start ntfy & httpbin docker containers
       run: docker-compose up -d
+
+    - name: Test connections to docker containers
+      run: bash .ci/scripts/test-connections.sh
 
     - name: Run phpunit
       run: ./vendor/bin/phpunit
