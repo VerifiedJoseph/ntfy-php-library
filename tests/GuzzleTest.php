@@ -17,9 +17,9 @@ class GuzzleTest extends TestCase
 	 */
 	public function testGet(): void
 	{
-		$query = [
+		$query = array(
 			'test' => 'HelloWorld'
-		];
+		);
 
 		$response = self::$guzzle->get('get', $query);
 		$body = (object) Json::decode($response->getBody());
@@ -38,9 +38,9 @@ class GuzzleTest extends TestCase
 		$data = ['hello' => 'World'];
 		$headerValue = 'hello world';
 
-		$headers = [
+		$headers = array(
 			'X-Httpbin-Test' => $headerValue
-		];
+		);
 
 		$response = self::$guzzle->post('post', $data, $headers);
 		$body = (object) Json::decode($response->getBody());

@@ -22,7 +22,7 @@ final class Guzzle
 	private Client $client;
 
 	/** @var array<int, string> $requestMethods Array of supported HTTP request methods */
-	private array $requestMethods = ['GET', 'POST'];
+	private array $requestMethods = array('GET', 'POST');
 
 	/** @var int $timeout Request timeout in seconds */
 	private int $timeout = 10;
@@ -32,7 +32,8 @@ final class Guzzle
 	 * @param string $uri Server URI
 	 * @param array<string, string> $auth Authentication username and password
 	 */
-	public function __construct(string $uri, $auth = [])
+
+	function __construct(string $uri, $auth = array())
 	{
 		$config = $this->getConfig($uri, $auth);
 		$this->client = new Client($config);
@@ -45,11 +46,11 @@ final class Guzzle
 	 * @param array<string, mixed> $query HTTP Query data
 	 * @return ResponseInterface
 	 */
-	public function get(string $endpoint, array $query = []): ResponseInterface
+	public function get(string $endpoint, array $query = array()): ResponseInterface
 	{
-		$options = [
+		$options = array(
 			RequestOptions::QUERY => $query
-		];
+		);
 
 		return $this->request('GET', $endpoint, $options);
 	}
@@ -62,12 +63,12 @@ final class Guzzle
 	 * @param array<string, mixed> $headers
 	 * @return ResponseInterface
 	 */
-	public function post(string $endpoint, array $data = [], array $headers = []): ResponseInterface
+	public function post(string $endpoint, array $data = [], array $headers = array()): ResponseInterface
 	{
-		$options = [
+		$options = array(
 			RequestOptions::HEADERS => $headers,
 			RequestOptions::JSON => $data
-		];
+		);
 
 		return $this->request('POST', $endpoint, $options);
 	}
@@ -84,7 +85,7 @@ final class Guzzle
 	 * @throws NtfyException if a connection cannot be established
 	 * @throws EndpointException if the server returned an error
 	 */
-	private function request(string $method, string $endpoint, array $options = []): ResponseInterface
+	private function request(string $method, string $endpoint, array $options = array()): ResponseInterface
 	{
 		try {
 			if (in_array($method, $this->requestMethods) === false) {
@@ -92,8 +93,10 @@ final class Guzzle
 			}
 
 			$response = $this->client->request($method, $endpoint, $options);
+
 		} catch (ConnectException $err) {
 			throw new NtfyException($err->getMessage());
+
 		} catch (RequestException $err) {
 			if ($err->hasResponse() === false) {
 				throw new EndpointException($err->getMessage(), 0);
@@ -127,12 +130,12 @@ final class Guzzle
 	 */
 	private function getConfig(string $uri, array $auth): array
 	{
-		$config = [
+		$config = array(
 			'base_uri' => $uri,
 			'Accept' => 'application/json',
 			'timeout' => $this->timeout,
 			'allow_redirects' => false,
-		];
+		);
 
 		$config = array_merge(
 			$config,
@@ -150,13 +153,13 @@ final class Guzzle
 	 */
 	private function getAuthConfig(array $auth): array
 	{
-		$config = [];
+		$config = array();
 
 		if ($auth !== []) {
-			$config[RequestOptions::AUTH] = [
+			$config[RequestOptions::AUTH] = array(
 				$auth['username'],
 				$auth['password']
-			];
+			);
 		}
 
 		return $config;

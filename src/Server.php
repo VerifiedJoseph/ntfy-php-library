@@ -16,7 +16,7 @@ final class Server
 	 *
 	 * @param string $uri Server URI
 	 */
-	public function __construct(string $uri)
+	function __construct(string $uri)
 	{
 		$this->uri = $this->validate($uri);
 	}
@@ -45,11 +45,11 @@ final class Server
 	 */
 	private function validate(string $uri): string
 	{
-		if (preg_match('/^https?:\/\//', $uri) === 0) {
+		if(preg_match('/^https?:\/\//', $uri) === 0) {
 			throw new NtfyException('Server URI must start with https:// or http://');
 		}
 
-		if (substr($uri, -1) !== '/') {
+		if(substr($uri, -1) !== '/') {
 			$uri .= '/';
 		}
 

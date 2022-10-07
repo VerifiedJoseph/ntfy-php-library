@@ -20,7 +20,7 @@ final class Json
 	 *
 	 * @throws NtfyException if array could not be encoded
 	 */
-	public static function encode(array $data): string
+	static function encode(array $data): string
 	{
 		try {
 			return json_encode($data, flags: JSON_THROW_ON_ERROR);

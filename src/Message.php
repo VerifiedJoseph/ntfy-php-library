@@ -86,10 +86,10 @@ class Message
 	private string $attachUrl = '';
 
 	/** @var array<string, string> $auth Basic access authentication username and password */
-	private array $auth = [];
+	private array $auth = array();
 
 	/** @var array<int, array<string, mixed>> $actions Action button configs */
-	private array $actions = [];
+	private array $actions = array();
 
 	/** @var bool $cache Cache status for message */
 	private bool $cache = true;
@@ -102,7 +102,7 @@ class Message
 	 *
 	 * @param Server $server Server class instance
 	 */
-	public function __construct(Server $server)
+	function __construct(Server $server)
 	{
 		$this->serverUri = $server->get();
 	}
@@ -244,10 +244,10 @@ class Message
 	 */
 	public function auth(string $username, string $password): void
 	{
-		$this->auth = [
+		$this->auth = array(
 			'username' => $username,
 			'password' => $password
-		];
+		);
 	}
 
 	/**
