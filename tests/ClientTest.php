@@ -2,6 +2,7 @@
 
 use Ntfy\Client;
 use Ntfy\Action;
+use Ntfy\Auth;
 use Ntfy\Message;
 use Ntfy\Json;
 
@@ -28,7 +29,9 @@ class ClientTest extends TestCase
         $message->tags($messageExample->tags);
         $message->action($action);
 
-        $client = new Client(self::$server);
+        $auth = new Auth('Joseph', 'test');
+
+        $client = new Client(self::$server, $auth);
         $response = $client->send($message);
 
         $this->assertObjectHasAttribute('topic', $response);
