@@ -1,6 +1,6 @@
 # Server
 
-Class for setting and vaildating a server URI
+Class for setting and validating a server URI
 
 ```PHP
 Ntfy\Server(string $uri)

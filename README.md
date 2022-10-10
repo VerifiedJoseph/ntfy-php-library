@@ -14,21 +14,24 @@ composer require verifiedjoseph/ntfy-php-library
 ```
 
 ## Quick Start
+
 ```PHP
 require __DIR__ . '/vendor/autoload.php';
 
 use Ntfy\Server;
 use Ntfy\Message;
+use Ntfy\Client;
 
 $server = new Server('https://ntfy.sh/');
-$message = new Message($server);
 
+$message = new Message();
 $message->topic('mytopic');
 $message->title('Hello World');
 $message->body('Hello World from ntfy.sh');
 $message->priority(Message::PRIORITY_HIGH);
 
-$message->send();
+$client = new Client($server);
+$client->send($message);
 ```
 
 ## Documentation

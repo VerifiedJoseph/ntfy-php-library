@@ -1,0 +1,6 @@
+{
+	"type": "view",
+	"label": "Open Website",
+	"url": "https://example.com",
+	"clear": true
+}
