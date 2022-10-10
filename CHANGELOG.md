@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.0.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.0.0) - 2022-10-10
+
+**This release is not backwards compatible with version 3. Review the updated [documentation](https://github.com/VerifiedJoseph/ntfy-php-library/tree/main/docs).**
+
+* Added `Client` class to handle sending messages. ([#98](https://github.com/VerifiedJoseph/ntfy-php-library/pull/98), [`502dd27`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/502dd27ffc680ec0dbdeeb2fc309f0a07e2965d3))
+* Added `Auth` class to handle authentication.
+* Added code example for sending messages to a server with authentication.
+
 ## [3.2.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v3.2.0) - 2022-10-03
 
 * Added support for message notification icons. ([#101](https://github.com/VerifiedJoseph/ntfy-php-library/pull/101), [`9bf4ae5`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/9bf4ae54de22e100b035bcd3d4b4a04bff0dd321))
