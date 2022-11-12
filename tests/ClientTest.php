@@ -32,7 +32,7 @@ class ClientTest extends TestCase
         $message->tags($messageExample->tags);
         $message->action($action);
 
-        $auth = new Auth('Joseph', 'test');
+        $auth = new Auth('admin', 'password123');
 
         $client = new Client($server, $auth);
         $response = $client->send($message);
