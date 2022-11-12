@@ -38,7 +38,7 @@ final class Guzzle
     }
 
     /**
-     * Make GET request
+     * Make a GET request
      *
      * @param string $endpoint API endpoint
      * @param array<string, mixed> $query HTTP Query data
@@ -54,10 +54,10 @@ final class Guzzle
     }
 
     /**
-     * Make POST request
+     * Make a POST request
      *
      * @param string $endpoint API endpoint
-     * @param array<string, mixed> $data
+     * @param array<mixed, mixed> $data
      * @param array<string, mixed> $headers
      * @return ResponseInterface
      */
@@ -72,7 +72,7 @@ final class Guzzle
     }
 
     /**
-     * Make HTTP request
+     * Make an HTTP request
      *
      * @param string $method HTTP request method
      * @param string $endpoint API endpoint
@@ -102,7 +102,7 @@ final class Guzzle
             $contentType = $response->getHeaderLine('Content-Type');
 
             if ($contentType === 'application/json') {
-                $json = (object) Json::decode($response->getBody());
+                $json = Json::decode($response->getBody());
                 $message = $json->error . ' (code: ' . $json->code . ')';
 
                 throw new EndpointException($message, $json->http);
