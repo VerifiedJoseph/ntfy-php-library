@@ -33,7 +33,9 @@
         "friendsofphp/php-cs-fixer": "^3.11"
     },
     "scripts": {
-        "lint": "phpstan && phpcs ."
+        "lint": "phpstan && phpcs .",
+        "test": "phpunit --colors",
+        "fix": "php-cs-fixer fix"
     },
     "config": {
         "platform": {
