@@ -23,7 +23,7 @@ class GuzzleTest extends TestCase
         ];
 
         $response = self::$guzzle->get('get', $query);
-        $body = (object) Json::decode($response->getBody());
+        $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
         $this->assertObjectHasAttribute('args', $body);
@@ -44,7 +44,7 @@ class GuzzleTest extends TestCase
         ];
 
         $response = self::$guzzle->post('post', $data, $headers);
-        $body = (object) Json::decode($response->getBody());
+        $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
         $this->assertObjectHasAttribute('data', $body);
@@ -64,7 +64,7 @@ class GuzzleTest extends TestCase
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
         $response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
-        $body = (object) Json::decode($response->getBody());
+        $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
         $this->assertObjectHasAttribute('authenticated', $body);
