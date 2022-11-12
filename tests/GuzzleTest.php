@@ -36,7 +36,7 @@ class GuzzleTest extends TestCase
      */
     public function testPost(): void
     {
-        $data = ['hello' => 'World'];
+        $data = ['hello', 'World'];
         $headerValue = 'hello world';
 
         $headers = [
@@ -51,7 +51,7 @@ class GuzzleTest extends TestCase
         $this->assertObjectHasAttribute('headers', $body);
         $this->assertObjectHasAttribute('X-Httpbin-Test', $body->headers);
 
-        $this->assertEquals($data, (array) $body->json);
+        $this->assertEquals($data, $body->json);
         $this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'});
     }
 
@@ -60,7 +60,7 @@ class GuzzleTest extends TestCase
      */
     public function testBasicAuth(): void
     {
-        $auth = new Auth('admin', 'pasword1245');
+        $auth = new Auth('admin', 'password1245');
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
         $response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
