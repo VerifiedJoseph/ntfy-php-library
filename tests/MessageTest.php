@@ -3,6 +3,7 @@
 use Ntfy\Message;
 use Ntfy\Action;
 use Ntfy\Json;
+use Ntfy\Exception\NtfyException;
 
 class MessageTest extends TestCase
 {
@@ -16,7 +17,7 @@ class MessageTest extends TestCase
     }
 
     /**
-     * test setting and getting a message
+     * Test setting and getting a message
      */
     public function testGetData(): void
     {
@@ -93,9 +94,9 @@ class MessageTest extends TestCase
      */
     public function testNoTopicException(): void
     {
-        $this->expectException(Ntfy\Exception\NtfyException::class);
+        $this->expectException(NtfyException::class);
 
-        $message = new Ntfy\Message();
+        $message = new Message();
         $message->getData();
     }
 }
