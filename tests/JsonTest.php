@@ -1,9 +1,7 @@
 <?php
 
-
-use Ntfy\Exception\NtfyException;
 use Ntfy\Json;
-use PHPUnit\Framework\TestCase;
+use Ntfy\Exception\NtfyException;
 
 class JsonTest extends TestCase
 {

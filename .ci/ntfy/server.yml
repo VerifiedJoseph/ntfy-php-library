@@ -2,7 +2,7 @@
 base-url: http://127.0.0.1:8080
 attachment-cache-dir: "/var/cache/ntfy/attachments"
 
-# Admin user: Joseph
-# Admin Password: test
+# Admin user: admin
+# Admin Password: password123
 auth-file: "/etc/ntfy/user.db"
 auth-default-access: "read-only"

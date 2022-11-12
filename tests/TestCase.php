@@ -10,13 +10,6 @@ abstract class TestCase extends BaseTestCase
     protected static string $ntfyUri = 'http://127.0.0.1:8080/';
     protected static string $httpBinUri = 'https://httpbin.org/';
 
-    protected static Ntfy\Server $server;
-
-    public static function setUpBeforeClass(): void
-    {
-        self::$server = new Ntfy\Server(self::getNtfyUri());
-    }
-
     /**
      * Returns ntfy server URI
      *
