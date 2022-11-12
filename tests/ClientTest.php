@@ -1,5 +1,6 @@
 <?php
 
+use Ntfy\Server;
 use Ntfy\Client;
 use Ntfy\Action;
 use Ntfy\Auth;
@@ -16,6 +17,8 @@ class ClientTest extends TestCase
         $messageExample = Json::decode(self::loadFixture('message.json'));
         $actionExample = Json::decode(self::loadFixture('action.json'));
 
+        $server = new Server(self::getNtfyUri());
+
         $action = new Action\View();
         $action->label($actionExample->label);
         $action->url($actionExample->url);
@@ -31,7 +34,7 @@ class ClientTest extends TestCase
 
         $auth = new Auth('Joseph', 'test');
 
-        $client = new Client(self::$server, $auth);
+        $client = new Client($server, $auth);
         $response = $client->send($message);
 
         $this->assertObjectHasAttribute('topic', $response);
