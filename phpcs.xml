@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset name="ntfy-php-library Ruleset">
-  <description>Created with the PHP Coding Standard Generator. http://edorian.github.com/php-coding-standard-generator/</description>
   <exclude-pattern>./vendor</exclude-pattern>
   <!-- Duplicate class names are not allowed -->
   <rule ref="Generic.Classes.DuplicateClassName"/>
