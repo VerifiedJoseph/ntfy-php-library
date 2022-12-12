@@ -17,7 +17,7 @@ on:
 jobs:
   test:
     name: PHPUnit
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       COMPOSE_FILE: .ci/docker-compose.yml
       NTFY_URI: "http://127.0.0.1:8080"
