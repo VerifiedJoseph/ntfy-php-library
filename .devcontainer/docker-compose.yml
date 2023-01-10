@@ -1,0 +1,28 @@
+services:
+  workspace:
+    container_name: php_workspace
+    build:
+      context: ./workspace
+    tty: true
+    volumes:
+      - ../:/ntfy-php-library
+    working_dir: /ntfy-php-library
+    environment:
+      - NTFY_URI=${NTFY_URI}
+      - HTTPBIN_URI=${HTTPBIN_URI}
+
+  ntfy:
+    container_name: ntfy
+    image:  binwiederhier/ntfy:v1.30.1
+    command: serve
+    ports:
+      - "8080:80"
+    volumes:
+     - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
+     - '../.ci/ntfy/user.db:/etc/ntfy/user.db'
+
+  httpbin:
+    container_name: httpbin
+    image: kennethreitz/httpbin
+    ports:
+      - "8081:80"
