@@ -1,0 +1,15 @@
+{
+    "name": "ntfy-php-library-dev-container",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "workspace",
+    "workspaceFolder": "/ntfy-php-library",
+    "extensions": [
+        "EditorConfig.EditorConfig",
+        "streetsidesoftware.code-spell-checker",
+        "bmewburn.vscode-intelephense-client",
+        "recca0120.vscode-phpunit"
+    ],
+    "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}"
+}
