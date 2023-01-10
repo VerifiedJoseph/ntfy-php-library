@@ -13,4 +13,4 @@ updates:
     schedule:
       interval: "weekly"
     ignore:
-      - dependency-name: "php:8.1-alpine3.17"
+      - dependency-name: "php"
