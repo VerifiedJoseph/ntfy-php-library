@@ -37,11 +37,11 @@ class ClientTest extends TestCase
         $client = new Client($server, $auth);
         $response = $client->send($message);
 
-        $this->assertObjectHasAttribute('topic', $response);
-        $this->assertObjectHasAttribute('title', $response);
-        $this->assertObjectHasAttribute('message', $response);
-        $this->assertObjectHasAttribute('priority', $response);
-        $this->assertObjectHasAttribute('tags', $response);
+        $this->assertTrue(property_exists($response, 'topic'));
+        $this->assertTrue(property_exists($response, 'title'));
+        $this->assertTrue(property_exists($response, 'message'));
+        $this->assertTrue(property_exists($response, 'priority'));
+        $this->assertTrue(property_exists($response, 'tags'));
 
         $this->assertEquals($messageExample->topic, $response->topic);
         $this->assertEquals($messageExample->title, $response->title);
