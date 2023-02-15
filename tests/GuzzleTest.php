@@ -26,8 +26,8 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('args', $body);
-        $this->assertObjectHasAttribute('test', $body->args);
+        $this->assertTrue(property_exists($body, 'args'));
+        $this->assertTrue(property_exists($body->args, 'test'));
         $this->assertEquals('HelloWorld', $body->args->test);
     }
 
@@ -47,9 +47,9 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('data', $body);
-        $this->assertObjectHasAttribute('headers', $body);
-        $this->assertObjectHasAttribute('X-Httpbin-Test', $body->headers);
+        $this->assertTrue(property_exists($body, 'data'));
+        $this->assertTrue(property_exists($body, 'headers'));
+        $this->assertTrue(property_exists($body->headers, 'X-Httpbin-Test'));
 
         $this->assertEquals($data, $body->json);
         $this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'});
@@ -67,8 +67,8 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertObjectHasAttribute('authenticated', $body);
-        $this->assertObjectHasAttribute('user', $body);
+        $this->assertTrue(property_exists($body, 'authenticated'));
+        $this->assertTrue(property_exists($body, 'user'));
 
         $this->assertEquals(true, $body->authenticated);
         $this->assertEquals($auth->getUsername(), $body->user);
