@@ -2,7 +2,7 @@
 
 use Ntfy\Auth\User;
 
-class AuthTest extends TestCase
+class AuthUserTest extends TestCase
 {
     protected static User $auth;
 
