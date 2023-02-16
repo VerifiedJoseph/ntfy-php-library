@@ -4,21 +4,48 @@ namespace Ntfy;
 
 class Auth
 {
+    /** @var string $method Authentication method */
+    protected string $method = '';
+
+    /** @var string $token Authentication token */
+    protected string $token = '';
+
     /** @var string $username */
-    private string $username;
+    protected string $username;
 
     /** @var string $password */
-    private string $password;
+    protected string $password;
 
     /**
      *
      * @param string $username
      * @param string $password
      */
-    public function __construct(string $username, string $password)
+    public function __construct(string $username = '', string $password = '')
     {
+        $this->method = 'user';
         $this->username = $username;
         $this->password = $password;
+    }
+
+    /**
+     * Get authentication method
+     *
+     * @return string
+     */
+    final public function getMethod(): string
+    {
+        return $this->method;
+    }
+
+    /**
+     * Get authentication token
+     *
+     * @return string
+     */
+    public function getToken(): string
+    {
+        return $this->token;
     }
 
     /**
