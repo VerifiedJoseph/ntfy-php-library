@@ -2,7 +2,7 @@
 
 use Ntfy\Auth\Token;
 
-class AuthTest extends TestCase
+class AuthTokenTest extends TestCase
 {
     protected static Token $auth;
 
