@@ -2,7 +2,7 @@
 
 namespace Ntfy\Auth;
 
-use Gotify\Auth;
+use Ntfy\Auth;
 
 /**
  * Class for setting username and password authentication
