@@ -13,13 +13,13 @@ services:
 
   ntfy:
     container_name: ntfy
-    image: binwiederhier/ntfy:v1.31.0
+    image: binwiederhier/ntfy:v2.0.0
     command: serve
-    ports:
-      - "8080:80"
     volumes:
      - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
      - '../.ci/ntfy/user.db:/etc/ntfy/user.db'
+    ports:
+      - "8080:80"
 
   httpbin:
     container_name: httpbin
