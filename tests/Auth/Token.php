@@ -1,5 +1,6 @@
 <?php
 
+use Ntfy\Json;
 use Ntfy\Auth\Token;
 
 class AuthTokenTest extends TestCase
@@ -7,10 +8,13 @@ class AuthTokenTest extends TestCase
     protected static Token $auth;
 
     protected static string $method = 'token';
-    protected static string $token = 'tk_rHIb9qXgN3b1JJwiT9VVi5tjzHOph';
+    protected static string $token;
 
     public static function setUpBeforeClass(): void
     {
+        $fixture = Json::decode(self::loadFixture('auth.json'));
+        self::$token = $fixture->token;
+
         self::$auth = new Token(self::$token);
     }
 

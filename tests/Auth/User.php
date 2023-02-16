@@ -1,5 +1,6 @@
 <?php
 
+use Ntfy\Json;
 use Ntfy\Auth\User;
 
 class AuthUserTest extends TestCase
@@ -7,11 +8,15 @@ class AuthUserTest extends TestCase
     protected static User $auth;
 
     protected static string $method = 'user';
-    protected static string $username = 'admin';
-    protected static string $password = 'password123';
+    protected static string $username;
+    protected static string $password;
 
     public static function setUpBeforeClass(): void
     {
+        $fixture = Json::decode(self::loadFixture('auth.json'));
+        self::$username = $fixture->username;
+        self::$password = $fixture->password;
+
         self::$auth = new User(self::$username, self::$password);
     }
 
