@@ -2,7 +2,7 @@
 
 namespace Ntfy;
 
-class Auth
+abstract class Auth
 {
     /** @var string $method Authentication method */
     protected string $method;
