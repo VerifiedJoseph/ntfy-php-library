@@ -31,7 +31,7 @@ abstract class Auth
      *
      * @return string
      */
-    public function getToken(): string
+    final public function getToken(): string
     {
         return $this->token;
     }
@@ -41,7 +41,7 @@ abstract class Auth
      *
      * @return string
      */
-    public function getUsername(): string
+    final public function getUsername(): string
     {
         return $this->username;
     }
@@ -51,7 +51,7 @@ abstract class Auth
      *
      * @return string
      */
-    public function getPassword(): string
+    final public function getPassword(): string
     {
         return $this->password;
     }
