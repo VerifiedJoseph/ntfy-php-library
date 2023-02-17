@@ -7,18 +7,19 @@ use Ntfy\Exception\NtfyException;
 
 class Client
 {
-    private Server $server;
-
-    private ?Auth $auth;
+    /** @var Guzzle $guzzle Guzzle class instance */
+    private Guzzle $guzzle;
 
     /**
      * @param Server $server Server URI
-     * @param ?Auth $auth Authentication username and password
+     * @param ?Auth $auth Authentication class instance
      */
     public function __construct(Server $server, ?Auth $auth = null)
     {
-        $this->server = $server;
-        $this->auth = $auth;
+        $this->guzzle = new Guzzle(
+            $server->get(),
+            $auth
+        );
     }
 
     /**
@@ -30,13 +31,7 @@ class Client
      */
     public function send(Message $message): stdClass
     {
-        $guzzle = new Guzzle(
-            $this->server->get(),
-            $this->auth
-        );
-
-        $response = $guzzle->post('', $message->getData());
-
+        $response = $this->guzzle->post('', $message->getData());
         $message = Json::decode($response->getBody());
 
         return $message;
