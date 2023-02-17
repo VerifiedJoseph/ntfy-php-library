@@ -29,7 +29,7 @@ final class Guzzle
     /**
      *
      * @param string $uri Server URI
-     * @param ?Auth $auth Authentication username and password
+     * @param ?Auth $auth Authentication class instance
      */
     public function __construct(string $uri, ?Auth $auth)
     {
@@ -121,7 +121,7 @@ final class Guzzle
      * Get GuzzleHttp client config
      *
      * @param string $uri Server URI
-     * @param ?Auth $auth Authentication username and password
+     * @param ?Auth $auth Authentication class instance
      * @return array<string, mixed> Returns client config array
      */
     private function getConfig(string $uri, ?Auth $auth): array
