@@ -5,10 +5,10 @@ namespace Ntfy;
 class Auth
 {
     /** @var string $method Authentication method */
-    protected string $method = '';
+    protected string $method;
 
     /** @var string $token Authentication token */
-    protected string $token = '';
+    protected string $token;
 
     /** @var string $username */
     protected string $username;
