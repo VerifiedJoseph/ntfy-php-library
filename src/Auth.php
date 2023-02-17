@@ -17,9 +17,7 @@ class Auth
     protected string $password;
 
     /**
-     *
-     * @param string $username
-     * @param string $password
+     * @deprecated Setting username and password authentication with `Auth` is deprecated. Use `Auth\User` instead.
      */
     public function __construct(string $username = '', string $password = '')
     {
