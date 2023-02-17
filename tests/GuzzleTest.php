@@ -87,7 +87,7 @@ class GuzzleTest extends TestCase
 
         $this->assertIsObject($body);
         $this->assertTrue(property_exists($body, 'authenticated'));
-        $this->assertTrue(property_exists($body, 'user'));
+        $this->assertTrue(property_exists($body, 'token'));
 
         $this->assertEquals(true, $body->authenticated);
         $this->assertEquals($auth->getToken(), $body->token);
