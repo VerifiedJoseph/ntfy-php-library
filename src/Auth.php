@@ -8,13 +8,13 @@ class Auth
     protected string $method;
 
     /** @var string $token Authentication token */
-    protected string $token;
+    protected string $token = '';
 
     /** @var string $username */
-    protected string $username;
+    protected string $username = '';
 
     /** @var string $password */
-    protected string $password;
+    protected string $password = '';
 
     /**
      *
