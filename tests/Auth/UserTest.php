@@ -1,12 +1,13 @@
 <?php
 
 use Ntfy\Json;
-use Ntfy\Auth;
+use Ntfy\Auth\User;
 
-class AuthTest extends TestCase
+class AuthUserTest extends TestCase
 {
-    protected static Auth $auth;
+    protected static User $auth;
 
+    protected static string $method = 'user';
     protected static string $username;
     protected static string $password;
 
@@ -16,11 +17,19 @@ class AuthTest extends TestCase
         self::$username = $fixture->username;
         self::$password = $fixture->password;
 
-        self::$auth = new Auth(self::$username, self::$password);
+        self::$auth = new User(self::$username, self::$password);
     }
 
     /**
-     * Test get username
+     * Test `getMethod()`
+     */
+    public function testGetMethod(): void
+    {
+        $this->assertEquals(self::$method, self::$auth->getMethod());
+    }
+
+    /**
+     * Test `getUsername()`
      */
     public function testGetUsername(): void
     {
@@ -28,7 +37,7 @@ class AuthTest extends TestCase
     }
 
     /**
-     * Test get password
+     * Test `getPassword()`
      */
     public function testGetPassword(): void
     {

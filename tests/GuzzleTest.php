@@ -56,13 +56,13 @@ class GuzzleTest extends TestCase
     }
 
     /**
-     * Test making a GET request with Basic Auth
+     * Test making a GET request with basic authentication
      */
     public function testBasicAuth(): void
     {
-        $auth = new Auth('admin', 'password1245');
-        $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
+        $auth = new Auth\User('admin', 'password1245');
 
+        $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
         $response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
         $body = Json::decode($response->getBody());
 
@@ -72,5 +72,24 @@ class GuzzleTest extends TestCase
 
         $this->assertEquals(true, $body->authenticated);
         $this->assertEquals($auth->getUsername(), $body->user);
+    }
+
+    /**
+     * Test making a GET request with Bearer token authentication
+     */
+    public function testBearerToken(): void
+    {
+        $auth = new Auth\Token('randomString');
+
+        $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
+        $response = $guzzle->get('/bearer');
+        $body = Json::decode($response->getBody());
+
+        $this->assertIsObject($body);
+        $this->assertTrue(property_exists($body, 'authenticated'));
+        $this->assertTrue(property_exists($body, 'token'));
+
+        $this->assertEquals(true, $body->authenticated);
+        $this->assertEquals($auth->getToken(), $body->token);
     }
 }

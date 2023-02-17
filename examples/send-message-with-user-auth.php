@@ -5,7 +5,7 @@
 
 include '../vendor/autoload.php';
 
-use Ntfy\Auth;
+use Ntfy\Auth\User;
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
@@ -25,7 +25,7 @@ try {
     $message->priority(Message::PRIORITY_HIGH);
 
     // Set authentication username and password
-    $auth = new Auth('username', 'password');
+    $auth = new User('username', 'password');
 
     // New client
     $client = new Client($server, $auth);

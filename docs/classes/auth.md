@@ -1,16 +1,22 @@
-# Auth
+# Authentication Classes
 
-Class for settings basic access authentication username and password.
+## User
 
 ```PHP
-Ntfy\Auth(string $username, string $password)
+Ntfy\Auth\User(string $username, string $password)
 ```
 
-### Examples
+Class: [User](../../src/Auth/User.php)
 
-- [Send a message to a server protected with basic access authentication](../../examples/send-message-with-view-action.php)
+### Examples
+- [Send a message to a server protected with basic access authentication](../../examples/send-message-with-user-auth.php)
 
 ### Methods
+
+Get authentication method
+```PHP
+getMethod(): string
+```
 
 Get username
 
@@ -22,4 +28,25 @@ Get password
 
 ```PHP
 getPassword(): string
+```
+
+## Token
+
+```PHP
+Ntfy\Auth\Token(string $token)
+```
+
+Class: [Token](../../src/Auth/Token.php)
+
+### Methods
+
+Get authentication method
+```PHP
+getMethod(): string
+```
+
+Get token
+
+```PHP
+getToken(): string
 ```
