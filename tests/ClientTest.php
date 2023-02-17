@@ -9,9 +9,9 @@ use Ntfy\Json;
 
 class ClientTest extends TestCase
 {
-    protected static object $authParams;
-    protected static object $messageParams;
-    protected static object $actionParams;
+    protected static stdClass $authParams;
+    protected static stdClass $messageParams;
+    protected static stdClass $actionParams;
 
     public static function setUpBeforeClass(): void
     {
