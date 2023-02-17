@@ -67,10 +67,12 @@ class ClientTest extends TestCase
      */
     public function testSendWithUserAuth(): void
     {
+        $topic = 'privatebobtopic';
+
         $server = new Server(self::getNtfyUri());
 
         $message = new Message();
-        $message->topic(self::$messageParams->topic);
+        $message->topic($topic);
         $message->title(self::$messageParams->title);
         $message->body(self::$messageParams->body);
 
@@ -80,7 +82,15 @@ class ClientTest extends TestCase
         );
 
         $client = new Client($server, $auth);
-        $client->send($message);
+        $response = $client->send($message);
+
+        $this->assertTrue(property_exists($response, 'topic'));
+        $this->assertTrue(property_exists($response, 'title'));
+        $this->assertTrue(property_exists($response, 'message'));
+
+        $this->assertEquals($topic, $response->topic);
+        $this->assertEquals(self::$messageParams->title, $response->title);
+        $this->assertEquals(self::$messageParams->body, $response->message);
     }
 
     /**
@@ -88,10 +98,12 @@ class ClientTest extends TestCase
      */
     public function testSendWithTokenAuth(): void
     {
+        $topic = 'privatebobtopic';
+
         $server = new Server(self::getNtfyUri());
 
         $message = new Message();
-        $message->topic(self::$messageParams->topic);
+        $message->topic($topic);
         $message->title(self::$messageParams->title);
         $message->body(self::$messageParams->body);
 
@@ -101,6 +113,14 @@ class ClientTest extends TestCase
         );
 
         $client = new Client($server, $auth);
-        $client->send($message);
+        $response = $client->send($message);
+
+        $this->assertTrue(property_exists($response, 'topic'));
+        $this->assertTrue(property_exists($response, 'title'));
+        $this->assertTrue(property_exists($response, 'message'));
+
+        $this->assertEquals($topic, $response->topic);
+        $this->assertEquals(self::$messageParams->title, $response->title);
+        $this->assertEquals(self::$messageParams->body, $response->message);
     }
 }
