@@ -1,5 +1,5 @@
 {
-	"topic": "mytopic",
+	"topic": "opentopic",
 	"title": "Hello World",
 	"priority": 4,
 	"body": "Hello World from PHPUnit",
