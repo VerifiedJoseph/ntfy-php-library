@@ -16,4 +16,4 @@ Password: `alice`
 
 Token: `tk_E6N6tPopm7Gvd8t3FWaqbYwIPe4he`
 
-User can only read and write access to the topic `privatebobtopic`.
+User only has read and write access to the topic `privatebobtopic`.
