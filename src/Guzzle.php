@@ -144,7 +144,7 @@ final class Guzzle
     /**
      * Get authentication config
      *
-     * @param ?Auth $auth Authentication username and password
+     * @param ?Auth $auth Authentication class instance
      * @return array<string, array<int|string, string>>
      */
     private function getAuthConfig(?Auth $auth): array
@@ -152,10 +152,21 @@ final class Guzzle
         $config = [];
 
         if ($auth !== null) {
-            $config[RequestOptions::AUTH] = [
-                $auth->getUsername(),
-                $auth->getPassword(),
-            ];
+            switch ($auth->getMethod()) {
+                case 'user':
+                    $config[RequestOptions::AUTH] = [
+                        $auth->getUsername(),
+                        $auth->getPassword(),
+                    ];
+
+                    break;
+                case 'token':
+                    $config[RequestOptions::HEADERS] = [
+                        'Authorization' => 'Bearer ' . $auth->getToken()
+                    ];
+
+                    break;
+            }
         }
 
         return $config;
