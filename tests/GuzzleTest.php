@@ -56,11 +56,11 @@ class GuzzleTest extends TestCase
     }
 
     /**
-     * Test making a GET request with Basic Auth
+     * Test making a GET request with basic authentication
      */
     public function testBasicAuth(): void
     {
-        $auth = new Auth('admin', 'password1245');
+        $auth = new Auth\User('admin', 'password1245');
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
 
         $response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
