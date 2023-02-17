@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.1.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.1.0) - 2023-02-17
+
+* Added support for access tokens. ([#166](https://github.com/VerifiedJoseph/ntfy-php-library/pull/166), [`cdb1137`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/cdb113793b2ccfbd9490a7973a98d3e84e8fea91))
+* Updated supported `binwiederhier/ntfy` version from 1.31.0 to 2.0.0 ([#164](https://github.com/VerifiedJoseph/ntfy-php-library/pull/164), [`44915b2`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/44915b2a1d8eccf5158f65693d863e0ed515b226))
+* Deprecated setting username and password authentication with class `Auth`. Use class `Auth\User` instead.
+
 ## [4.0.4](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.0.4) - 2023-02-15
 
 * Updated supported `binwiederhier/ntfy` version from 1.30.1 to 1.31.0 ([#161](https://github.com/VerifiedJoseph/ntfy-php-library/pull/161), [`da49312`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/da493129d671b0294db4031989ee2af21ece36f7))
