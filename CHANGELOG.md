@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.1.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.1.1) - 2023-02-18
+
+* Minor `Guzzle` class refactoring. ([#170](https://github.com/VerifiedJoseph/ntfy-php-library/pull/170), [`6d0c28a`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/6d0c28ac1443caa775ed12b7abe8fdd109bebda5))
+* Updated supported `binwiederhier/ntfy` version from 2.0.0 to 2.0.1 ([#171](https://github.com/VerifiedJoseph/ntfy-php-library/pull/171), [`f195051`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/f19505102f419a6ab5d83c5205619d59f3d16912))
+
 ## [4.1.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.1.0) - 2023-02-17
 
 * Added support for access tokens. ([#166](https://github.com/VerifiedJoseph/ntfy-php-library/pull/166), [`cdb1137`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/cdb113793b2ccfbd9490a7973a98d3e84e8fea91))
