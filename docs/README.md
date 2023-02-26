@@ -1,15 +1,25 @@
 # Documentation
 
-- Classes
-	- [Auth](classes/auth.md)
-	- [Client](classes/client.md)
-	- [Server](classes/server.md)
-	- [Message](classes/message.md)
-	- [Action](classes/action.md)
-- [Exceptions](exceptions.md)
-- [Code examples](examples.md)
+## Classes
 
----
+- [Auth](classes/auth.md)
+- [Client](classes/client.md)
+- [Server](classes/server.md)
+- [Message](classes/message.md)
+- [Action](classes/action.md)
 
-- [ntfy documentation (ntfy.sh)](https://ntfy.sh/docs/)
-- [ntfy source code (github.com)](https://github.com/binwiederhier/ntfy)
+## Exceptions
+
+- [NtfyException](exceptions.md#NtfyException)
+- [EndpointException](exceptions.md#EndpointException)
+
+## Code Examples
+
+- [Send a message](../examples/send-message.php)
+- [Send a message with a view action button](../examples/send-message-with-view-action.php)
+- [Send a message to a server protected with user authentication](../examples/send-message-with-user-auth.php)
+
+## External Links
+
+- [ntfy documentation (docs.ntfy.sh)](https://ntfy.sh/docs/)
+- [ntfy source code (github.com/binwiederhier/ntfy)](https://github.com/binwiederhier/ntfy)

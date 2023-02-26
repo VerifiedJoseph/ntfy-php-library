@@ -36,9 +36,9 @@ $client->send($message);
 
 ## Documentation
 
-- [Classes](docs/README.md)
+- [Classes](docs/README.md#Classes)
 - [Exceptions](docs/exceptions.md)
-- [Code examples](docs/examples.md)
+- [Code examples](docs/README.md#code-examples)
 
 ## Requirements
 

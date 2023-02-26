@@ -9,7 +9,7 @@ Ntfy\Auth\User(string $username, string $password)
 Class: [User](../../src/Auth/User.php)
 
 ### Examples
-- [Send a message to a server protected with basic access authentication](../../examples/send-message-with-user-auth.php)
+- [Send a message to a server protected with user authentication](../../examples/send-message-with-user-auth.php)
 
 ### Methods
 

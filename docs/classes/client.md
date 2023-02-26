@@ -9,6 +9,7 @@ Ntfy\Client(Server $server, ?Auth $auth = null)
 ### Examples
 
 - [Send a message](../../examples/send-message.php)
+- [Send a message to a server protected with user authentication](../../examples/send-message-with-user-auth.php)
 
 ### Methods
 
