@@ -107,9 +107,8 @@ class ClientTest extends TestCase
         $message->title(self::$messageParams->title);
         $message->body(self::$messageParams->body);
 
-        $auth = new Auth\User(
-            self::$authParams->username,
-            self::$authParams->password
+        $auth = new Auth\Token(
+            self::$authParams->token
         );
 
         $client = new Client($server, $auth);
