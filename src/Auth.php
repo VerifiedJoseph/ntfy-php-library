@@ -2,7 +2,7 @@
 
 namespace Ntfy;
 
-class Auth
+abstract class Auth
 {
     /** @var string $method Authentication method */
     protected string $method;
@@ -15,19 +15,6 @@ class Auth
 
     /** @var string $password */
     protected string $password = '';
-
-    /**
-     *
-     * @param string $username
-     * @param string $password
-     * @deprecated Setting username and password authentication with `Auth` is deprecated. Use `Auth\User` instead.
-     */
-    public function __construct(string $username = '', string $password = '')
-    {
-        $this->method = 'user';
-        $this->username = $username;
-        $this->password = $password;
-    }
 
     /**
      * Get authentication method
@@ -44,7 +31,7 @@ class Auth
      *
      * @return string
      */
-    public function getToken(): string
+    final public function getToken(): string
     {
         return $this->token;
     }
@@ -54,7 +41,7 @@ class Auth
      *
      * @return string
      */
-    public function getUsername(): string
+    final public function getUsername(): string
     {
         return $this->username;
     }
@@ -64,7 +51,7 @@ class Auth
      *
      * @return string
      */
-    public function getPassword(): string
+    final public function getPassword(): string
     {
         return $this->password;
     }
