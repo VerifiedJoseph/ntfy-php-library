@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.2.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.2.0) - 2023-04-18
+
+* Removed deprecated option for setting user authentication with `Auth` class. Use [`Auth\User`](docs/classes/auth.md#user) class. ([#169](https://github.com/VerifiedJoseph/gotify-api-php/pull/169), [`da96849`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/da96849425de6f08199175c7db1d7684f07bc979))
+* Updated dependency `guzzlehttp/guzzle` from 7.5.0 to 7.5.1. ([#208](https://github.com/VerifiedJoseph/ntfy-php-library/pull/208), [`9897e68`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/9897e68bb5f2c0bf83bc0f78bbb051d539717cee))
+
 ## [4.1.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.1.1) - 2023-02-18
 
 * Minor `Guzzle` class refactoring. ([#170](https://github.com/VerifiedJoseph/ntfy-php-library/pull/170), [`6d0c28a`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/6d0c28ac1443caa775ed12b7abe8fdd109bebda5))
