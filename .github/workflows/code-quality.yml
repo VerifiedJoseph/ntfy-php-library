@@ -13,6 +13,9 @@ on:
       - "phpcs.xml"
       - ".github/workflows/code-quality.yml"
 
+permissions:
+  contents: read
+
 jobs:
   phpstan:
     runs-on: ubuntu-22.04
