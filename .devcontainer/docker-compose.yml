@@ -19,10 +19,11 @@ services:
      - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
      - '../.ci/ntfy/user.db:/etc/ntfy/user.db'
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
 
   httpbin:
     container_name: httpbin
-    image: kennethreitz/httpbin
+    image: mccutchen/go-httpbin:v2.7.0
     ports:
-      - "8081:80"
+      - "127.0.0.1:8081:80"
+    command: ["go-httpbin", "-port", "80"]
