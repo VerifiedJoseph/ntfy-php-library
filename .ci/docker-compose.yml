@@ -16,3 +16,4 @@ services:
     image: mccutchen/go-httpbin:v2.7.0
     ports:
       - "127.0.0.1:8081:80"
+    command: ["go-httpbin", "-port", "80"]
