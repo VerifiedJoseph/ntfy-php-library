@@ -39,7 +39,7 @@ Ntfy\Auth\Token(string $token)
 Class: [Token](../../src/Auth/Token.php)
 
 ### Examples
-- [Send a message to a server protected with token authentication](../examples/send-message-with-token-auth.php)
+- [Send a message to a server protected with token authentication](../../examples/send-message-with-token-auth.php)
 
 ### Methods
 
