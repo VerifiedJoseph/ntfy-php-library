@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.2.2](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.2.2) - 2023-05-29
+
+* Updated dependency `guzzlehttp/guzzle` from 7.6.0 to 7.6.1 ([#223](https://github.com/VerifiedJoseph/ntfy-php-library/pull/223), [`7474a7e`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/7474a7ee8040ea3442642196b2b2292ba0385af6))
+* Updated dependency `guzzlehttp/guzzle` from 7.6.1 to 7.7.0 ([#226](https://github.com/VerifiedJoseph/ntfy-php-library/pull/226), [`bfcec3e`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/bfcec3e2b1d5d590b69aee9c299b00a93b858341))
+
 ## [4.2.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.2.1) - 2023-05-14
 
 * Updated dependency `guzzlehttp/guzzle` from 7.5.1 to 7.6.0. ([#219](https://github.com/VerifiedJoseph/ntfy-php-library/pull/219), [`b3b44b8`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/b3b44b8c19bb45c77419b6d46d5705b1f070e16a))
