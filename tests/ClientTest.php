@@ -84,9 +84,9 @@ class ClientTest extends TestCase
         $client = new Client($server, $auth);
         $response = $client->send($message);
 
-        $this->assertObjectHasProperty( 'topic', $response);
-        $this->assertObjectHasProperty( 'title', $response);;
-        $this->assertObjectHasProperty( 'message', $response);
+        $this->assertObjectHasProperty('topic', $response);
+        $this->assertObjectHasProperty('title', $response);
+        $this->assertObjectHasProperty('message', $response);
 
         $this->assertEquals($topic, $response->topic);
         $this->assertEquals(self::$messageParams->title, $response->title);
