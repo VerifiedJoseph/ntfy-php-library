@@ -26,8 +26,8 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertTrue(property_exists($body, 'args'));
-        $this->assertTrue(property_exists($body->args, 'test'));
+        $this->assertObjectHasProperty('args', $body);
+        $this->assertObjectHasProperty('test', $body->args);
         $this->assertEquals('HelloWorld', $body->args->test[0]);
     }
 
@@ -47,9 +47,9 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertTrue(property_exists($body, 'data'));
-        $this->assertTrue(property_exists($body, 'headers'));
-        $this->assertTrue(property_exists($body->headers, 'X-Httpbin-Test'));
+        $this->assertObjectHasProperty('data', $body);
+        $this->assertObjectHasProperty('headers', $body);
+        $this->assertObjectHasProperty('X-Httpbin-Test', $body->headers);
 
         $this->assertEquals($data, $body->json);
         $this->assertEquals($headerValue, $body->headers->{'X-Httpbin-Test'}[0]);
@@ -67,8 +67,8 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertTrue(property_exists($body, 'authorized'));
-        $this->assertTrue(property_exists($body, 'user'));
+        $this->assertObjectHasProperty('authorized', $body);
+        $this->assertObjectHasProperty('user', $body);
 
         $this->assertEquals(true, $body->authorized);
         $this->assertEquals($auth->getUsername(), $body->user);
@@ -86,8 +86,8 @@ class GuzzleTest extends TestCase
         $body = Json::decode($response->getBody());
 
         $this->assertIsObject($body);
-        $this->assertTrue(property_exists($body, 'authenticated'));
-        $this->assertTrue(property_exists($body, 'token'));
+        $this->assertObjectHasProperty('authenticated', $body);
+        $this->assertObjectHasProperty('token', $body);
 
         $this->assertEquals(true, $body->authenticated);
         $this->assertEquals($auth->getToken(), $body->token);
