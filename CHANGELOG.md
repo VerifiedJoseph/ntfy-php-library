@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.3.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.3.0) - 2023-08-28
+
+* Action\Broadcast: Added type hints to method `extra()`. ([#268](https://github.com/VerifiedJoseph/ntfy-php-library/pull/268), [`eb00101`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/eb001010dff4ee4b310fb3f9a0b777240b60eefb))
+* Updated dependency `guzzlehttp/guzzle` from 7.7.0 to 7.8.0 ([#264](https://github.com/VerifiedJoseph/ntfy-php-library/pull/264), [`0d5f26b`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/0d5f26bb828346eec79e71f73f97d0e1f9937bff))
+
 ## [4.2.5](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.2.5) - 2023-08-18
 
 * Updated supported `binwiederhier/ntfy` version from 2.6.2 to 2.7.0 ([#257](https://github.com/VerifiedJoseph/ntfy-php-library/pull/257), [`17e1918`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/17e1918185c099e48d4beeb125d4f369e618a0a9))
