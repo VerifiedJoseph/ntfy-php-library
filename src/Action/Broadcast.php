@@ -36,7 +36,7 @@ class Broadcast extends Action
      * @param string $parameter Parameter name
      * @param string $value Parameter value
      */
-    public function extra($parameter, $value): void
+    public function extra(string $parameter, string $value): void
     {
         $this->extras[$parameter] = $value;
     }
