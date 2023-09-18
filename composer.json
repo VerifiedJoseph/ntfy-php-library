@@ -33,12 +33,12 @@
         "friendsofphp/php-cs-fixer": "^3.11"
     },
     "scripts": {
-        "lint": "phpstan && phpcs src/ --standard=PSR12",
+        "lint": "phpstan && phpcs .",
         "lint-phpstan": "phpstan",
-        "lint-phpcs": "phpcs src/ --standard=PSR12",
-        "lint-phpcs-action": "phpcs src/ --standard=PSR12 --report=checkstyle | cs2pr",
+        "lint-phpcs": "phpcs . ",
+        "lint-phpcs-action": "phpcs . | cs2pr",
         "test": "phpunit --colors",
-        "fix": "phpcbf src/ --standard=PSR12"
+        "fix": "phpcbf ."
     },
     "config": {
         "platform": {
