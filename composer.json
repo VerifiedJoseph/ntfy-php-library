@@ -36,6 +36,7 @@
         "lint": "phpstan && phpcs src/ --standard=PSR12 --ignore=vendor/",
         "lint-phpstan": "phpstan",
         "lint-phpcs": "phpcs src/ --standard=PSR12 --ignore=vendor/",
+        "lint-phpcs-action": "phpcs src/ --standard=PSR12 --ignore=vendor/ --report=checkstyle | cs2pr",
         "test": "phpunit --colors",
         "fix": "phpcbf src/ --standard=PSR12 --ignore=vendor/"
     },
