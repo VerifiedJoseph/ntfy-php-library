@@ -55,22 +55,4 @@ jobs:
       run: composer install --prefer-dist
 
     - name: Run phpcs
-      run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
-
-  php-cs-fixer:
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@7fdd3ece872ec7ec4c098ae5ab7637d5e0a96067 # v2.26.0
-        with:
-          php-version: '8.0'
-          coverage: none
-
-      - name: Install dependencies with composer
-        run: composer install --prefer-dist
-
-      - name: Run php-cs-fixer
-        run:  ./vendor/bin/php-cs-fixer fix --dry-run
+      run: composer lint-phpcs-action

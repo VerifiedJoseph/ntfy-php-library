@@ -4,9 +4,6 @@
 # phpunit
 /.phpunit.result.cache
 
-# php-cs-fixer
-/.php-cs-fixer.cache
-
 # Windows thumbnail cache files
 Thumbs.db
 ehthumbs.db
@@ -26,7 +23,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-# =========================
-# Operating System Files
-# =========================

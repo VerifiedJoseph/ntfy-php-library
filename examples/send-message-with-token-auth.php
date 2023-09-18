@@ -1,6 +1,7 @@
 <?php
+
 /**
- * 	Code example for sending a messages with a server that has token authentication.
+ * Code example for sending a messages with a server that has token authentication.
  */
 
 include '../vendor/autoload.php';
@@ -9,7 +10,6 @@ use Ntfy\Auth\Token;
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
-
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 
