@@ -55,7 +55,7 @@ jobs:
       run: composer install --prefer-dist
 
     - name: Run phpcs
-      run: ./vendor/bin/phpcs . --report=checkstyle | cs2pr
+      run: composer lint-phpcs-action
 
   php-cs-fixer:
     runs-on: ubuntu-22.04
