@@ -34,8 +34,10 @@
     },
     "scripts": {
         "lint": "phpstan && phpcs src/ --standard=PSR12 --ignore=vendor/",
+        "lint-phpstan": "phpstan",
+        "lint-phpcs": "phpcs src/ --standard=PSR12 --ignore=vendor/",
         "test": "phpunit --colors",
-        "fix": "php-cs-fixer fix"
+        "fix": "phpcbf src/ --standard=PSR12 --ignore=vendor/"
     },
     "config": {
         "platform": {
