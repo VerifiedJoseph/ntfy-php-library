@@ -1,6 +1,7 @@
 <?php
+
 /**
- * 	Code example for sending a messages with a server that has basic access authentication.
+ * Code example for sending a messages with a server that has basic access authentication.
  */
 
 include '../vendor/autoload.php';
@@ -9,7 +10,6 @@ use Ntfy\Auth\User;
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
-
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 

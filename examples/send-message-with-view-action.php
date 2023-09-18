@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 	Code example for sending a message with a view action button
+ * Code example for sending a message with a view action button
  */
 
 include '../vendor/autoload.php';
@@ -9,7 +9,6 @@ include '../vendor/autoload.php';
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
-
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 
