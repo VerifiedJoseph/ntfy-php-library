@@ -1,6 +1,7 @@
+FROM composer:2.6.4 AS composer
 FROM php:8.1.24-alpine3.18
 
-COPY --from=composer:2.6.4 /usr/bin/composer /usr/bin/composer
+COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 # Install packages
 RUN apk add --no-cache git
