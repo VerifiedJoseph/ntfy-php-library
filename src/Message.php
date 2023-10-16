@@ -289,7 +289,7 @@ class Message
         }
 
         if ($this->markdown === true) {
-            $data['markdown'] = 'yes';
+            $data['markdown'] = true;
         }
 
         if ($this->tags !== []) {
