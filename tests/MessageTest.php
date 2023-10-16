@@ -7,12 +7,12 @@ use Ntfy\Exception\NtfyException;
 
 class MessageTest extends TestCase
 {
-    protected static stdClass $messages;
+    protected static stdClass $messageParams;
     protected static stdClass $actionParams;
 
     public static function setUpBeforeClass(): void
     {
-        self::$messages = Json::decode(self::loadFixture('message.json'));
+        self::$messageParams = Json::decode(self::loadFixture('message.json'));
         self::$actionParams = Json::decode(self::loadFixture('action.json'));
     }
 
@@ -27,18 +27,18 @@ class MessageTest extends TestCase
         $action->enableNoteClear();
 
         $message = new Message();
-        $message->topic(self::$messages->plaintext->topic);
-        $message->title(self::$messages->plaintext->title);
-        $message->priority(self::$messages->plaintext->priority);
-        $message->body(self::$messages->plaintext->body);
-        $message->tags(self::$messages->plaintext->tags);
-        $message->schedule(self::$messages->plaintext->schedule);
-        $message->clickAction(self::$messages->plaintext->clickAction);
-        $message->email(self::$messages->plaintext->email);
-        $message->icon(self::$messages->plaintext->icon);
+        $message->topic(self::$messageParams->topic);
+        $message->title(self::$messageParams->title);
+        $message->priority(self::$messageParams->priority);
+        $message->body(self::$messageParams->body);
+        $message->tags(self::$messageParams->tags);
+        $message->schedule(self::$messageParams->schedule);
+        $message->clickAction(self::$messageParams->clickAction);
+        $message->email(self::$messageParams->email);
+        $message->icon(self::$messageParams->icon);
         $message->attachURL(
-            self::$messages->plaintext->attachmentUrl,
-            self::$messages->plaintext->attachmentName
+            self::$messageParams->attachmentUrl,
+            self::$messageParams->attachmentName
         );
         $message->action($action);
         $message->disableCaching();
@@ -62,20 +62,20 @@ class MessageTest extends TestCase
         $this->assertArrayHasKey('cache', $data);
         $this->assertArrayHasKey('firebase', $data);
 
-        $this->assertEquals(self::$messages->plaintext->topic, $data['topic']);
-        $this->assertEquals(self::$messages->plaintext->title, $data['title']);
-        $this->assertEquals(self::$messages->plaintext->priority, $data['priority']);
-        $this->assertEquals(self::$messages->plaintext->body, $data['message']);
+        $this->assertEquals(self::$messageParams->topic, $data['topic']);
+        $this->assertEquals(self::$messageParams->title, $data['title']);
+        $this->assertEquals(self::$messageParams->priority, $data['priority']);
+        $this->assertEquals(self::$messageParams->body, $data['message']);
 
         $this->assertIsArray($data['tags']);
-        $this->assertEquals(self::$messages->plaintext->tags, $data['tags']);
+        $this->assertEquals(self::$messageParams->tags, $data['tags']);
 
-        $this->assertEquals(self::$messages->plaintext->schedule, $data['delay']);
-        $this->assertEquals(self::$messages->plaintext->clickAction, $data['click']);
-        $this->assertEquals(self::$messages->plaintext->email, $data['email']);
-        $this->assertEquals(self::$messages->plaintext->icon, $data['icon']);
-        $this->assertEquals(self::$messages->plaintext->attachmentUrl, $data['attach']);
-        $this->assertEquals(self::$messages->plaintext->attachmentName, $data['filename']);
+        $this->assertEquals(self::$messageParams->schedule, $data['delay']);
+        $this->assertEquals(self::$messageParams->clickAction, $data['click']);
+        $this->assertEquals(self::$messageParams->email, $data['email']);
+        $this->assertEquals(self::$messageParams->icon, $data['icon']);
+        $this->assertEquals(self::$messageParams->attachmentUrl, $data['attach']);
+        $this->assertEquals(self::$messageParams->attachmentName, $data['filename']);
         $this->assertEquals('no', $data['cache']);
         $this->assertEquals('no', $data['firebase']);
 
@@ -93,8 +93,8 @@ class MessageTest extends TestCase
     public function testGetDataWithMarkdownMessage(): void
     {
         $message = new Message();
-        $message->topic(self::$messages->markdown->topic);
-        $message->markdownBody(self::$messages->markdown->body);
+        $message->topic(self::$messageParams->topic);
+        $message->markdownBody(self::$messageParams->bodyMarkdown);
         $data = $message->getData();
 
         $this->assertIsArray($data);
@@ -102,9 +102,9 @@ class MessageTest extends TestCase
         $this->assertArrayHasKey('message', $data);
         $this->assertArrayHasKey('markdown', $data);
 
-        $this->assertEquals(self::$messages->markdown->topic, $data['topic']);
-        $this->assertEquals(self::$messages->markdown->body, $data['message']);
-        $this->assertTrue(self::$messages->markdown->markdown);
+        $this->assertEquals(self::$messageParams->topic, $data['topic']);
+        $this->assertEquals(self::$messageParams->bodyMarkdown, $data['message']);
+        $this->assertTrue($data['markdown']);
     }
 
     /**
