@@ -4,10 +4,15 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "phpunit/phpunit"
+        update-types: ["version-update:semver-major"]
+
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+
   - package-ecosystem: "docker"
     directory: "/.devcontainer/workspace/"
     schedule:
