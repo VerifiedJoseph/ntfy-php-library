@@ -10,13 +10,13 @@ use Ntfy\Json;
 class ClientTest extends TestCase
 {
     protected static stdClass $authParams;
-    protected static stdClass $messageParams;
+    protected static stdClass $messages;
     protected static stdClass $actionParams;
 
     public static function setUpBeforeClass(): void
     {
         self::$authParams = Json::decode(self::loadFixture('auth.json'));
-        self::$messageParams = Json::decode(self::loadFixture('message.json'));
+        self::$messages = Json::decode(self::loadFixture('message.json'));
         self::$actionParams = Json::decode(self::loadFixture('action.json'));
     }
 
@@ -33,11 +33,11 @@ class ClientTest extends TestCase
         $action->enableNoteClear();
 
         $message = new Message();
-        $message->topic(self::$messageParams->topic);
-        $message->title(self::$messageParams->title);
-        $message->priority(self::$messageParams->priority);
-        $message->body(self::$messageParams->body);
-        $message->tags(self::$messageParams->tags);
+        $message->topic(self::$messages->plaintext->topic);
+        $message->title(self::$messages->plaintext->title);
+        $message->priority(self::$messages->plaintext->priority);
+        $message->body(self::$messages->plaintext->body);
+        $message->tags(self::$messages->plaintext->tags);
         $message->action($action);
 
         $client = new Client($server);
@@ -49,11 +49,11 @@ class ClientTest extends TestCase
         $this->assertObjectHasProperty('priority', $response);
         $this->assertObjectHasProperty('tags', $response);
 
-        $this->assertEquals(self::$messageParams->topic, $response->topic);
-        $this->assertEquals(self::$messageParams->title, $response->title);
-        $this->assertEquals(self::$messageParams->priority, $response->priority);
-        $this->assertEquals(self::$messageParams->body, $response->message);
-        $this->assertEquals(self::$messageParams->tags, $response->tags);
+        $this->assertEquals(self::$messages->plaintext->topic, $response->topic);
+        $this->assertEquals(self::$messages->plaintext->title, $response->title);
+        $this->assertEquals(self::$messages->plaintext->priority, $response->priority);
+        $this->assertEquals(self::$messages->plaintext->body, $response->message);
+        $this->assertEquals(self::$messages->plaintext->tags, $response->tags);
 
         $this->assertCount(1, $response->actions);
         $this->assertEquals(self::$actionParams->type, $response->actions[0]->action);
@@ -73,8 +73,8 @@ class ClientTest extends TestCase
 
         $message = new Message();
         $message->topic($topic);
-        $message->title(self::$messageParams->title);
-        $message->body(self::$messageParams->body);
+        $message->title(self::$messages->plaintext->title);
+        $message->body(self::$messages->plaintext->body);
 
         $auth = new Auth\User(
             self::$authParams->username,
@@ -89,8 +89,8 @@ class ClientTest extends TestCase
         $this->assertObjectHasProperty('message', $response);
 
         $this->assertEquals($topic, $response->topic);
-        $this->assertEquals(self::$messageParams->title, $response->title);
-        $this->assertEquals(self::$messageParams->body, $response->message);
+        $this->assertEquals(self::$messages->plaintext->title, $response->title);
+        $this->assertEquals(self::$messages->plaintext->body, $response->message);
     }
 
     /**
@@ -104,8 +104,8 @@ class ClientTest extends TestCase
 
         $message = new Message();
         $message->topic($topic);
-        $message->title(self::$messageParams->title);
-        $message->body(self::$messageParams->body);
+        $message->title(self::$messages->plaintext->title);
+        $message->body(self::$messages->plaintext->body);
 
         $auth = new Auth\Token(
             self::$authParams->token
@@ -119,7 +119,7 @@ class ClientTest extends TestCase
         $this->assertObjectHasProperty('message', $response);
 
         $this->assertEquals($topic, $response->topic);
-        $this->assertEquals(self::$messageParams->title, $response->title);
-        $this->assertEquals(self::$messageParams->body, $response->message);
+        $this->assertEquals(self::$messages->plaintext->title, $response->title);
+        $this->assertEquals(self::$messages->plaintext->body, $response->message);
     }
 }
