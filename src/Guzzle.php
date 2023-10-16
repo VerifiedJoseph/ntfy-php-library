@@ -5,13 +5,10 @@ namespace Ntfy;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use Psr\Http\Message\ResponseInterface;
-
-use Ntfy\Exception\NtfyException;
-use Ntfy\Exception\EndpointException;
-
-// Guzzle exceptions
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
 
 /**
  * Class for making HTTP requests using GuzzleHttp.

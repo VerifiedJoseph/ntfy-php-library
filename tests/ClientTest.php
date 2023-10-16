@@ -43,11 +43,11 @@ class ClientTest extends TestCase
         $client = new Client($server);
         $response = $client->send($message);
 
-        $this->assertTrue(property_exists($response, 'topic'));
-        $this->assertTrue(property_exists($response, 'title'));
-        $this->assertTrue(property_exists($response, 'message'));
-        $this->assertTrue(property_exists($response, 'priority'));
-        $this->assertTrue(property_exists($response, 'tags'));
+        $this->assertObjectHasProperty('topic', $response);
+        $this->assertObjectHasProperty('title', $response);
+        $this->assertObjectHasProperty('message', $response);
+        $this->assertObjectHasProperty('priority', $response);
+        $this->assertObjectHasProperty('tags', $response);
 
         $this->assertEquals(self::$messageParams->topic, $response->topic);
         $this->assertEquals(self::$messageParams->title, $response->title);
@@ -84,9 +84,9 @@ class ClientTest extends TestCase
         $client = new Client($server, $auth);
         $response = $client->send($message);
 
-        $this->assertTrue(property_exists($response, 'topic'));
-        $this->assertTrue(property_exists($response, 'title'));
-        $this->assertTrue(property_exists($response, 'message'));
+        $this->assertObjectHasProperty('topic', $response);
+        $this->assertObjectHasProperty('title', $response);
+        $this->assertObjectHasProperty('message', $response);
 
         $this->assertEquals($topic, $response->topic);
         $this->assertEquals(self::$messageParams->title, $response->title);
@@ -114,9 +114,9 @@ class ClientTest extends TestCase
         $client = new Client($server, $auth);
         $response = $client->send($message);
 
-        $this->assertTrue(property_exists($response, 'topic'));
-        $this->assertTrue(property_exists($response, 'title'));
-        $this->assertTrue(property_exists($response, 'message'));
+        $this->assertObjectHasProperty('topic', $response);
+        $this->assertObjectHasProperty('title', $response);
+        $this->assertObjectHasProperty('message', $response);
 
         $this->assertEquals($topic, $response->topic);
         $this->assertEquals(self::$messageParams->title, $response->title);

@@ -3,6 +3,7 @@
 	"title": "Hello World",
 	"priority": 4,
 	"body": "Hello World from PHPUnit",
+	"bodyMarkdown": "'Look ma, **bold text**, *italics*'",
 	"tags": ["hello", "world"],
 	"schedule": "30s",
 	"clickAction": "https://ntfy.sh",

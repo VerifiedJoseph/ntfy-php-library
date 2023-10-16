@@ -1,12 +1,11 @@
 <?php
 
 /**
- * Code example for sending a messages with a server that has token authentication.
+ * Code example for sending a message with a markdown formatted body
  */
 
 include '../vendor/autoload.php';
 
-use Ntfy\Auth\Token;
 use Ntfy\Client;
 use Ntfy\Server;
 use Ntfy\Message;
@@ -21,19 +20,13 @@ try {
     $message = new Message();
     $message->topic('mytopic');
     $message->title('Hello World');
-    $message->body('Hello World from ntfy.sh');
+    $message->markdownBody('**Hello World** from [ntfy.sh](https://ntfy.sh)');
     $message->priority(Message::PRIORITY_HIGH);
 
-    // Set authentication token
-    $auth = new Token('TokenString');
-
-    // New client
-    $client = new Client($server, $auth);
-
-    // Send message
+    $client = new Client($server);
     $response = $client->send($message);
 
-    // Display response from server
+    // Display sent message details
     echo 'Id: ' . $response->id . PHP_EOL;
     echo 'Time: ' . $response->time . PHP_EOL;
     echo 'Topic: ' . $response->topic . PHP_EOL;

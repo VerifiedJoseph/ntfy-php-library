@@ -3,7 +3,6 @@
 namespace Ntfy;
 
 use stdClass;
-
 use JsonException;
 use Ntfy\Exception\NtfyException;
 

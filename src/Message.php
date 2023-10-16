@@ -11,35 +11,30 @@ class Message
 {
     /**
      * Max message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_MAX = 5;
 
     /**
      * High message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_HIGH = 4;
 
     /**
      * Default message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_DEFAULT = 3;
 
     /**
      * Low message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_LOW = 2;
 
     /**
      * Min message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_MIN = 1;
@@ -86,6 +81,9 @@ class Message
     /** @var bool $firebase Firebase status for message */
     private bool $firebase = true;
 
+    /** @var bool $markdown Markdown status of the message body */
+    private bool $markdown = false;
+
     /**
      * Set message topic
      *
@@ -128,12 +126,30 @@ class Message
     }
 
     /**
-     * Set message body
+     * Set plaintext message body
+     *
+     * Use `markdownBody()` to set a markdown formatted message body
      *
      * @param string $body Message body
      */
     public function body(string $body): void
     {
+        $this->markdown = false;
+        $this->body = $body;
+    }
+
+    /**
+     * Set markdown formatted message body
+     *
+     * Use `body()` to set a plaintext message body
+     *
+     * @param string $body Message body
+     *
+     * @see https://docs.ntfy.sh/publish/#markdown-formatting
+     */
+    public function markdownBody(string $body): void
+    {
+        $this->markdown = true;
         $this->body = $body;
     }
 
@@ -265,6 +281,10 @@ class Message
 
         if ($this->body !== '') {
             $data['message'] = $this->body;
+        }
+
+        if ($this->markdown === true) {
+            $data['markdown'] = true;
         }
 
         if ($this->tags !== []) {
