@@ -86,6 +86,9 @@ class Message
     /** @var bool $firebase Firebase status for message */
     private bool $firebase = true;
 
+    /** @var bool $markdown Markdown status of the message body */
+    private bool $markdown = false;
+
     /**
      * Set message topic
      *
@@ -128,12 +131,28 @@ class Message
     }
 
     /**
-     * Set message body
+     * Set plaintext message body
      *
+     * Use `markdownBody()` to set a markdown formatted message body
+     * 
      * @param string $body Message body
+     * @param bool $markdown Markdown status for the message body
      */
     public function body(string $body): void
     {
+        $this->body = $body;
+    }
+
+    /**
+     * Set markdown formatted message body
+     * 
+     * @param string $body Message body
+     *
+     * @see https://docs.ntfy.sh/publish/#markdown-formatting
+     */
+    public function markdownBody(string $body): void
+    {
+        $this->markdown = true;
         $this->body = $body;
     }
 
@@ -265,6 +284,10 @@ class Message
 
         if ($this->body !== '') {
             $data['message'] = $this->body;
+        }
+
+        if ($this->markdown === true) {
+            $data['markdown'] = 'yes';
         }
 
         if ($this->tags !== []) {
