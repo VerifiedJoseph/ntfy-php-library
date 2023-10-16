@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Code example for sending a message
+ * Code example for sending a message with a markdown formatted body
  */
 
 include '../vendor/autoload.php';
@@ -20,7 +20,7 @@ try {
     $message = new Message();
     $message->topic('mytopic');
     $message->title('Hello World');
-    $message->body('Hello World from ntfy.sh');
+    $message->markdownBody('**Hello World** from [ntfy.sh](https://ntfy.sh)');
     $message->priority(Message::PRIORITY_HIGH);
 
     $client = new Client($server);
