@@ -129,7 +129,7 @@ class Message
      * Set plaintext message body
      *
      * Use `markdownBody()` to set a markdown formatted message body
-     * 
+     *
      * @param string $body Message body
      */
     public function body(string $body): void
