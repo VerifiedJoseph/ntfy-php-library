@@ -11,35 +11,30 @@ class Message
 {
     /**
      * Max message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_MAX = 5;
 
     /**
      * High message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_HIGH = 4;
 
     /**
      * Default message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_DEFAULT = 3;
 
     /**
      * Low message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_LOW = 2;
 
     /**
      * Min message priority
-     *
      * @see https://ntfy.sh/docs/publish/#message-priority
      */
     public const PRIORITY_MIN = 1;
@@ -136,7 +131,6 @@ class Message
      * Use `markdownBody()` to set a markdown formatted message body
      * 
      * @param string $body Message body
-     * @param bool $markdown Markdown status for the message body
      */
     public function body(string $body): void
     {
