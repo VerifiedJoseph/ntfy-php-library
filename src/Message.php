@@ -134,6 +134,7 @@ class Message
      */
     public function body(string $body): void
     {
+        $this->markdown = false;
         $this->body = $body;
     }
 
