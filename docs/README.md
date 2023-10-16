@@ -16,7 +16,7 @@
 ## Code Examples
 
 - [Send a message](../examples/send-message.php)
-- [Send a message with a markdown body](../examples/send-message.php)
+- [Send a message with a markdown body](../examples/send-message-with-markdown-body.php)
 - [Send a message with a view action button](../examples/send-message-with-view-action.php)
 - [Send a message to a server protected with user authentication](../examples/send-message-with-user-auth.php)
 - [Send a message to a server protected with token authentication](../examples/send-message-with-token-auth.php)
