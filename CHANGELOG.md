@@ -2,6 +2,10 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.4.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.4.0) - 2023-10-16
+
+- Added support for markdown messages. ([#292](https://github.com/VerifiedJoseph/ntfy-php-library/pull/292), [`ab31611`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/ab31611e467126dc994265262f8396a84dd93666))
+
 ## [4.3.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.3.0) - 2023-08-28
 
 * Action\Broadcast: Added type hints to method `extra()`. ([#268](https://github.com/VerifiedJoseph/ntfy-php-library/pull/268), [`eb00101`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/eb001010dff4ee4b310fb3f9a0b777240b60eefb))
