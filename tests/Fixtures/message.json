@@ -1,21 +1,14 @@
 {
-	"plaintext": {
-		"topic": "opentopic",
-		"title": "Hello World",
-		"priority": 4,
-		"body": "Hello World from PHPUnit",
-		"body_markdown": "'Look ma, **bold text**, *italics*'",
-		"tags": ["hello", "world"],
-		"schedule": "30s",
-		"clickAction": "https://ntfy.sh",
-		"email": "hello@example.com",
-		"icon": "https://ntfy.sh/static/img/ntfy.png",
-		"attachmentUrl": "https://example.com/index.html",
-		"attachmentName": "index.html"
-	},
-	"markdown": {
-		"topic": "opentopic",
-		"body": "Look ma, **bold text**, *italics*",
-		"markdown": true
-	}
+	"topic": "opentopic",
+	"title": "Hello World",
+	"priority": 4,
+	"body": "Hello World from PHPUnit",
+	"bodyMarkdown": "'Look ma, **bold text**, *italics*'",
+	"tags": ["hello", "world"],
+	"schedule": "30s",
+	"clickAction": "https://ntfy.sh",
+	"email": "hello@example.com",
+	"icon": "https://ntfy.sh/static/img/ntfy.png",
+	"attachmentUrl": "https://example.com/index.html",
+	"attachmentName": "index.html"
 }
