@@ -88,6 +88,26 @@ class MessageTest extends TestCase
     }
 
     /**
+     * Test setting and getting a message with a markdown body message
+     */
+    public function testGetDataWithMarkdownMessage(): void
+    {
+        $message = new Message();
+        $message->topic(self::$messageParams->topic);
+        $message->markdownBody(self::$messageParams->bodyMarkdown);
+        $data = $message->getData();
+
+        $this->assertIsArray($data);
+        $this->assertArrayHasKey('topic', $data);
+        $this->assertArrayHasKey('message', $data);
+        $this->assertArrayHasKey('markdown', $data);
+
+        $this->assertEquals(self::$messageParams->topic, $data['topic']);
+        $this->assertEquals(self::$messageParams->bodyMarkdown, $data['message']);
+        $this->assertTrue($data['markdown']);
+    }
+
+    /**
      * Test creating a message without a topic.
      *
      * An exception should be thrown by `Ntfy\Message->getData()`
