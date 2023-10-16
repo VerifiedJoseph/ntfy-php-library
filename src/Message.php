@@ -145,7 +145,9 @@ class Message
 
     /**
      * Set markdown formatted message body
-     * 
+     *
+     * Use `body()` to set a plaintext message body
+     *
      * @param string $body Message body
      *
      * @see https://docs.ntfy.sh/publish/#markdown-formatting
