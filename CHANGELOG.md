@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.5.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.5.0) - 2023-11-20
+
+- Dropped support for PHP 8.0. ([#225](https://github.com/VerifiedJoseph/ntfy-php-library/pull/225), [`76dc61f`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/76dc61f4c0e94f4a5ef7fcb1cb86324324b2bbf6))
+* Updated supported `binwiederhier/ntfy` version from 2.7.0 to 2.8.0 ([#304](https://github.com/VerifiedJoseph/ntfy-php-library/pull/304), [`4f68864`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/4f688642d2fdd934d20a9bb9b4884a0fc1585426))
+
 ## [4.4.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.4.0) - 2023-10-16
 
 - Added support for markdown messages. ([#292](https://github.com/VerifiedJoseph/ntfy-php-library/pull/292), [`ab31611`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/ab31611e467126dc994265262f8396a84dd93666))
