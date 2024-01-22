@@ -19,8 +19,9 @@ updates:
       interval: "weekly"
 
   - package-ecosystem: "docker"
-    directory: "/.devcontainer/workspace/"
+    directory: "/.devcontainer/dockerfiles/"
     schedule:
       interval: "weekly"
     ignore:
       - dependency-name: "php"
+        update-types: ["version-update:semver-minor"]
