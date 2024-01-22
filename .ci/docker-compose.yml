@@ -3,7 +3,9 @@ version: "3"
 services:
   ntfy:
     container_name: ci_ntfy
-    image: binwiederhier/ntfy:v2.8.0
+    build:
+      context: dockerfiles
+      dockerfile: ./ntfy.dockerfile
     command: serve
     volumes:
      - './ntfy/server.yml:/etc/ntfy/server.yml'
@@ -13,7 +15,9 @@ services:
 
   httpbin:
     container_name: ci_httpbin
-    image: mccutchen/go-httpbin:v2.13.0
+    build:
+      context: dockerfiles
+      dockerfile: ./httpbin.dockerfile
     command: ["go-httpbin", "-port", "80"]
     ports:
       - "127.0.0.1:8081:80"
