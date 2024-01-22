@@ -2,7 +2,8 @@ services:
   workspace:
     container_name: php_workspace
     build:
-      context: ./workspace
+      context: ./dockerfiles
+      dockerfile: ./workspace.dockerfile
     tty: true
     volumes:
       - ../:/ntfy-php-library
@@ -13,7 +14,9 @@ services:
 
   ntfy:
     container_name: ntfy
-    image: binwiederhier/ntfy:v2.8.0
+    build:
+      context: ./dockerfiles
+      dockerfile: ./ntfy.dockerfile
     command: serve
     volumes:
      - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
@@ -23,7 +26,9 @@ services:
 
   httpbin:
     container_name: httpbin
-    image: mccutchen/go-httpbin:v2.12.0
+    build:
+      context: ./dockerfiles
+      dockerfile: ./httpbin.dockerfile
     command: ["go-httpbin", "-port", "80"]
     ports:
       - "127.0.0.1:8081:80"
