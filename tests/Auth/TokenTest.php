@@ -12,7 +12,7 @@ class AuthTokenTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        $fixture = Json::decode(self::loadFixture('auth.json'));
+        $fixture = Json::decode(self::loadAsset('auth.json'));
         self::$token = $fixture->token;
 
         self::$auth = new Token(self::$token);

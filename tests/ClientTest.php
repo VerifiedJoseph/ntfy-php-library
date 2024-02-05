@@ -15,9 +15,9 @@ class ClientTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$authParams = Json::decode(self::loadFixture('auth.json'));
-        self::$messageParams = Json::decode(self::loadFixture('message.json'));
-        self::$actionParams = Json::decode(self::loadFixture('action.json'));
+        self::$authParams = Json::decode(self::loadAsset('auth.json'));
+        self::$messageParams = Json::decode(self::loadAsset('message.json'));
+        self::$actionParams = Json::decode(self::loadAsset('action.json'));
     }
 
     /**

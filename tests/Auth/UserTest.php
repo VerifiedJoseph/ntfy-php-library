@@ -13,7 +13,7 @@ class AuthUserTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        $fixture = Json::decode(self::loadFixture('auth.json'));
+        $fixture = Json::decode(self::loadAsset('auth.json'));
         self::$username = $fixture->username;
         self::$password = $fixture->password;
 
