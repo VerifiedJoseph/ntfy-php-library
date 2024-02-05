@@ -12,8 +12,8 @@ class MessageTest extends TestCase
 
     public static function setUpBeforeClass(): void
     {
-        self::$messageParams = Json::decode(self::loadFixture('message.json'));
-        self::$actionParams = Json::decode(self::loadFixture('action.json'));
+        self::$messageParams = Json::decode(self::loadAsset('message.json'));
+        self::$actionParams = Json::decode(self::loadAsset('action.json'));
     }
 
     /**

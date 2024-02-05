@@ -1,11 +1,9 @@
 <?php
 
-use PHPUnit\Framework\TestCase as BaseTestCase;
-
 /**
  * Class TestCase
  */
-abstract class TestCase extends BaseTestCase
+abstract class TestCase extends PHPUnit\Framework\TestCase
 {
     protected static string $ntfyUri = 'http://127.0.0.1:8080/';
     protected static string $httpBinUri = 'https://httpbin.org/';
@@ -39,15 +37,15 @@ abstract class TestCase extends BaseTestCase
     }
 
     /**
-     * Load fixture
+     * Load test assets
      */
-    protected static function loadFixture(string $name): string
+    protected static function loadAsset(string $name): string
     {
-        $fixturePath = __DIR__ . '/Fixtures/' . $name;
+        $fixturePath = __DIR__ . '/TestAssets/' . $name;
         $contents = file_get_contents($fixturePath);
 
         if ($contents === false) {
-            throw new RuntimeException(sprintf('Unable to load fixture: %s', $fixturePath));
+            throw new RuntimeException(sprintf('Unable to load asset: %s', $fixturePath));
         }
 
         return $contents;
