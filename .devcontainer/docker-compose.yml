@@ -7,6 +7,7 @@ services:
     tty: true
     volumes:
       - ../:/ntfy-php-library
+      - vendor:/ntfy-php-library/vendor
     working_dir: /ntfy-php-library
     environment:
       - NTFY_URI=${NTFY_URI}
@@ -32,3 +33,6 @@ services:
     command: ["go-httpbin", "-port", "80"]
     ports:
       - "127.0.0.1:8081:80"
+
+volumes:
+  vendor:
