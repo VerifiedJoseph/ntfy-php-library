@@ -5,6 +5,8 @@ use Ntfy\Guzzle;
 use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
 
 class GuzzleTest extends TestCase
 {
@@ -114,6 +116,24 @@ class GuzzleTest extends TestCase
         $this->expectException(NtfyException::class);
 
         $guzzle = new Guzzle('http://something.invalid', null);
+        $guzzle->get('/');
+    }
+
+    /**
+     * Test making a request that throws a RequestException with a JSON response
+     */
+    public function testRequestExceptionJsonResponse(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $body = json_encode(['error' => 'forbidden', 'code' => 40301, 'http' => 403]);
+
+        $mock = new MockHandler([
+            new GuzzleHttp\Psr7\Response(403, ['Content-Type' => 'application/json'], $body),
+        ]);
+
+        $handlerStack = HandlerStack::create($mock);
+        $guzzle = new Guzzle('http://example.com', null, $handlerStack);
         $guzzle->get('/');
     }
 }
