@@ -34,7 +34,7 @@ jobs:
       uses: shivammathur/setup-php@a4e22b60bbb9c1021113f2860347b0759f66fe5d # v2.30.0
       with:
         php-version: '8.1'
-        coverage: none
+        coverage: xdebug
         extensions: mbstring
     
     - name: Setup problem matchers for PHP
@@ -56,7 +56,12 @@ jobs:
       run: bash .ci/scripts/test-connections.sh
 
     - name: Run phpunit
-      run: ./vendor/bin/phpunit
+      run: ./vendor/bin/phpunit --coverage-clover=coverage.xml
 
     - name: Stop ntfy & httpbin docker docker containers
       run: docker-compose down
+
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}

@@ -4,6 +4,7 @@
 # phpunit
 .phpunit.cache/
 .phpunit.result.cache
+coverage-reports/
 
 # Windows thumbnail cache files
 Thumbs.db
