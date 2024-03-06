@@ -39,7 +39,7 @@ class Message
      */
     public const PRIORITY_MIN = 1;
 
-    /** @var array $data Message settings */
+    /** @var array<string, mixed> $data Message settings */
     private array $data = [
         'topic' => ''
     ];
