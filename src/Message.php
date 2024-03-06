@@ -39,53 +39,13 @@ class Message
      */
     public const PRIORITY_MIN = 1;
 
-    /** @var string $topic Message topic */
-    private string $topic = '';
-
-    /** @var string $title Message title */
-    private string $title = '';
-
-    /** @var string|int $priority Message priority */
-    private string|int $priority = 3;
-
-    /** @var string $body Message body */
-    private string $body = '';
-
-    /** @var array<int,string|int> $tags Message tags */
-    private array $tags = [];
-
-    /** @var string $delay Timestamp or duration of the delay */
-    private string $delay = '';
-
-    /** @var string $click Click action URL */
-    private string $click = '';
-
-    /** @var string $email Email address for e-mail notifications */
-    private string $email = '';
-
-    /** @var string $icon URL of the message notification icon */
-    private string $icon = '';
-
-    /** @var string $attachFilename Name of file attachment */
-    private string $attachFilename = '';
-
-    /** @var string $attachUrl Remote URL of file attachment */
-    private string $attachUrl = '';
-
-    /** @var array<int, array<string, mixed>> $actions Action button configs */
-    private array $actions = [];
-
-    /** @var bool $cache Cache status for message */
-    private bool $cache = true;
-
-    /** @var bool $firebase Firebase status for message */
-    private bool $firebase = true;
-
-    /** @var bool $markdown Markdown status of the message body */
-    private bool $markdown = false;
+    /** @var array $data Message settings */
+    private array $data = [
+        'topic' => ''
+    ];
 
     /**
-     * Set message topic
+     * Set message topic (required)
      *
      * @param string $topic Message topic
      *
@@ -93,17 +53,17 @@ class Message
      */
     public function topic(string $topic): void
     {
-        $this->topic = $topic;
+        $this->data['topic'] = $topic;
     }
 
     /**
-     * Set message title (optional)
+     * Set message title
      *
      * @param string $title Message title
      */
     public function title(string $title): void
     {
-        $this->title = $title;
+        $this->data['title'] = $title;
     }
 
     /**
@@ -122,7 +82,7 @@ class Message
      */
     public function priority(int $priority): void
     {
-        $this->priority = $priority;
+        $this->data['priority'] = $priority;
     }
 
     /**
@@ -134,8 +94,8 @@ class Message
      */
     public function body(string $body): void
     {
-        $this->markdown = false;
-        $this->body = $body;
+        $this->data['message'] = $body;
+        $this->data['markdown'] = false;
     }
 
     /**
@@ -149,8 +109,8 @@ class Message
      */
     public function markdownBody(string $body): void
     {
-        $this->markdown = true;
-        $this->body = $body;
+        $this->data['message'] = $body;
+        $this->data['markdown'] = true;
     }
 
     /**
@@ -162,7 +122,7 @@ class Message
      */
     public function tags(array $tags): void
     {
-        $this->tags = $tags;
+        $this->data['tags'] = $tags;
     }
 
     /**
@@ -174,7 +134,7 @@ class Message
      */
     public function schedule(string $delay): void
     {
-        $this->delay = $delay;
+        $this->data['delay'] = $delay;
     }
 
     /**
@@ -186,7 +146,7 @@ class Message
      */
     public function clickAction(string $url): void
     {
-        $this->click = $url;
+        $this->data['click'] = $url;
     }
 
     /**
@@ -198,7 +158,7 @@ class Message
      */
     public function email(string $email): void
     {
-        $this->email = $email;
+        $this->data['email'] = $email;
     }
 
     /**
@@ -210,7 +170,7 @@ class Message
      */
     public function icon(string $url): void
     {
-        $this->icon = $url;
+        $this->data['icon'] = $url;
     }
 
     /**
@@ -224,8 +184,8 @@ class Message
      */
     public function attachURL(string $url, string $name = ''): void
     {
-        $this->attachUrl = $url;
-        $this->attachFilename = $name;
+        $this->data['attach'] = $url;
+        $this->data['filename'] = $name;
     }
 
     /**
@@ -237,7 +197,7 @@ class Message
      */
     public function action(Action $action): void
     {
-        $this->actions[] = $action->get();
+        $this->data['actions'][] = $action->get();
     }
 
     /**
@@ -247,7 +207,7 @@ class Message
      */
     public function disableCaching(): void
     {
-        $this->cache = false;
+        $this->data['cache'] = 'no';
     }
 
     /**
@@ -257,7 +217,7 @@ class Message
      */
     public function disableFirebase(): void
     {
-        $this->firebase = false;
+        $this->data['firebase'] = 'no';
     }
 
     /**
@@ -268,69 +228,10 @@ class Message
      */
     public function getData(): array
     {
-        if ($this->topic === '') {
+        if ($this->data['topic'] === '') {
             throw new NtfyException('Message topic must be given');
         }
 
-        $data = [];
-        $data['topic'] = $this->topic;
-
-        if ($this->title !== '') {
-            $data['title'] = $this->title;
-        }
-
-        if ($this->body !== '') {
-            $data['message'] = $this->body;
-        }
-
-        if ($this->markdown === true) {
-            $data['markdown'] = true;
-        }
-
-        if ($this->tags !== []) {
-            $data['tags'] = $this->tags;
-        }
-
-        if ($this->priority !== '') {
-            $data['priority'] = $this->priority;
-        }
-
-        if ($this->actions !== []) {
-            $data['actions'] = $this->actions;
-        }
-
-        if ($this->click !== '') {
-            $data['click'] = $this->click;
-        }
-
-        if ($this->attachUrl !== '') {
-            $data['attach'] = $this->attachUrl;
-        }
-
-        if ($this->attachFilename !== '') {
-            $data['filename'] = $this->attachFilename;
-        }
-
-        if ($this->delay !== '') {
-            $data['delay'] = $this->delay;
-        }
-
-        if ($this->email !== '') {
-            $data['email'] = $this->email;
-        }
-
-        if ($this->icon !== '') {
-            $data['icon'] = $this->icon;
-        }
-
-        if ($this->cache === false) {
-            $data['cache'] = 'no';
-        }
-
-        if ($this->firebase === false) {
-            $data['firebase'] = 'no';
-        }
-
-        return $data;
+        return $this->data;
     }
 }
