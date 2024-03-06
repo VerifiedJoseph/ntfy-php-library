@@ -14,7 +14,7 @@ use Ntfy\Exception\EndpointException;
 /**
  * Class for making HTTP requests using GuzzleHttp.
  */
-final class Guzzle
+class Guzzle
 {
     private Client $client;
 
@@ -82,7 +82,7 @@ final class Guzzle
      * @throws NtfyException if a connection cannot be established
      * @throws EndpointException if the server returned an error
      */
-    private function request(string $method, string $endpoint, array $options = []): ResponseInterface
+    protected function request(string $method, string $endpoint, array $options = []): ResponseInterface
     {
         try {
             if (in_array($method, $this->requestMethods) === false) {
