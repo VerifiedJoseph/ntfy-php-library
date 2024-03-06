@@ -4,6 +4,7 @@ namespace Ntfy;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
@@ -27,10 +28,11 @@ final class Guzzle
      *
      * @param string $uri Server URI
      * @param ?Auth $auth Authentication class instance
+     * @param ?HandlerStack $handlerStack Guzzle handler stack
      */
-    public function __construct(string $uri, ?Auth $auth)
+    public function __construct(string $uri, ?Auth $auth, ?HandlerStack $handlerStack = null)
     {
-        $config = $this->getConfig($uri, $auth);
+        $config = $this->getConfig($uri, $auth, $handlerStack);
         $this->client = new Client($config);
     }
 
@@ -115,9 +117,10 @@ final class Guzzle
      *
      * @param string $uri Server URI
      * @param ?Auth $auth Authentication class instance
+    *  @param ?HandlerStack $handlerStack Guzzle handler stack
      * @return array<string, mixed> Returns client config array
      */
-    private function getConfig(string $uri, ?Auth $auth): array
+    private function getConfig(string $uri, ?Auth $auth, ?HandlerStack $handlerStack): array
     {
         $config = [
             'base_uri' => $uri,
@@ -125,6 +128,10 @@ final class Guzzle
             'timeout' => $this->timeout,
             'allow_redirects' => false,
         ];
+
+        if ($handlerStack !== null) {
+            $config['handler'] = $handlerStack;
+        }
 
         $config = array_merge(
             $config,
