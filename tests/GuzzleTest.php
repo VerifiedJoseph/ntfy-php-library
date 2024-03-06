@@ -3,6 +3,8 @@
 use Ntfy\Auth;
 use Ntfy\Guzzle;
 use Ntfy\Json;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
 
 class GuzzleTest extends TestCase
 {
@@ -91,5 +93,27 @@ class GuzzleTest extends TestCase
 
         $this->assertEquals(true, $body->authenticated);
         $this->assertEquals($auth->getToken(), $body->token);
+    }
+
+    /**
+     * Test making a request that throws a RequestException
+     */
+    public function testRequestException(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $guzzle = new Guzzle(self::getHttpBinUri(), null);
+        $guzzle->get('/status/404');
+    }
+
+    /**
+     * Test making a request that throws a ConnectException
+     */
+    public function testConnectException(): void
+    {
+        $this->expectException(NtfyException::class);
+
+        $guzzle = new Guzzle('http://something.invalid', null);
+        $guzzle->get('/');
     }
 }
