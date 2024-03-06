@@ -3,6 +3,11 @@
 use Ntfy\Auth;
 use Ntfy\Guzzle;
 use Ntfy\Json;
+use Ntfy\Exception\NtfyException;
+use Ntfy\Exception\EndpointException;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
+use Psr\Http\Message\ResponseInterface;
 
 class GuzzleTest extends TestCase
 {
@@ -91,5 +96,63 @@ class GuzzleTest extends TestCase
 
         $this->assertEquals(true, $body->authenticated);
         $this->assertEquals($auth->getToken(), $body->token);
+    }
+
+    /**
+     * Test making a request that throws a RequestException
+     */
+    public function testRequestException(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $guzzle = new Guzzle(self::getHttpBinUri(), null);
+        $guzzle->get('/status/404');
+    }
+
+    /**
+     * Test making a request that throws a ConnectException
+     */
+    public function testConnectException(): void
+    {
+        $this->expectException(NtfyException::class);
+
+        $guzzle = new Guzzle('http://something.invalid', null);
+        $guzzle->get('/');
+    }
+
+    /**
+     * Test making a request that throws a RequestException with a JSON response
+     */
+    public function testRequestExceptionJsonResponse(): void
+    {
+        $this->expectException(EndpointException::class);
+
+        $body = (string) json_encode(['error' => 'forbidden', 'code' => 40301, 'http' => 403]);
+
+        $mock = new MockHandler([
+            new GuzzleHttp\Psr7\Response(403, ['Content-Type' => 'application/json'], $body),
+        ]);
+
+        $handlerStack = HandlerStack::create($mock);
+        $guzzle = new Guzzle('http://example.com', null, $handlerStack);
+        $guzzle->get('/');
+    }
+
+    /**
+     * Test making a request with an unsupported request method
+     */
+    public function testUnsupportedRequestMethod(): void
+    {
+        $this->expectException(NtfyException::class);
+        $this->expectExceptionMessage('Request method must be GET or POST');
+
+        $guzzle = new class (self::getHttpBinUri(), null) extends Guzzle {
+            public function put(string $endpoint): ResponseInterface
+            {
+                return $this->request('PUT', $endpoint);
+            }
+        };
+
+        $guzzle->put('/put');
     }
 }

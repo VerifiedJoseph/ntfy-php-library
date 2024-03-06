@@ -4,6 +4,7 @@ namespace Ntfy;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\ConnectException;
 use GuzzleHttp\Exception\RequestException;
@@ -13,7 +14,7 @@ use Ntfy\Exception\EndpointException;
 /**
  * Class for making HTTP requests using GuzzleHttp.
  */
-final class Guzzle
+class Guzzle
 {
     private Client $client;
 
@@ -27,10 +28,11 @@ final class Guzzle
      *
      * @param string $uri Server URI
      * @param ?Auth $auth Authentication class instance
+     * @param ?HandlerStack $handlerStack Guzzle handler stack
      */
-    public function __construct(string $uri, ?Auth $auth)
+    public function __construct(string $uri, ?Auth $auth, ?HandlerStack $handlerStack = null)
     {
-        $config = $this->getConfig($uri, $auth);
+        $config = $this->getConfig($uri, $auth, $handlerStack);
         $this->client = new Client($config);
     }
 
@@ -80,7 +82,7 @@ final class Guzzle
      * @throws NtfyException if a connection cannot be established
      * @throws EndpointException if the server returned an error
      */
-    private function request(string $method, string $endpoint, array $options = []): ResponseInterface
+    protected function request(string $method, string $endpoint, array $options = []): ResponseInterface
     {
         try {
             if (in_array($method, $this->requestMethods) === false) {
@@ -91,16 +93,17 @@ final class Guzzle
         } catch (ConnectException $err) {
             throw new NtfyException($err->getMessage());
         } catch (RequestException $err) {
-            if ($err->hasResponse() === false) {
-                throw new EndpointException($err->getMessage(), 0);
-            }
-
             $response = $err->getResponse();
             $contentType = $response->getHeaderLine('Content-Type');
 
             if ($contentType === 'application/json') {
                 $json = Json::decode($response->getBody());
-                $message = $json->error . ' (code: ' . $json->code . ')';
+                $message = sprintf(
+                    '%s (error code: %s, http status: %s)',
+                    $json->error,
+                    $json->code,
+                    $json->http
+                );
 
                 throw new EndpointException($message, $json->http);
             }
@@ -119,9 +122,10 @@ final class Guzzle
      *
      * @param string $uri Server URI
      * @param ?Auth $auth Authentication class instance
+    *  @param ?HandlerStack $handlerStack Guzzle handler stack
      * @return array<string, mixed> Returns client config array
      */
-    private function getConfig(string $uri, ?Auth $auth): array
+    private function getConfig(string $uri, ?Auth $auth, ?HandlerStack $handlerStack): array
     {
         $config = [
             'base_uri' => $uri,
@@ -129,6 +133,10 @@ final class Guzzle
             'timeout' => $this->timeout,
             'allow_redirects' => false,
         ];
+
+        if ($handlerStack !== null) {
+            $config['handler'] = $handlerStack;
+        }
 
         $config = array_merge(
             $config,
