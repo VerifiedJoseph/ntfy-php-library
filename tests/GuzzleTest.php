@@ -7,6 +7,7 @@ use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
+use Psr\Http\Message\ResponseInterface;
 
 class GuzzleTest extends TestCase
 {
@@ -135,5 +136,23 @@ class GuzzleTest extends TestCase
         $handlerStack = HandlerStack::create($mock);
         $guzzle = new Guzzle('http://example.com', null, $handlerStack);
         $guzzle->get('/');
+    }
+
+    /**
+     * Test making a request with an unsupported request method
+     */
+    public function testUnsupportedRequestMethod(): void
+    {
+        $this->expectException(NtfyException::class);
+        $this->expectExceptionMessage('Request method must be GET or POST');
+
+        $guzzle = new class (self::getHttpBinUri(), null) extends Guzzle {
+            public function put(string $endpoint): ResponseInterface
+            {
+                return $this->request('PUT', $endpoint);
+            }
+        };
+
+        $guzzle->put('/put');
     }
 }
