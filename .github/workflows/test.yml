@@ -56,7 +56,7 @@ jobs:
       run: bash .ci/scripts/test-connections.sh
 
     - name: Run phpunit
-      run: vendor/bin/phpunit --coverage-clover=coverage.xml
+      run: ./vendor/bin/phpunit --coverage-clover=coverage.xml
 
     - name: Stop ntfy & httpbin docker docker containers
       run: docker-compose down
