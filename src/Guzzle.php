@@ -91,10 +91,6 @@ final class Guzzle
         } catch (ConnectException $err) {
             throw new NtfyException($err->getMessage());
         } catch (RequestException $err) {
-            if ($err->hasResponse() === false) {
-                throw new EndpointException($err->getMessage(), 0);
-            }
-
             $response = $err->getResponse();
             $contentType = $response->getHeaderLine('Content-Type');
 
