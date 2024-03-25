@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.5.2](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.5.2) - 2024-03-25
+
+* Refactored `Message` class ([#341](https://github.com/VerifiedJoseph/ntfy-php-library/pull/341), [`6d02ac5`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/6d02ac5e0cb27164346f379aa800b0c17c8d46c2))
+* Updated supported `binwiederhier/ntfy` version from 2.8.0 to 2.9.0 ([#346](https://github.com/VerifiedJoseph/ntfy-php-library/pull/346), [`e62a361`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/e62a36132cc326e3b3fd414a7e3a3049366934fa), [#345](https://github.com/VerifiedJoseph/ntfy-php-library/pull/345), [`915d0dd`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/915d0dd235499149be5317675e3be53473edf869))
+
 ## [4.5.1](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.5.1) - 2023-12-04
 
 - Updated `guzzlehttp/guzzle` from 7.8.0 to 7.8.1 ([#309](https://github.com/VerifiedJoseph/ntfy-php-library/pull/309), [`606dde1`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/606dde1016655e247e1a0017849312b610f41350))
