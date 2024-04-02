@@ -16,6 +16,7 @@ use Ntfy\Json;
 #[UsesClass(Json::class)]
 #[UsesClass(Action::class)]
 #[UsesClass(Ntfy\Guzzle::class)]
+#[UsesClass(Ntfy\Auth\User::class)]
 #[UsesClass(Ntfy\Auth\Token::class)]
 #[UsesClass(Ntfy\Action\View::class)]
 class ClientTest extends TestCase
