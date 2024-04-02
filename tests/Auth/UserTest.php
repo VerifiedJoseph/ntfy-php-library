@@ -1,12 +1,15 @@
 <?php
 
-use Ntfy\Json;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Auth\User;
+use Ntfy\Json;
 
-class AuthUserTest extends TestCase
+#[CoversClass(User::class)]
+#[CoversClass(Ntfy\Auth::class)]
+#[UsesClass(Json::class)]
+class UserTest extends TestCase
 {
-    protected static User $auth;
-
     protected static string $method = 'user';
     protected static string $username;
     protected static string $password;
@@ -16,8 +19,6 @@ class AuthUserTest extends TestCase
         $fixture = Json::decode(self::loadAsset('auth.json'));
         self::$username = $fixture->username;
         self::$password = $fixture->password;
-
-        self::$auth = new User(self::$username, self::$password);
     }
 
     /**
@@ -25,7 +26,8 @@ class AuthUserTest extends TestCase
      */
     public function testGetMethod(): void
     {
-        $this->assertEquals(self::$method, self::$auth->getMethod());
+        $auth = new User(self::$username, self::$password);
+        $this->assertEquals(self::$method, $auth->getMethod());
     }
 
     /**
@@ -33,7 +35,8 @@ class AuthUserTest extends TestCase
      */
     public function testGetUsername(): void
     {
-        $this->assertEquals(self::$username, self::$auth->getUsername());
+        $auth = new User(self::$username, self::$password);
+        $this->assertEquals(self::$username, $auth->getUsername());
     }
 
     /**
@@ -41,6 +44,7 @@ class AuthUserTest extends TestCase
      */
     public function testGetPassword(): void
     {
-        $this->assertEquals(self::$password, self::$auth->getPassword());
+        $auth = new User(self::$username, self::$password);
+        $this->assertEquals(self::$password, $auth->getPassword());
     }
 }
