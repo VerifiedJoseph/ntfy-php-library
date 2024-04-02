@@ -1,12 +1,15 @@
 <?php
 
-use Ntfy\Json;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Auth\Token;
+use Ntfy\Json;
 
-class AuthTokenTest extends TestCase
+#[CoversClass(Token::class)]
+#[CoversClass(Ntfy\Auth::class)]
+#[UsesClass(Json::class)]
+class TokenTest extends TestCase
 {
-    protected static Token $auth;
-
     protected static string $method = 'token';
     protected static string $token;
 
@@ -14,8 +17,6 @@ class AuthTokenTest extends TestCase
     {
         $fixture = Json::decode(self::loadAsset('auth.json'));
         self::$token = $fixture->token;
-
-        self::$auth = new Token(self::$token);
     }
 
     /**
@@ -23,7 +24,8 @@ class AuthTokenTest extends TestCase
      */
     public function testGetMethod(): void
     {
-        $this->assertEquals(self::$method, self::$auth->getMethod());
+        $auth = new Token(self::$token);
+        $this->assertEquals(self::$method, $auth->getMethod());
     }
 
     /**
@@ -31,6 +33,7 @@ class AuthTokenTest extends TestCase
      */
     public function testGetToken(): void
     {
-        $this->assertEquals(self::$token, self::$auth->getToken());
+        $auth = new Token(self::$token);
+        $this->assertEquals(self::$token, $auth->getToken());
     }
 }
