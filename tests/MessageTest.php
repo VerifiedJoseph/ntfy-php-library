@@ -1,10 +1,17 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Message;
 use Ntfy\Action;
 use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 
+#[CoversClass(Message::class)]
+#[UsesClass(Action::class)]
+#[UsesClass(Json::class)]
+#[UsesClass(Action\View::class)]
+#[UsesClass(NtfyException::class)]
 class MessageTest extends TestCase
 {
     protected static stdClass $messageParams;
