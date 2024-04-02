@@ -2,7 +2,6 @@
 
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
-
 use Ntfy\Action\Broadcast;
 
 #[CoversClass(Broadcast::class)]
