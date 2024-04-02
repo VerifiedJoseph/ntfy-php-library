@@ -19,7 +19,7 @@ class ViewTest extends TestCase
             'clear' => true,
         ];
 
-        $action = new Ntfy\Action\View();
+        $action = new View();
         $action->label($config['label']);
         $action->url($config['url']);
         $action->enableNoteClear();
