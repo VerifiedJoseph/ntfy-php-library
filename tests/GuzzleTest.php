@@ -1,7 +1,9 @@
 <?php
 
-use Ntfy\Auth;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Guzzle;
+use Ntfy\Auth;
 use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
@@ -9,6 +11,11 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 
+#[CoversClass(Guzzle::class)]
+#[UsesClass(Auth::class)]
+#[UsesClass(Json::class)]
+#[UsesClass(Ntfy\Auth\User::class)]
+#[UsesClass(Ntfy\Auth\Token::class)]
 class GuzzleTest extends TestCase
 {
     private static Guzzle $guzzle;
