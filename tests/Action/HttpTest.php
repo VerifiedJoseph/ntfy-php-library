@@ -26,7 +26,7 @@ class HttpTest extends TestCase
             'clear' => true,
         ];
 
-        $action = new Ntfy\Action\Http();
+        $action = new Http();
         $action->label($config['label']);
         $action->url($config['url']);
         $action->method($config['method']);
@@ -39,5 +39,5 @@ class HttpTest extends TestCase
         $action->enableNoteClear();
 
         $this->assertEquals($config, $action->get());
-	}
+    }
 }
