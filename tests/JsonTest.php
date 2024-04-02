@@ -1,8 +1,12 @@
 <?php
 
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 
+#[CoversClass(Json::class)]
+#[UsesClass(NtfyException::class)]
 class JsonTest extends TestCase
 {
     public function testEncodeValid(): void
