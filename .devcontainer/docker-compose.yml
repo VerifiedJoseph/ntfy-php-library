@@ -12,6 +12,7 @@ services:
     environment:
       - NTFY_URI=${NTFY_URI}
       - HTTPBIN_URI=${HTTPBIN_URI}
+      - XDEBUG_MODE=coverage
 
   ntfy:
     container_name: ntfy

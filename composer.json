@@ -36,7 +36,7 @@
         "lint-phpstan": "phpstan",
         "lint-phpcs": "phpcs . ",
         "lint-phpcs-action": "phpcs . --report=checkstyle | cs2pr",
-        "test": "phpunit --colors",
+        "test": "phpunit --colors --coverage-html coverage-reports",
         "fix": "phpcbf ."
     },
     "config": {
