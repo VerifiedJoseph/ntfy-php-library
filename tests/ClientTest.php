@@ -13,12 +13,12 @@ use Ntfy\Json;
 #[UsesClass(Server::class)]
 #[UsesClass(Message::class)]
 #[UsesClass(Json::class)]
-#[UsesClass(Action::class)]
 #[UsesClass(Ntfy\Guzzle::class)]
 #[UsesClass(Ntfy\Auth\User::class)]
 #[UsesClass(Ntfy\Auth\Token::class)]
 #[UsesClass(Ntfy\Auth\AbstractAuth::class)]
 #[UsesClass(Ntfy\Action\View::class)]
+#[UsesClass(Ntfy\Action\AbstractAction::class)]
 class ClientTest extends TestCase
 {
     protected static stdClass $authParams;

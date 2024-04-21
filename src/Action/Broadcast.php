@@ -2,14 +2,12 @@
 
 namespace Ntfy\Action;
 
-use Ntfy\Action;
-
 /**
  * Class for creating an android broadcast button action
  *
  * @see https://ntfy.sh/docs/publish/#send-android-broadcast
  */
-class Broadcast extends Action
+class Broadcast extends AbstractAction
 {
     /** {@inheritDoc} */
     protected string $type = 'broadcast';

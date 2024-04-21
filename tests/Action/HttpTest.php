@@ -5,7 +5,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Action\Http;
 
 #[CoversClass(Http::class)]
-#[UsesClass(Ntfy\Action::class)]
+#[UsesClass(Ntfy\Action\AbstractAction::class)]
 class HttpTest extends TestCase
 {
     /**

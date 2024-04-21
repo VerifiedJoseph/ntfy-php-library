@@ -1,13 +1,13 @@
 <?php
 
-namespace Ntfy;
+namespace Ntfy\Action;
 
 /**
  * Base class for button actions
  *
  * @see https://ntfy.sh/docs/publish/#action-buttons
  */
-abstract class Action
+abstract class AbstractAction
 {
     /** @var string $type Button action type */
     protected string $type = '';

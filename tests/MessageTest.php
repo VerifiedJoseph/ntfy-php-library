@@ -8,9 +8,9 @@ use Ntfy\Json;
 use Ntfy\Exception\NtfyException;
 
 #[CoversClass(Message::class)]
-#[UsesClass(Action::class)]
 #[UsesClass(Json::class)]
 #[UsesClass(Action\View::class)]
+#[UsesClass(Action\AbstractAction::class)]
 #[UsesClass(NtfyException::class)]
 class MessageTest extends TestCase
 {

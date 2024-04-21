@@ -2,14 +2,12 @@
 
 namespace Ntfy\Action;
 
-use Ntfy\Action;
-
 /**
  * Class for creating a http button action
  *
  * @see https://ntfy.sh/docs/publish/#open-websiteapp
  */
-class Http extends Action
+class Http extends AbstractAction
 {
     /** {@inheritDoc} */
     protected string $type = 'http';
