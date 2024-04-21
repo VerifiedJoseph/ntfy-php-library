@@ -5,7 +5,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Action\Broadcast;
 
 #[CoversClass(Broadcast::class)]
-#[UsesClass(Ntfy\Action::class)]
+#[UsesClass(Ntfy\Action\AbstractAction::class)]
 class BroadcastTest extends TestCase
 {
     /**

@@ -2,12 +2,10 @@
 
 namespace Ntfy\Auth;
 
-use Ntfy\Auth;
-
 /**
  * Class for setting access token authentication
  */
-class Token extends Auth
+class Token extends AbstractAuth
 {
     /** @var string $method Authentication method */
     protected string $method = 'token';

@@ -2,6 +2,7 @@
 
 namespace Ntfy;
 
+use Ntfy\Auth\AbstractAuth;
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
 use GuzzleHttp\HandlerStack;
@@ -27,10 +28,10 @@ class Guzzle
     /**
      *
      * @param string $uri Server URI
-     * @param ?Auth $auth Authentication class instance
+     * @param ?AbstractAuth $auth Authentication class instance
      * @param ?HandlerStack $handlerStack Guzzle handler stack
      */
-    public function __construct(string $uri, ?Auth $auth, ?HandlerStack $handlerStack = null)
+    public function __construct(string $uri, ?AbstractAuth $auth, ?HandlerStack $handlerStack = null)
     {
         $config = $this->getConfig($uri, $auth, $handlerStack);
         $this->client = new Client($config);
@@ -121,11 +122,11 @@ class Guzzle
      * Get GuzzleHttp client config
      *
      * @param string $uri Server URI
-     * @param ?Auth $auth Authentication class instance
+     * @param ?AbstractAuth $auth Authentication class instance
     *  @param ?HandlerStack $handlerStack Guzzle handler stack
      * @return array<string, mixed> Returns client config array
      */
-    private function getConfig(string $uri, ?Auth $auth, ?HandlerStack $handlerStack): array
+    private function getConfig(string $uri, ?AbstractAuth $auth, ?HandlerStack $handlerStack): array
     {
         $config = [
             'base_uri' => $uri,
@@ -149,10 +150,10 @@ class Guzzle
     /**
      * Get authentication config
      *
-     * @param ?Auth $auth Authentication class instance
+     * @param ?AbstractAuth $auth Authentication class instance
      * @return array<string, array<int|string, string>>
      */
-    private function getAuthConfig(?Auth $auth): array
+    private function getAuthConfig(?AbstractAuth $auth): array
     {
         $config = [];
 

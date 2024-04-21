@@ -2,12 +2,10 @@
 
 namespace Ntfy\Auth;
 
-use Ntfy\Auth;
-
 /**
  * Class for setting username and password authentication
  */
-class User extends Auth
+class User extends AbstractAuth
 {
     /** @var string $method Authentication method */
     protected string $method = 'user';

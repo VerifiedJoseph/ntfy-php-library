@@ -2,14 +2,12 @@
 
 namespace Ntfy\Action;
 
-use Ntfy\Action;
-
 /**
  * Class for creating a view button action
  *
  * @see https://ntfy.sh/docs/publish/#open-websiteapp
  */
-class View extends Action
+class View extends AbstractAction
 {
     /** {@inheritDoc} */
     protected string $type = 'view';

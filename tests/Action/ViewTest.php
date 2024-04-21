@@ -4,7 +4,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use Ntfy\Action\View;
 
 #[CoversClass(View::class)]
-#[CoversClass(Ntfy\Action::class)]
+#[CoversClass(Ntfy\Action\AbstractAction::class)]
 class ViewTest extends TestCase
 {
     /**

@@ -2,6 +2,9 @@
 
 namespace Ntfy;
 
+use Ntfy\Action\Broadcast;
+use Ntfy\Action\Http;
+use Ntfy\Action\View;
 use Ntfy\Exception\NtfyException;
 
 /**
@@ -191,11 +194,11 @@ class Message
     /**
      * Set an action button
      *
-     * @param Action $action Action class instance
+     * @param Broadcast|Http|View $action Action class instance
      *
      * @see https://ntfy.sh/docs/publish/#action-buttons
      */
-    public function action(Action $action): void
+    public function action(Broadcast|Http|View $action): void
     {
         $this->data['actions'][] = $action->get();
     }

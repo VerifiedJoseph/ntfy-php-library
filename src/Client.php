@@ -3,6 +3,7 @@
 namespace Ntfy;
 
 use stdClass;
+use Ntfy\Auth\AbstractAuth;
 use Ntfy\Exception\NtfyException;
 
 class Client
@@ -12,9 +13,9 @@ class Client
 
     /**
      * @param Server $server Server URI
-     * @param ?Auth $auth Authentication class instance
+     * @param ?AbstractAuth $auth Authentication class instance
      */
-    public function __construct(Server $server, ?Auth $auth = null)
+    public function __construct(Server $server, ?AbstractAuth $auth = null)
     {
         $this->guzzle = new Guzzle(
             $server->get(),
