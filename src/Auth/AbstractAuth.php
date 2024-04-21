@@ -1,8 +1,8 @@
 <?php
 
-namespace Ntfy;
+namespace Ntfy\Auth;
 
-abstract class Auth
+abstract class AbstractAuth
 {
     /** @var string $method Authentication method */
     protected string $method;

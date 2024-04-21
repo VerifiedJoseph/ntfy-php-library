@@ -6,7 +6,7 @@ use Ntfy\Auth\User;
 use Ntfy\Json;
 
 #[CoversClass(User::class)]
-#[CoversClass(Ntfy\Auth::class)]
+#[CoversClass(Ntfy\Auth\AbstractAuth::class)]
 #[UsesClass(Json::class)]
 class UserTest extends TestCase
 {

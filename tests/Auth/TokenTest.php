@@ -6,7 +6,7 @@ use Ntfy\Auth\Token;
 use Ntfy\Json;
 
 #[CoversClass(Token::class)]
-#[CoversClass(Ntfy\Auth::class)]
+#[CoversClass(Ntfy\Auth\AbstractAuth::class)]
 #[UsesClass(Json::class)]
 class TokenTest extends TestCase
 {

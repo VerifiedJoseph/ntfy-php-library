@@ -12,10 +12,10 @@ use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 
 #[CoversClass(Guzzle::class)]
-#[UsesClass(Auth::class)]
 #[UsesClass(Json::class)]
 #[UsesClass(Ntfy\Auth\User::class)]
 #[UsesClass(Ntfy\Auth\Token::class)]
+#[UsesClass(Ntfy\Auth\AbstractAuth::class)]
 class GuzzleTest extends TestCase
 {
     private static Guzzle $guzzle;
