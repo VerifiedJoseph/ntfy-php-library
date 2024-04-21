@@ -3,7 +3,7 @@
 Class for sending requests to a Ntfy server.
 
 ```PHP
-Ntfy\Client(Server $server, ?Auth $auth = null)
+Ntfy\Client(Server $server, ?AbstractAuth $auth = null)
 ```
 
 ### Examples
