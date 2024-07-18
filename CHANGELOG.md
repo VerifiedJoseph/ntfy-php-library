@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented in this file.
 
+## [4.6.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.6.0) - 2024-03-25
+
+- Updated `guzzlehttp/guzzle` from 7.8.1 to 7.9.0 ([#390](https://github.com/VerifiedJoseph/ntfy-php-library/pull/390), [`bf44cbd`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/bf44cbd1b0616f5ef4c2191146a05c751e323ab9))
+- Updated supported `binwiederhier/ntfy` version from 2.10.0 to 2.11.0 ([#377](https://github.com/VerifiedJoseph/ntfy-php-library/pull/377), [`043db4f`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/043db4f5cc1c3b647933eeedc2fffdc837ca75bd))
+- Renamed and move abstract classes. ([#367](https://github.com/VerifiedJoseph/ntfy-php-library/pull/367), [`3e37deb`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/3e37debe276831c826d8de5afaf238a404dd6026))
+- Changed auth parameter in Client construct to use union types. ([#392](https://github.com/VerifiedJoseph/ntfy-php-library/pull/392), [`81cfc7d`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/81cfc7db1f5d0bbc82cd71966a9ee8dc219886d9))
+
 ## [4.5.2](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.5.2) - 2024-03-25
 
 * Refactored `Message` class ([#341](https://github.com/VerifiedJoseph/ntfy-php-library/pull/341), [`6d02ac5`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/6d02ac5e0cb27164346f379aa800b0c17c8d46c2))
