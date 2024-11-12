@@ -37,7 +37,6 @@ class GuzzleTest extends TestCase
         $response = self::$guzzle->get('get', $query);
         $body = Json::decode($response->getBody());
 
-        $this->assertIsObject($body);
         $this->assertObjectHasProperty('args', $body);
         $this->assertObjectHasProperty('test', $body->args);
         $this->assertEquals('HelloWorld', $body->args->test[0]);
@@ -58,7 +57,6 @@ class GuzzleTest extends TestCase
         $response = self::$guzzle->post('post', $data, $headers);
         $body = Json::decode($response->getBody());
 
-        $this->assertIsObject($body);
         $this->assertObjectHasProperty('data', $body);
         $this->assertObjectHasProperty('headers', $body);
         $this->assertObjectHasProperty('X-Httpbin-Test', $body->headers);
@@ -78,7 +76,6 @@ class GuzzleTest extends TestCase
         $response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
         $body = Json::decode($response->getBody());
 
-        $this->assertIsObject($body);
         $this->assertObjectHasProperty('authorized', $body);
         $this->assertObjectHasProperty('user', $body);
 
@@ -97,7 +94,6 @@ class GuzzleTest extends TestCase
         $response = $guzzle->get('/bearer');
         $body = Json::decode($response->getBody());
 
-        $this->assertIsObject($body);
         $this->assertObjectHasProperty('authenticated', $body);
         $this->assertObjectHasProperty('token', $body);
 

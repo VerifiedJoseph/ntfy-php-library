@@ -53,7 +53,6 @@ class MessageTest extends TestCase
 
         $data = $message->getData();
 
-        $this->assertIsArray($data);
         $this->assertArrayHasKey('topic', $data);
         $this->assertArrayHasKey('title', $data);
         $this->assertArrayHasKey('priority', $data);
@@ -104,7 +103,6 @@ class MessageTest extends TestCase
         $message->markdownBody(self::$messageParams->bodyMarkdown);
         $data = $message->getData();
 
-        $this->assertIsArray($data);
         $this->assertArrayHasKey('topic', $data);
         $this->assertArrayHasKey('message', $data);
         $this->assertArrayHasKey('markdown', $data);
