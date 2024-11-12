@@ -1,5 +1,5 @@
 FROM composer:2.8.2 AS composer
-FROM php:8.1.28-alpine3.18
+FROM php:8.2.25-alpine3.18
 
 RUN apk add --update --no-cache --virtual .build-deps $PHPIZE_DEPS linux-headers \
     && pecl install xdebug \
