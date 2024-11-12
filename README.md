@@ -43,7 +43,7 @@ $client->send($message);
 
 ## Requirements
 
-- PHP >= 8.1
+- PHP >= 8.2
 - Composer
 - PHP Extensions:
   - [`JSON`](https://www.php.net/manual/en/book.json.php)
