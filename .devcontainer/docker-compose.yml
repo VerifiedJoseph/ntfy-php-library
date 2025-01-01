@@ -2,8 +2,7 @@ services:
   workspace:
     container_name: php_workspace
     build:
-      context: ./dockerfiles
-      dockerfile: ./workspace.dockerfile
+      context: ./workspace
     tty: true
     volumes:
       - ../:/ntfy-php-library
