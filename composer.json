@@ -34,12 +34,12 @@
         "squizlabs/php_codesniffer": "^3.7"
     },
     "scripts": {
-        "lint": "phpstan && phpcs .",
+        "lint": "phpstan && phpcs",
         "lint-phpstan": "phpstan",
-        "lint-phpcs": "phpcs . ",
+        "lint-phpcs": "phpcs",
         "lint-phpcs-action": "phpcs . --report=checkstyle | cs2pr",
         "test": "phpunit --colors --coverage-html coverage-reports",
-        "fix": "phpcbf ."
+        "fix": "phpcbf"
     },
     "config": {
         "platform": {
