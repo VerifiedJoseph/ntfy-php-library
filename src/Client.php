@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ntfy;
 
 use stdClass;
@@ -34,7 +36,7 @@ class Client
     public function send(Message $message): stdClass
     {
         $response = $this->guzzle->post('', $message->getData());
-        $message = Json::decode($response->getBody());
+        $message = Json::decode($response->getBody()->getContents());
 
         return $message;
     }

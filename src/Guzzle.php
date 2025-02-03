@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ntfy;
 
 use Ntfy\Auth\AbstractAuth;
@@ -98,7 +100,7 @@ class Guzzle
             $contentType = $response->getHeaderLine('Content-Type');
 
             if ($contentType === 'application/json') {
-                $json = Json::decode($response->getBody());
+                $json = Json::decode($response->getBody()->getContents());
                 $message = sprintf(
                     '%s (error code: %s, http status: %s)',
                     $json->error,
