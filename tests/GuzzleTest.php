@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\UsesClass;
 use Ntfy\Guzzle;
@@ -35,7 +37,7 @@ class GuzzleTest extends TestCase
         ];
 
         $response = self::$guzzle->get('get', $query);
-        $body = Json::decode($response->getBody());
+        $body = Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('args', $body);
         $this->assertObjectHasProperty('test', $body->args);
@@ -55,7 +57,7 @@ class GuzzleTest extends TestCase
         ];
 
         $response = self::$guzzle->post('post', $data, $headers);
-        $body = Json::decode($response->getBody());
+        $body = Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('data', $body);
         $this->assertObjectHasProperty('headers', $body);
@@ -74,7 +76,7 @@ class GuzzleTest extends TestCase
 
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
         $response = $guzzle->get('basic-auth/' . $auth->getUsername() . '/' . $auth->getPassword());
-        $body = Json::decode($response->getBody());
+        $body = Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('authorized', $body);
         $this->assertObjectHasProperty('user', $body);
@@ -92,7 +94,7 @@ class GuzzleTest extends TestCase
 
         $guzzle = new Guzzle(self::getHttpBinUri(), $auth);
         $response = $guzzle->get('/bearer');
-        $body = Json::decode($response->getBody());
+        $body = Json::decode($response->getBody()->getContents());
 
         $this->assertObjectHasProperty('authenticated', $body);
         $this->assertObjectHasProperty('token', $body);
