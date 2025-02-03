@@ -37,7 +37,7 @@
         "lint": "phpstan && phpcs",
         "lint-phpstan": "phpstan",
         "lint-phpcs": "phpcs",
-        "lint-phpcs-action": "phpcs . --report=checkstyle | cs2pr",
+        "lint-phpcs-action": "phpcs --report=checkstyle | cs2pr",
         "test": "phpunit --colors --coverage-html coverage-reports",
         "fix": "phpcbf"
     },
