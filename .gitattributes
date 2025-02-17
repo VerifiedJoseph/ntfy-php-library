@@ -1,2 +1,16 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Configure diff output for .php files
+*.php diff=php
+
+# Exclude build and test files from archive
+/.ci               export-ignore
+/.devcontainer     export-ignore
+/.github           export-ignore
+/tests             export-ignore
+/.gitattributes    export-ignore
+/.gitignore        export-ignore
+/phpcs.xml         export-ignore
+/phpstan.neon.dist export-ignore
+/phpunit.xml.dist  export-ignore
