@@ -23,3 +23,10 @@ updates:
     ignore:
       - dependency-name: "php"
         update-types: ["version-update:semver-minor"]
+
+  - package-ecosystem: "docker-compose"
+    directories:
+      - "/.ci/"
+      - "/.devcontainer/"
+    schedule:
+      interval: "weekly"
