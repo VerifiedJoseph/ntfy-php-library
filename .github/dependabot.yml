@@ -30,3 +30,7 @@ updates:
       - "/.devcontainer/"
     schedule:
       interval: "monthly"
+    groups:
+      go-httpbin:
+        patterns:
+          - "mccutchen/go-httpbin"
