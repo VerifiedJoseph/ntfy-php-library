@@ -18,7 +18,7 @@ abstract class TestCase extends PHPUnit\Framework\TestCase
     protected static function getNtfyUri(): string
     {
         if (getenv('NTFY_URI') !== false) {
-            return getenv('NTFY_URI');
+            return (string) getenv('NTFY_URI');
         }
 
         return self::$ntfyUri;
@@ -32,7 +32,7 @@ abstract class TestCase extends PHPUnit\Framework\TestCase
     protected static function getHttpBinUri(): string
     {
         if (getenv('HTTPBIN_URI') !== false) {
-            return getenv('HTTPBIN_URI');
+            return (string) getenv('HTTPBIN_URI');
         }
 
         return self::$httpBinUri;
