@@ -34,3 +34,6 @@ updates:
       go-httpbin:
         patterns:
           - "mccutchen/go-httpbin"
+      ntfy:
+        patterns:
+          - "binwiederhier/ntfy"
