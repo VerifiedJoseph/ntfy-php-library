@@ -4,7 +4,7 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Codecov](https://img.shields.io/codecov/c/github/VerifiedJoseph/ntfy-php-library?style=flat-square)](https://app.codecov.io/gh/VerifiedJoseph/ntfy-php-library/)
 
-PHP library for sending messages using a [ntfy](https://github.com/binwiederhier/ntfy) server.
+PHP library for sending push notifications using [ntfy](https://github.com/binwiederhier/ntfy).
 
 Supports ntfy server version 2.
 
