@@ -1,7 +1,7 @@
 {
     "name": "verifiedjoseph/ntfy-php-library",
-    "description": "PHP library for interacting with a Ntfy server",
-    "keywords": ["Ntfy"],
+    "description": "PHP library for sending push notifications using ntfy.",
+    "keywords": ["Ntfy", "ntfy.sh", "push notifications"],
     "homepage": "https://github.com/VerifiedJoseph/ntfy-php-library",
     "license": "MIT",
     "authors": [
