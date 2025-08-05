@@ -81,7 +81,7 @@ class ClientTest extends TestCase
      */
     public function testSendWithUserAuth(): void
     {
-        $topic = 'privatebobtopic';
+        $topic = 'bob-private-topic';
 
         $server = new Server(self::getNtfyUri());
 
@@ -112,7 +112,7 @@ class ClientTest extends TestCase
      */
     public function testSendWithTokenAuth(): void
     {
-        $topic = 'privatebobtopic';
+        $topic = 'bob-private-topic';
 
         $server = new Server(self::getNtfyUri());
 
