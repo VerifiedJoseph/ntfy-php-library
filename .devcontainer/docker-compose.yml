@@ -19,7 +19,6 @@ services:
     command: serve
     volumes:
      - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
-     - '../.ci/ntfy/user.db:/etc/ntfy/user.db'
     ports:
       - "127.0.0.1:8080:80"
 
