@@ -5,4 +5,11 @@ attachment-cache-dir: "/var/cache/ntfy/attachments"
 # Admin user: admin
 # Admin Password: password123
 auth-file: "/etc/ntfy/user.db"
-auth-default-access: "read-only"
+#auth-default-access: "read-only"
+auth-users:
+  - "admin:$2a$10$MwiL.crLA.pbhVqS9KrScOjSI3hrlRRy0aaxtcVmwNckpnjVOgT2i:admin"
+  - "bob:$2a$10$jH.BQqP76eyBEiDdCfS24eyJKasBg/vfdaR1Mq7NwHARvoTi0G/D2:user"
+auth-access:
+  - "bob:bob-private-topic:rw"
+auth-tokens:
+  - "bob:tk_E6N6tPopm7Gvd8t3FWaqbYwIPe4he"
