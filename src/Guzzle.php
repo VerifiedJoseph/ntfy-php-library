@@ -128,7 +128,7 @@ class Guzzle
     *  @param ?HandlerStack $handlerStack Guzzle handler stack
      * @return array<string, mixed> Returns client config array
      */
-    private function getConfig(string $uri, ?AbstractAuth $auth, ?HandlerStack $handlerStack): array
+    private function getConfig(string $uri, ?AbstractAuth $auth, ?HandlerStack $handlerStack = null): array
     {
         $config = [
             'base_uri' => $uri,
