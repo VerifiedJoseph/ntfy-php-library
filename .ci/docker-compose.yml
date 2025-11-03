@@ -12,7 +12,7 @@ services:
 
   httpbin:
     container_name: ci_httpbin
-    image: mccutchen/go-httpbin:2.18.3
+    image: mccutchen/go-httpbin:2.19.0
     command: ["go-httpbin", "-port", "80"]
     ports:
       - "127.0.0.1:8081:80"
