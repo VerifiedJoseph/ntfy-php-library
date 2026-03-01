@@ -15,7 +15,7 @@ services:
 
   ntfy:
     container_name: ntfy
-    image: binwiederhier/ntfy:v2.16.0
+    image: binwiederhier/ntfy:v2.17.0
     command: serve
     volumes:
      - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
