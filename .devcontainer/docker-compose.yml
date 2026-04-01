@@ -15,7 +15,7 @@ services:
 
   ntfy:
     container_name: ntfy
-    image: binwiederhier/ntfy:v2.21.0
+    image: binwiederhier/ntfy:v2.21.0@sha256:2b9e12d56a538f4402da51328eeca02696c4b207ab7fbe031c27e51a22ca9b86
     command: serve
     volumes:
      - '../.ci/ntfy/server.yml:/etc/ntfy/server.yml'
@@ -24,7 +24,7 @@ services:
 
   httpbin:
     container_name: httpbin
-    image: mccutchen/go-httpbin:2.21.0
+    image: mccutchen/go-httpbin:2.21.0@sha256:809250d14e94397f4729f617931068a9ea048231fc1a11c9e3c7cb8c28bbab8d
     command: ["go-httpbin", "-port", "80"]
     ports:
       - "127.0.0.1:8081:80"
