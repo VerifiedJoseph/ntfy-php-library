@@ -10,11 +10,15 @@ updates:
 
       - dependency-name: "phpstan/phpstan"
         update-types: ["version-update:semver-major"]
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "monthly"
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "docker"
     directory: "/.devcontainer/workspace/"
@@ -23,6 +27,8 @@ updates:
     ignore:
       - dependency-name: "php"
         update-types: ["version-update:semver-minor"]
+    cooldown:
+      default-days: 7
 
   - package-ecosystem: "docker-compose"
     directories:
@@ -37,3 +43,5 @@ updates:
       ntfy:
         patterns:
           - "binwiederhier/ntfy"
+    cooldown:
+      default-days: 7
