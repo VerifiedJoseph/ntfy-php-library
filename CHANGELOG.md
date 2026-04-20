@@ -4,7 +4,7 @@ All notable changes to this project are documented in this file.
 
 ## [4.8.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.8.0) - 2026-04-20
 
-- Updated minimum supported PHP version from 8.2 to 8.3 ([#551](https://github.com/VerifiedJoseph/gotify-api-php/pull/551), [`abf58fa`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/abf58faa02bd5679281744afc3ee722f32341e78))
+- Updated minimum supported PHP version from 8.2 to 8.3 ([#551](https://github.com/VerifiedJoseph/ntfy-php-library/pull/551), [`abf58fa`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/abf58faa02bd5679281744afc3ee722f32341e78))
 
 ## [4.7.2](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.7.2) - 2025-08-28
 
