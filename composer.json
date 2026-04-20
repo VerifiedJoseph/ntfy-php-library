@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-curl": "*",
         "ext-json": "*",
         "guzzlehttp/guzzle": "^7.4"
@@ -40,10 +40,5 @@
         "lint-phpcs-action": "phpcs --report=checkstyle | cs2pr",
         "test": "phpunit --colors --coverage-html coverage-reports",
         "fix": "phpcbf"
-    },
-    "config": {
-        "platform": {
-            "php": "8.2"
-        }
     }
 }
