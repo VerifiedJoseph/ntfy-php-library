@@ -25,9 +25,8 @@ services:
   httpbin:
     container_name: httpbin
     image: mccutchen/go-httpbin:2.21.0@sha256:809250d14e94397f4729f617931068a9ea048231fc1a11c9e3c7cb8c28bbab8d
-    command: ["go-httpbin", "-port", "80"]
     ports:
-      - "127.0.0.1:8081:80"
+      - "127.0.0.1:8081:8080"
 
 volumes:
   vendor:
