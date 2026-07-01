@@ -12,6 +12,6 @@ services:
 
   httpbin:
     container_name: ci_httpbin
-    image: mccutchen/go-httpbin:2.23.0@sha256:b5d2ef3378e61138998cb4e60edf117000594f33b9be504825921190a7109e69
+    image: mccutchen/go-httpbin:2.23.1@sha256:90ac1702685468aa592938e65b2ba1b4757e0c006934a962ef7271a8717aaa3b
     ports:
       - "127.0.0.1:8081:8080"
