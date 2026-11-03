@@ -6,6 +6,7 @@
 	"bodyMarkdown": "'Look ma, **bold text**, *italics*'",
 	"tags": ["hello", "world"],
 	"schedule": "30s",
+	"timezone": "Europe/London",
 	"clickAction": "https://ntfy.sh",
 	"email": "hello@example.com",
 	"icon": "https://ntfy.sh/static/img/ntfy.png",
