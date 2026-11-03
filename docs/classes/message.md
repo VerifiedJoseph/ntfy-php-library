@@ -87,7 +87,7 @@ tags(array $tags): void
 Set scheduled delivery for the message
 
 ```PHP
-schedule(string $delay): void
+schedule(string $delay, ?string = null): void
 ```
 
 Set URL to open when message notification is clicked

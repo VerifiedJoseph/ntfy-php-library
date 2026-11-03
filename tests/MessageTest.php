@@ -41,7 +41,10 @@ class MessageTest extends TestCase
         $message->priority(self::$messageParams->priority);
         $message->body(self::$messageParams->body);
         $message->tags(self::$messageParams->tags);
-        $message->schedule(self::$messageParams->schedule);
+        $message->schedule(
+            self::$messageParams->schedule,
+            self::$messageParams->timezone
+        );
         $message->clickAction(self::$messageParams->clickAction);
         $message->email(self::$messageParams->email);
         $message->icon(self::$messageParams->icon);
@@ -79,6 +82,7 @@ class MessageTest extends TestCase
         $this->assertEquals(self::$messageParams->tags, $data['tags']);
 
         $this->assertEquals(self::$messageParams->schedule, $data['delay']);
+        $this->assertEquals(self::$messageParams->timezone, $data['timezone']);
         $this->assertEquals(self::$messageParams->clickAction, $data['click']);
         $this->assertEquals(self::$messageParams->email, $data['email']);
         $this->assertEquals(self::$messageParams->icon, $data['icon']);
@@ -93,6 +97,16 @@ class MessageTest extends TestCase
         $this->assertEquals(self::$actionParams->label, $data['actions'][0]['label']);
         $this->assertEquals(self::$actionParams->url, $data['actions'][0]['url']);
         $this->assertEquals(self::$actionParams->clear, $data['actions'][0]['clear']);
+    }
+
+    public function testGetDataWithNoTimezone(): void
+    {
+        $message = new Message();
+        $message->topic(self::$messageParams->topic);
+        $message->schedule(self::$messageParams->schedule);
+        $data = $message->getData();
+
+        $this->assertArrayNotHasKey('timezone', $data);
     }
 
     /**

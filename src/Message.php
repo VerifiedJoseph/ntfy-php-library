@@ -134,12 +134,17 @@ class Message
      * Set scheduled delivery for the message
      *
      * @param string $delay Duration of the delay (e.g 1min, 1hour, 1day)
+     * @param string $timezone Timezone to use when scheduling the message
      *
      * @see https://ntfy.sh/docs/publish/#scheduled-delivery
      */
-    public function schedule(string $delay): void
+    public function schedule(string $delay, ?string $timezone = null): void
     {
         $this->data['delay'] = $delay;
+
+        if ($timezone !== null) {
+            $this->data['timezone'] = $timezone;
+        }
     }
 
     /**
