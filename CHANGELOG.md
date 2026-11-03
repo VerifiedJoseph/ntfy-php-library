@@ -2,7 +2,7 @@
 
 All notable changes to this project are documented in this file.
 
-## [4.9.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.9.0) - 2026-10-03
+## [4.9.0](https://github.com/VerifiedJoseph/ntfy-php-library/releases/tag/v4.9.0) - 2026-11-03
 
 - Added support for scheduled message time zones ([`e5cf339`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/e5cf339391fe2c6d1df00392cc04d72af375d5da))
 - Updated guzzlehttp/guzzle from 7.15.5 to 7.16.0 ([`65b31b3`](https://github.com/VerifiedJoseph/ntfy-php-library/commit/65b31b322f590badb7dc6f6e25ee0b3dee7c2ace))
