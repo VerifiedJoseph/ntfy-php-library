@@ -96,7 +96,7 @@ class Guzzle
             $response = $this->client->request($method, $endpoint, $options);
         } catch (ConnectException $err) {
             throw new NtfyException($err->getMessage());
-        } catch (ClientException|ServerException $err) {
+        } catch (ClientException | ServerException $err) {
             if ($err->hasResponse() === true) {
                 $response = $err->getResponse();
                 $contentType = $response->getHeaderLine('Content-Type');
