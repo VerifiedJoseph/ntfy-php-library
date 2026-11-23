@@ -120,6 +120,7 @@ class GuzzleTest extends TestCase
     public function testConnectException(): void
     {
         $this->expectException(NtfyException::class);
+        $this->expectExceptionMessage('cURL error 6: Could not resolve host: something.invalid');
 
         $guzzle = new Guzzle('http://something.invalid', null);
         $guzzle->get('/');
@@ -131,6 +132,7 @@ class GuzzleTest extends TestCase
     public function testRequestExceptionJsonResponse(): void
     {
         $this->expectException(EndpointException::class);
+        $this->expectExceptionMessage('forbidden (error code: 40301, http status: 403)');
 
         $body = (string) json_encode(['error' => 'forbidden', 'code' => 40301, 'http' => 403]);
 

@@ -10,7 +10,8 @@ use GuzzleHttp\RequestOptions;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ServerException;
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 
@@ -95,26 +96,25 @@ class Guzzle
             $response = $this->client->request($method, $endpoint, $options);
         } catch (ConnectException $err) {
             throw new NtfyException($err->getMessage());
-        } catch (RequestException $err) {
-            $response = $err->getResponse();
-            $contentType = $response->getHeaderLine('Content-Type');
+        } catch (ClientException | ServerException $err) {
+            if ($err->hasResponse() === true) {
+                $response = $err->getResponse();
+                $contentType = $response->getHeaderLine('Content-Type');
 
-            if ($contentType === 'application/json') {
-                $json = Json::decode($response->getBody()->getContents());
-                $message = sprintf(
-                    '%s (error code: %s, http status: %s)',
-                    $json->error,
-                    $json->code,
-                    $json->http
-                );
+                if ($contentType === 'application/json') {
+                    $json = Json::decode($response->getBody()->getContents());
+                    $message = sprintf(
+                        '%s (error code: %s, http status: %s)',
+                        $json->error,
+                        $json->code,
+                        $json->http
+                    );
 
-                throw new EndpointException($message, $json->http);
+                    throw new EndpointException($message);
+                }
             }
 
-            throw new EndpointException(
-                $err->getMessage(),
-                $response->getStatusCode()
-            );
+            throw new EndpointException($err->getMessage());
         }
 
         return $response;
