@@ -96,21 +96,19 @@ class Guzzle
         } catch (ConnectException $err) {
             throw new NtfyException($err->getMessage());
         } catch (BadResponseException $err) {
-            if ($err->hasResponse() === true) {
-                $response = $err->getResponse();
-                $contentType = $response->getHeaderLine('Content-Type');
+            $response = $err->getResponse();
+            $contentType = $response->getHeaderLine('Content-Type');
 
-                if ($contentType === 'application/json') {
-                    $json = Json::decode($response->getBody()->getContents());
-                    $message = sprintf(
-                        '%s (error code: %s, http status: %s)',
-                        $json->error,
-                        $json->code,
-                        $json->http
-                    );
+            if ($contentType === 'application/json') {
+                $json = Json::decode($response->getBody()->getContents());
+                $message = sprintf(
+                    '%s (error code: %s, http status: %s)',
+                    $json->error,
+                    $json->code,
+                    $json->http
+                );
 
-                    throw new EndpointException($message);
-                }
+                throw new EndpointException($message);
             }
 
             throw new EndpointException($err->getMessage());
