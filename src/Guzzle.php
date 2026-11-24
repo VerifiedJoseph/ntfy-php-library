@@ -10,8 +10,7 @@ use GuzzleHttp\RequestOptions;
 use GuzzleHttp\HandlerStack;
 use Psr\Http\Message\ResponseInterface;
 use GuzzleHttp\Exception\ConnectException;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\BadResponseException;
 use Ntfy\Exception\NtfyException;
 use Ntfy\Exception\EndpointException;
 
@@ -96,7 +95,7 @@ class Guzzle
             $response = $this->client->request($method, $endpoint, $options);
         } catch (ConnectException $err) {
             throw new NtfyException($err->getMessage());
-        } catch (ClientException | ServerException $err) {
+        } catch (BadResponseException $err) {
             if ($err->hasResponse() === true) {
                 $response = $err->getResponse();
                 $contentType = $response->getHeaderLine('Content-Type');
