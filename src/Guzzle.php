@@ -101,14 +101,15 @@ class Guzzle
 
             if ($contentType === 'application/json') {
                 $json = Json::decode($response->getBody()->getContents());
-                $message = sprintf(
-                    '%s (error code: %s, http status: %s)',
-                    $json->error,
-                    $json->code,
-                    $json->http
-                );
 
-                throw new EndpointException($message);
+                if (property_exists($json, 'error') && property_exists($json, 'code')) {
+                    throw new EndpointException(sprintf(
+                        '%s (error code: %s, http status: %s)',
+                        $json->error,
+                        $json->code,
+                        $response->getStatusCode()
+                    ));
+                }
             }
 
             throw new EndpointException($err->getMessage());
