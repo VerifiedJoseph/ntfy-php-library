@@ -109,6 +109,7 @@ class GuzzleTest extends TestCase
     public function testRequestException(): void
     {
         $this->expectException(EndpointException::class);
+        $this->expectExceptionCode(404);
 
         $guzzle = new Guzzle(self::getHttpBinUri(), null);
         $guzzle->get('/status/404');
@@ -132,6 +133,7 @@ class GuzzleTest extends TestCase
     public function testRequestExceptionJsonResponse(): void
     {
         $this->expectException(EndpointException::class);
+        $this->expectExceptionCode(403);
         $this->expectExceptionMessage('forbidden (error code: 40301, http status: 403)');
 
         $body = (string) json_encode(['error' => 'forbidden', 'code' => 40301, 'http' => 403]);
