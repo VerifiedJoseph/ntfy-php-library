@@ -108,11 +108,14 @@ class Guzzle
                         $json->error,
                         $json->code,
                         $response->getStatusCode()
-                    ));
+                    ), $response->getStatusCode());
                 }
             }
 
-            throw new EndpointException($err->getMessage());
+            throw new EndpointException(
+                $err->getMessage(),
+                $response->getStatusCode()
+            );
         }
 
         return $response;
